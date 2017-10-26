@@ -1,5 +1,5 @@
 +++
-section_weight=0
+section_weight = 4
 page_weight= 1
 +++
 
@@ -26,7 +26,7 @@ For helpful info on how to build this, see:
 
 * series:
 * session:
-        
+
 
 ### What is it?
 Pyneal is a set of tools written in python for accessing and analyzing fMRI data in real-time. It offers pre-built analysis routines, as well as the option of writing custom code using the provided template and having it execute on each incoming volume. The output of the analysis is hosted via it's own server, allowing experimental presentation software to access the results as needed.
