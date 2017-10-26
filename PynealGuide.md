@@ -14,6 +14,20 @@ page_weight= 1
 
 *NOTE:* The current software was built specifically for the scanning environment at Duke University. Over the next few months the code will be adapted to suit more general usage. Along those same lines, the documentation is very much a work in progress. A new software version and complete documentation is anticipated to be released by late summer 2016. Until then, use with caution.
 
+### Notes on image orientation:
+For helpful info on how to build this, see:
+
+* http://nipy.org/nibabel/dicom/dicom_orientation.html       
+* http://nipy.org/nibabel/coordinate_systems.html
+* https://users.fmrib.ox.ac.uk/~paulmc/fsleyes/userdoc/latest/display_space.html#display-space-data-storage-order
+
+
+### Glossary:
+
+* series:
+* session:
+        
+
 ### What is it?
 Pyneal is a set of tools written in python for accessing and analyzing fMRI data in real-time. It offers pre-built analysis routines, as well as the option of writing custom code using the provided template and having it execute on each incoming volume. The output of the analysis is hosted via it's own server, allowing experimental presentation software to access the results as needed.
 
