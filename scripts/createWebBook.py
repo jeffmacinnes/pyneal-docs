@@ -110,7 +110,7 @@ for line in lines:
 	leading_spaces = len(line) - len(line.lstrip())
 	if (leading_spaces == 0):
 		if ('groupName' in chapterGroup):
-			chapterGroups.append(chapterGroup)
+			chapterGroups.append(chapterGroup) 
 		chapterGroup = {}
 		chapterGroup['groupName'] = line.rstrip()
 		chapterGroup['chapters'] = []

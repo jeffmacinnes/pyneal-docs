@@ -1,10 +1,3 @@
-# Heading 1
-text under heading 1
+# ChapterWhatever
+text under Chapter Whatever
 
-## Heading 2
-
-text under heading 2
-
-### Heading 3
-
-text under heading 3
