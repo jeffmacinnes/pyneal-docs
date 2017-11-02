@@ -123,7 +123,7 @@ if ('groupName' in chapterGroup):
 
 #-------------------------------------------------------------- folders for the book
 # Create the output directories for the webBook
-webBookPath = os.path.join("..", "output", "webBook")
+webBookPath = os.path.join("..", "docs")
 webBookChaptersPath = os.path.join(webBookPath, "chapters")
 if not os.path.exists(webBookPath): os.makedirs(webBookPath)
 if not os.path.exists(webBookChaptersPath): os.makedirs(webBookChaptersPath)
@@ -502,17 +502,16 @@ os.remove(tocPathTemp);
 destPath = os.path.join(webBookPath, "index.html")
 sourcePath = os.path.join("createWebBookTemplate", "index.html")
 
-# print("Copying", sourcePath, "to", destPath, "...")
-# shutil.copyfile(sourcePath, destPath)
+print("Copying", sourcePath, "to", destPath, "...")
+shutil.copyfile(sourcePath, destPath)
 
-bookBaseUrl = "http://openframeworks.cc/ofBook/chapters/";
+bookBaseUrl = "https://jeffmacinnes.github.io/pyneal-docs/chapters";
 
 for group in chapterGroups:
     print("- " + group['groupName']);
     for chap in group['chapters']:
         c = returnChapterByCommonName(chap)
         print("\t- [" +c['title'] +"](" + bookBaseUrl + c['href'] + ")");
-        
+
         #print(c['href'])
 #print()
-
