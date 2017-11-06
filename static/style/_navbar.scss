@@ -34,8 +34,8 @@ nav {
       overflow: hidden;
       max-height:42px;
       transition: all 0.3s;
-      
-      .groupTitle {        
+
+      .groupTitle {
         cursor: pointer;
       }
 
@@ -71,8 +71,8 @@ nav {
 
             &.selected {
               a {
-                color: #EC6A88; 
-                
+                color: #b94a54; 
+
               }
 
             }
@@ -114,4 +114,3 @@ li.chapter.selected {
 nav ul.chapter.selected {
   background-color:#ccc;
 }
-
