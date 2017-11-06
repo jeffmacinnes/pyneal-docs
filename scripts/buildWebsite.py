@@ -1,12 +1,9 @@
 """
-	Takes the markdown chapters, and using pandoc, converts them to HTML.  CSS styling by Andy
-	and Ishac is applied.  A few hacks are applied to make everything run smoothly.
-
 	Assumes that the file structure looks like this:
 
-		- ofBook
+		- pyneal-docs
 			- scripts
-				- createWebBook.py
+				- buildWebsite.py
 				- createWebBookTemplate
 					- IncludeAfterBody.html
 					- IncludeBeforeBody.html
@@ -22,7 +19,7 @@
 					- fonts
 
 	After running, the website will be added to output/webBook like this:
-		- ofBook
+		- pyneal-docs
 			- ...
 			- output
 				- webBook
@@ -41,6 +38,11 @@
 
 	Dependencies:
 		BeautifulSoup4, install using "sudo pip install BeautifulSoup4"
+
+
+* this tool has been adapted from the terrific documentation of the OpenFrameworks book:
+http://openframeworks.cc/ofBook/chapters/setup_and_project_structure.html
+
 """
 from __future__ import print_function
 
@@ -110,7 +112,7 @@ for line in lines:
 	leading_spaces = len(line) - len(line.lstrip())
 	if (leading_spaces == 0):
 		if ('groupName' in chapterGroup):
-			chapterGroups.append(chapterGroup) 
+			chapterGroups.append(chapterGroup)
 		chapterGroup = {}
 		chapterGroup['groupName'] = line.rstrip()
 		chapterGroup['chapters'] = []
@@ -227,7 +229,7 @@ for chapter in chapters:
 		chapterDicts.append(chapterDict);
 
 		# --- Update the title
-		soup.title.string = "ofBook - " + chapterDict['title']
+		soup.title.string = "Pyneal-Docs - " + chapterDict['title']
 
 		# --- change images (path and tag)
 
