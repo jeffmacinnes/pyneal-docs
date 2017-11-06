@@ -56,7 +56,7 @@ nav {
               color: #B8B8B8;
               transition: all 0.2s; }
             nav ul#nav-parts li.group ul li.chapter li.section.selected a {
-              color: #EC6A88; }
+              color: #b94a54; }
           nav ul#nav-parts li.group ul li.chapter.selected li.section {
             display: block; }
 
@@ -203,7 +203,7 @@ a:active {
 }*/
 .banner {
   position: fixed;
-  background-color: rgba(200, 120, 120, 0.9);
+  background-color: rgba(184, 74, 84, 0.8);
   width: 100%;
   left: 0px;
   top: 0px;
@@ -288,7 +288,7 @@ a:active {
     margin-top: -26px; }
   .chapter-content code, .toc code {
     border: none;
-    color: #EC6A88;
+    color: #b94a54;
     font-family: 'firaMono';
     font-size: 12px;
     font-style: normal;
