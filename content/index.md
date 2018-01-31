@@ -1,10 +1,3 @@
-# index-h1
-alsdjfkjasdlkf
+<img src="images/pynealLogo.png" alt="Drawing" style="width: 300px; margin: auto;"/>
 
-## index-h2
-
-lajsdkfjlkasdjf
-
-### index-h3
-
-asdljflksajdlfk;jasdlk
+# Overview

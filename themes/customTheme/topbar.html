@@ -36,11 +36,8 @@
 
     {# Logo and title #}
     <a href="{{ name }}" class="wm-top-brand wm-top-link wm-vcenter">
-      {% if config.extra.logo %}
-        <img class="wm-top-logo" src="{{ base_url }}/{{ config.extra.logo }}"/>
-      {% endif %}
-      <div class="wm-top-title">
-        {{ config.site_name }}<br>
+     <img class="wm-top-logo" src="{{ base_url }}/img/pynealLogo.png"/>
+     <div class="wm-top-title">{{ config.site_name }}<br>
         {% if config.extra.version %}
           <span class="wm-top-version">v{{ config.extra.version }}</span>
         {% endif %}

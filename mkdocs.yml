@@ -4,7 +4,7 @@ site_name: Pyneal Docs
 docs_dir: content
 
 # Subdirectories in the docs_dir where css tweaks live
-# extra_css: 
+# extra_css:
 #     - css/extra.css
 
 # Directory where you want the built site to turn up in
@@ -12,11 +12,12 @@ site_dir: docs
 
 # Link the markdown files to a given page name
 pages:
-  - Home: index.md
-  - Page2: page2.md
-
+  - Introduction: index.md        # Note: first one HAS to be named index.md
+  - Getting Started:
+      - Installation: installation.md
+      - Setup: setup.md
 
 # Specify the path to a custom theme. NOTE: 'name' has to be an already installed theme, tho
-theme:  
+theme:
    name: windmill
    custom_dir: themes/customTheme

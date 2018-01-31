@@ -7,7 +7,7 @@ body {
  ***********************************************************************/
 
 .navbar {
-  background-color: #b94a54;
+  background-color: #A44754;
   box-shadow: 0 1.5px 3px rgba(0,0,0,.24), 0 3px 8px rgba(0,0,0,.05);
   border: none;
   border-radius: 0px;
@@ -66,7 +66,8 @@ body {
 }
 
 .wm-top-logo {
-  max-height: 100%;
+  max-height: 90%;
+  display: inline-block;
 }
 
 .wm-top-version {
@@ -87,7 +88,7 @@ body {
   right: 0px;
   padding: inherit;
   width: 100%;
-  background-color: ##b94a54;
+  background-color: ##A44754;
 }
 
 .wm-top-search {
@@ -256,7 +257,7 @@ body {
 }
 
 .wm-toc-li.wm-current, .wm-toc-li.wm-current:hover {
-  background-color: #b94a54;
+  background-color: #A44754;
   color: white;
 }
 
@@ -340,7 +341,7 @@ body {
   display: inline-block;
   max-width: 48%;
   white-space: nowrap;
-  color: #b94a54;
+  color: #A44754;
   text-align: right;
 }
 
@@ -353,7 +354,7 @@ body {
 }
 
 .wm-article-nav > a, .wm-article-nav > a:visited, .wm-article-nav > a:hover, .wm-article-nav > a:focus {
-  color: #b94a54;
+  color: #A44754;
   text-decoration: none;
   outline: none;
 }
