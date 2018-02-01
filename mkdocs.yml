@@ -12,12 +12,16 @@ site_dir: docs
 
 # Link the markdown files to a given page name
 pages:
-  - Introduction: index.md        # Note: first one HAS to be named index.md
-  - Getting Started:
-      - Installation: installation.md
-      - Setup: setup.md
+    - Introduction: index.md        # Note: first one HAS to be named index.md
+    - Getting Started:
+        - Installation: installation.md
+        - Setup: setup.md
+    - Troubleshooting: troubleshooting.md
 
 # Specify the path to a custom theme. NOTE: 'name' has to be an already installed theme, tho
 theme:
-   name: windmill
-   custom_dir: themes/customTheme
+    name: windmill
+    custom_dir: themes/customTheme
+    extra:
+        extra.article_nav_top: false
+        extra.history_buttons: false

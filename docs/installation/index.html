@@ -32,9 +32,16 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Dependencies", url: "#dependencies", children: [
-              {title: "Pyneal-Scanner", url: "#pyneal-scanner" },
-              {title: "Pyneal", url: "#pyneal" },
+          {title: "Overview", url: "#overview", children: [
+              {title: "Definitions Used", url: "#definitions-used" },
+          ]},
+          {title: "Download Pyneal", url: "#download-pyneal", children: [
+          ]},
+          {title: "Pyneal-Scanner", url: "#pyneal-scanner", children: [
+              {title: "dependencies", url: "#dependencies" },
+          ]},
+          {title: "Pyneal", url: "#pyneal", children: [
+              {title: "dependencies", url: "#dependencies_1" },
               {title: "Misc Utilities", url: "#misc-utilities" },
           ]},
         ];
@@ -79,9 +86,79 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     
 
-    <h2 id="dependencies">Dependencies</h2>
-<h3 id="pyneal-scanner">Pyneal-Scanner</h3>
-<h3 id="pyneal">Pyneal</h3>
+    <h1 id="_1"></h1>
+<p>Pyneal is built and tested using <code>Python 3.6</code>. Download from <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> or via a distribution like <a href="https://www.anaconda.com/download">Anaconda</a></p>
+<p>Pyneal requires additional libraries beyond the standard library. Instructions below use <code>pip</code> to install these libraries. Verify that you have <code>pip</code> installed:</p>
+<blockquote>
+<p>which pip</p>
+</blockquote>
+<p>If not, download and install pip from <a href="https://pip.pypa.io/en/stable/installing/">https://pip.pypa.io/en/stable/installing/</a></p>
+<h2 id="overview">Overview</h2>
+<p>The software tool is broken into two separate components: <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. When first downloaded, <strong>Pyneal Scanner</strong> is contained in a separate directory within the <strong>Pyneal</strong> directory</p>
+<ul>
+<li>
+<p><strong>Pyneal Scanner</strong>: Accesses incoming data, modifies it to match a standardized format, and then sends the data out, one 3D volume at a time, to <strong>Pyneal</strong></p>
+</li>
+<li>
+<p><strong>Pyneal</strong>: Listens for incoming 3D volumes from <strong>Pyneal Scanner</strong>, runs whatever analyses
+you have specied, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to</p>
+</li>
+</ul>
+<p>This design allows the software to easily accommodate the various directory structures and  data formats that are found on different scanner models at different institutions around the world.</p>
+<p>However, this feature also means that the specific installation instructions can vary by computing environments.</p>
+<h3 id="definitions-used">Definitions Used</h3>
+<p>For the purposes of these instructions, we'll refer to computers by their <em>functional</em> role:</p>
+<ul>
+<li>
+<p><strong>Scanner computer</strong>: The computer where reconstructed images from the scanner appear. In the case of GE scanners, for instance, new slice dicom files appear in a directory on the scanner console. Siemens scanners, on the other hand, may export new images to a directory on a shared network drive. The <strong>scanner computer</strong> is simply the computer that has local access to the directory where new images appear</p>
+</li>
+<li>
+<p><strong>Analysis computer</strong>: The computer that will be running <strong>Pyneal</strong>. This is the computer on which users will setup their analysis, launch <strong>Pyneal</strong>, and monitor on-going scans.</p>
+</li>
+</ul>
+<p>Note that in some cases, the <em>same physical computer</em> can play both functional roles. For instance, when working in a Siemens environment, new images from the scanner might be exported to a shared directory that is accessible on the <strong>analysis computer</strong>. In this case, the same machine could be playing the role of both the <strong>scanner computer</strong> and the <strong>analysis computer</strong>.</p>
+<h2 id="download-pyneal">Download Pyneal</h2>
+<p>Download the <a href="https://github.com/jeffmacinnes/pyneal">Pyneal repository</a> from GitHub, or clone to your local machine:</p>
+<blockquote>
+<p>git clone https://github.com/jeffmacinnes/pyneal.git</p>
+</blockquote>
+<h2 id="pyneal-scanner">Pyneal-Scanner</h2>
+<p>The <code>pyneal_scanner</code> directory needs to be on the <strong>scanner computer</strong>. If the <strong>scanner computer</strong> is different from the <strong>analysis computer</strong> in your environment, copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>.  </p>
+<h3 id="dependencies">dependencies</h3>
+<p>The <strong>scanner computer</strong> requires additional <code>python</code> libraries in order to run <strong>Pyneal Scanner</strong>. </p>
+<p>You can attempt to install all required libraries at once by navigating into the <code>pyneal_scanner</code> directory and typing:</p>
+<blockquote>
+<p>pip install -r requirements.txt</p>
+</blockquote>
+<p>If that fails for any reason, you can install manually one at a time:</p>
+<blockquote>
+<p>pip install numpy==1.13.1<br />
+pip install pydicom==0.9.9<br />
+pip install nibabel==2.1.0<br />
+pip install pyzmq==16.0.2<br />
+pip install pyyaml==3.12</p>
+</blockquote>
+<p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk. </p>
+<h2 id="pyneal">Pyneal</h2>
+<p>The <code>pyneal</code> directory needs to be on the <strong>analysis computer</strong>. </p>
+<h3 id="dependencies_1">dependencies</h3>
+<p>The <strong>analysis computer</strong> requires additional <code>python</code> libraries in order to run <strong>Pyneal</strong>. </p>
+<p>You can attempt to install all required libraries at once by navigating into the <code>pyneal</code> directory and typing:</p>
+<blockquote>
+<p>pip install -r requirements.txt</p>
+</blockquote>
+<p>If that fails for any reason, you can install manually one at a time:</p>
+<blockquote>
+<p>pip install numpy==1.13.1<br />
+pip install nibabel==2.1.0<br />
+pip install pyzmq==16.0.2<br />
+pip install pyyaml==3.12<br />
+pip install kivy==1.10.dev0<br />
+pip install flask==0.12.2<br />
+pip install flask_socketio==2.9.2<br />
+pip install eventlet==0.21.0  </p>
+</blockquote>
+<p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
 <h3 id="misc-utilities">Misc Utilities</h3>
 
   <br>
