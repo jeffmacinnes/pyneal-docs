@@ -101,7 +101,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li>
 <p><strong>Pyneal</strong>: Listens for incoming 3D volumes from <strong>Pyneal Scanner</strong>, runs whatever analyses
-you have specied, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to</p>
+you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to</p>
 </li>
 </ul>
 <p>This design allows the software to easily accommodate the various directory structures and  data formats that are found on different scanner models at different institutions around the world.</p>
@@ -125,7 +125,7 @@ you have specied, and hosts the results on a server, which other downstream comp
 <h2 id="pyneal-scanner">Pyneal-Scanner</h2>
 <p>The <code>pyneal_scanner</code> directory needs to be on the <strong>scanner computer</strong>. If the <strong>scanner computer</strong> is different from the <strong>analysis computer</strong> in your environment, copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>.  </p>
 <h3 id="dependencies">dependencies</h3>
-<p>The <strong>scanner computer</strong> requires additional <code>python</code> libraries in order to run <strong>Pyneal Scanner</strong>. </p>
+<p>The <strong>scanner computer</strong> requires additional <code>python</code> libraries in order to run <strong>Pyneal Scanner</strong>.</p>
 <p>You can attempt to install all required libraries at once by navigating into the <code>pyneal_scanner</code> directory and typing:</p>
 <blockquote>
 <p>pip install -r requirements.txt</p>
@@ -138,11 +138,11 @@ pip install nibabel==2.1.0<br />
 pip install pyzmq==16.0.2<br />
 pip install pyyaml==3.12</p>
 </blockquote>
-<p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk. </p>
+<p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
 <h2 id="pyneal">Pyneal</h2>
-<p>The <code>pyneal</code> directory needs to be on the <strong>analysis computer</strong>. </p>
+<p>The <code>pyneal</code> directory needs to be on the <strong>analysis computer</strong>.</p>
 <h3 id="dependencies_1">dependencies</h3>
-<p>The <strong>analysis computer</strong> requires additional <code>python</code> libraries in order to run <strong>Pyneal</strong>. </p>
+<p>The <strong>analysis computer</strong> requires additional <code>python</code> libraries in order to run <strong>Pyneal</strong>.</p>
 <p>You can attempt to install all required libraries at once by navigating into the <code>pyneal</code> directory and typing:</p>
 <blockquote>
 <p>pip install -r requirements.txt</p>
@@ -160,6 +160,11 @@ pip install eventlet==0.21.0  </p>
 </blockquote>
 <p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
 <h3 id="misc-utilities">Misc Utilities</h3>
+<p><strong>Pyneal</strong> itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool <strong>createMask</strong> can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan. </p>
+<p>In order to use these additional tools, make sure you have installed the following:</p>
+<ul>
+<li><a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">FSL 5.0</a></li>
+</ul>
 
   <br>
     
