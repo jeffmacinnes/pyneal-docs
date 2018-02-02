@@ -81,7 +81,62 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1 id="_1"></h1>
 <p>The set-up instructions are broken down by <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. If you haven't already, follow the <a href="../installation">installation instructions</a> to configure your environment, and read the section on <a href="../installation/#definitions-used">definitions</a>, as those definitions are used throughout these instructions. </p>
 <h2 id="pyneal-scanner">Pyneal Scanner</h2>
+<p>Copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>. </p>
+<p>Launch <strong>Pyneal Scanner</strong> from the command line by navigating in to the <code>pyneal_scanner</code> directory and running <code>pynealScanner.py</code></p>
+<blockquote>
+<p>cd pyneal_scanner<br />
+python pynealScanner.py</p>
+</blockquote>
+<p><strong>Pyneal Scanner</strong> uses a set of configuration parameters that you can modify to fit your environment. These are stored in file named <code>scannerConfig.yaml</code> in the <code>pyneal_scanner</code> directory. </p>
+<p>If you're running <strong>Pyneal Scanner</strong> for the first time, this file won't exist yet. You can either create this file manually, or wait until <code>pynealScanner.py</code> prompts you to fill in any missing configuration values from the command line. Any values you enter from the command line will be saved in a new <code>scannerConfig.yaml</code> file. </p>
+<p>The <code>scannerConfig.yaml</code> file allows you to customize <strong>Pyneal Scanner</strong> to your scanning environment. The file contains just a few parameters stored as <em>key:value</em> pairs:</p>
+<pre><code class="yaml">scannerBaseDir: /path/to/new/scans
+scannerMake: GE
+pynealSocketHost: 127.0.0.1
+pynealSocketPort: '9999'
+</code></pre>
+
+<p><strong>Configuration Keys</strong>:</p>
+<ul>
+<li>
+<p><strong>scannerBaseDir</strong>: The <em>fixed</em> portion of the directory path to where new reconstructed images will be appear during a scan. That is, the part that remains constant from scan to scan. Knowing what to set this value to can differ accroding to different scanner manufacturers: </p>
+<ul>
+<li>
+<p><strong>GE</strong>: During a scan, new slices dicom files are written to a directory on the scanner console. The path to that directory can be broken apart like <code>[scannerBaseDir]/[sessionDir]/[seriesDir]</code>, where</p>
+<ul>
+<li><strong>[scannerBaseDir]</strong>: path that remains constant across all scans</li>
+<li><strong>[sessionDir]</strong>: directories that can change from session to session, named like <code>p###/e###</code> where the specific <code>#</code> values are unknown in advance.</li>
+<li><strong>[seriesDir]</strong>: series specific directory named like <code>s###</code> where the specific <code>#</code> values are unknown in advance. Each new scan during a given exam session will be assigned a unique <code>s###</code> dir. </li>
+</ul>
+<p>You only need to specify the path to the <code>scannerBaseDir</code> in the <code>scannerConfig.yaml</code> file; <strong>Pyneal Scanner</strong> will automaticaly find the most recently modified session and series directories and monitor for new series directories to appear. When you run <code>pynealScanner.py</code> you will see a printout in the terminal window about the names, sizes, and modification dates of all series directories in the session directory.</p>
+</li>
+<li>
+<p><strong>Siemens</strong>: TODO</p>
+</li>
+<li>
+<p><strong>Philips</strong>: Philips scanners have the option to export reconstructed PAR/REC files to a remote directory. The path to that directory can be broken apart like <code>[scannerBaseDir]/[seriesDir]</code>, where</p>
+<ul>
+<li><strong>[scannerBaseDir]</strong>: path to remote directory that remains constant across all scans</li>
+<li><strong>[seriesDir]</strong>: series specific directory named like <code>####</code></li>
+</ul>
+</li>
+</ul>
+<p>You only need to specify the path to the <code>scannerBaseDir</code> in the <code>scannerConfig.yaml</code> file; <strong>Pyneal Scanner</strong> will monitor for new series directories to appear.  </p>
+</li>
+<li>
+<p><strong>scannerMake</strong>: Scanner Manufacturer, must be one of <code>GE</code>, <code>Siemens</code>, or <code>Philips</code> (case sensitive)</p>
+</li>
+<li><strong>pynealSocketHost</strong>: I.P. address of the <strong>analysis computer</strong> running <strong>Pyneal</strong>.</li>
+<li><strong>pynealSocketPort</strong>: The port number over which <strong>Pyneal</strong> is listening for incoming data. </li>
+</ul>
 <h2 id="pyneal">Pyneal</h2>
+<p>Launch <strong>Pyneal</strong> from the command line by navigating in to the <code>pyneal</code> directory and running <code>pyneal.py</code></p>
+<blockquote>
+<p>cd pyneal <br />
+python pyneal.py</p>
+</blockquote>
+<p>The <strong>Pyneal</strong> configuration is set via GUI. When you launch <code>pyneal.py</code> a GUI will appear, allowing you to configure <strong>Pyneal</strong> to the current experiment</p>
+<p><img alt="" src="../images/pynealSetupGUI.png" /></p>
 
   <br>
     
