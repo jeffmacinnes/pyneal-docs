@@ -146,9 +146,57 @@ python pyneal.py</p>
 </ul>
 </li>
 <li>
-<p><strong>Mask</strong>: </p>
+<p><strong>Mask</strong>: Path to mask file (Nifti - .nii/.nii.gz) to be used during real-time analysis. Each incoming 3D volume will be masked to remove non-relevant voxels. The mask will limit which voxels get passed on to the analysis stage. So, for example:</p>
+<ul>
+<li>To calculate the <strong>Average</strong> ROI activation at every timepoint, choose a mask file that represents the target ROI. </li>
+<li>For a <strong>Custom</strong> analysis that uses the entire brain volume, choose a mask file that represents a whole brain mask. </li>
+<li>In all cases, the mask <em>must</em> match the dimensions and orientation of incoming functional volumes [see Creating Masks for Real-time Analysis TODO]. </li>
+<li>If <strong>Weighted Mask?</strong> is checked, the voxel values will be used as weights during the analysis. </li>
+</ul>
+</li>
+<li>
+<p><strong>Preprocessing</strong>: Set the number of timepoints for the current scan</p>
+</li>
+<li>
+<p><strong>Analysis</strong>: Real-time analysis options. The analysis you select will be computed at every timepoint throughout the scan.</p>
+<ul>
+<li><strong>Average</strong>: Compute the average activation at each timepoint across all voxels within the mask</li>
+<li><strong>Median</strong>: Compute the median activation at each timepoint across all voxels within the mask</li>
+<li><strong>Custom</strong>: Choose a custom analysis script. This script will be executed at each new timepoint [see Setting up Custom Analysis Scripts TODO]</li>
+</ul>
+</li>
+<li>
+<p><strong>Output</strong>: </p>
+<ul>
+<li>Choose an output directory to store logs and results from the current scan.</li>
+<li><strong>Launch Dashboard</strong>: Check this box to launch an interactive dashboard that will allow you to monitor the status of the scan once it begins. </li>
+</ul>
 </li>
 </ul>
+<p>Behind the scenes, all of the relevant <strong>Pyneal</strong> configuration settings are stored as <em>key:value</em> pairs in a file stored at <code>pyneal/src/setupConfig.yaml</code>. (In fact, the GUI simply reads this file at launch to get the previous configuration options, and then overwrites this file with the current GUI options whenever you click <strong>submit</strong>).</p>
+<pre><code class="yaml">pynealScannerPort: 5555
+resultsServerPort: 5556
+maskFile: /path/to/mask/file.nii.gz
+maskIsWeighted: false
+numTimePts: 60
+analysisChoice: Average
+outputPath: /path/to/store/output
+launchDashboard: true
+</code></pre>
+
+<p><strong>Configuration Keys</strong>:</p>
+<ul>
+<li><strong>pynealScannerPort</strong>: Port number over which <strong>Pyneal</strong> will be listening for incoming data</li>
+<li><strong>resultsServerPort</strong>: Port number that <strong>Pyneal</strong> will use to set up the <strong>Results Server</strong></li>
+<li><strong>maskFile</strong>: Path to mask file (Nifti - .nii/.nii.gz) to be used during real-time analysis</li>
+<li><strong>maskIsWeighted</strong>: Voxel values in mask represent weights [true/false]</li>
+<li><strong>numTimePts</strong>: Number of timepoints in current scan</li>
+<li><strong>analysisChoice</strong>: Real-time analysis options [Average/Median/Path to custom analysis file]</li>
+<li><strong>outputPath</strong>: Path to output directory where logs and results will be saved</li>
+<li><strong>launchDashboard</strong>: Launch dashboard to monitor real-time scan [true/false]</li>
+</ul>
+<p>At the top of the setup GUI you have the option to load a custom settings file. A custom settings should be a <code>.yaml</code> file with values for one or more of the configuration keys above. By loading a custom settings file, the GUI will be populated with whichever configure keys are included; any non-included keys will get their values from the <code>setupConfig.yaml</code> file as normal. </p>
+<p>The option allows users to create settings files on a per-project basis, and easily configure <strong>Pyneal</strong> to match the project demands.  </p>
 
   <br>
     
