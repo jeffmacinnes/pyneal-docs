@@ -20,8 +20,17 @@ pages:
 
 # Specify the path to a custom theme. NOTE: 'name' has to be an already installed theme, tho
 theme:
-    name: windmill
-    custom_dir: themes/customTheme
-    extra:
-        extra.article_nav_top: false
-        extra.history_buttons: false
+    name: material
+    # custom_dir: theme/mkdocs-material/material
+
+extra_css:
+  - 'stylesheets/extra.css'
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/jeffmacinnes/pyneal'
+
+markdown_extensions:
+  - toc:
+      permalink: true

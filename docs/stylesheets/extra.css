@@ -1,0 +1,17 @@
+.md-header {
+    background-color: #A44754;
+}
+
+.md-typeset blockquote {
+    font-family: courier, serif;
+    padding-left: 1.2rem;
+    border-left: .4rem solid #A44754;
+    color: rgba(0,0,0,.75);
+    background-color: rgba(0,0,0,.05);
+}
+
+
+.md-typeset blockquote p {
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+}

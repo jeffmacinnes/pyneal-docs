@@ -11,13 +11,15 @@ All content is stored in markdown files that are saved in the **content** dir. E
 
 The table of contents for the documentation is set within `mkdocs.yml` file in the root directory. Edit the section called `pages:` to change the page order and page nesting.
 
+Each page should have a corresponding markdown file. When creating/editing each markdown file, use a single H1 ('#') heading at the top, and use nested subheadings (h2, h3, etc..) throughout the page. This will ensure the table of contents on the right-hand side is formatted properly. 
+
 
 ### Building Website
 The static html of the site is built using [mkdocs](http://www.mkdocs.org/). In order to see how your changes will appear in html, you need to install the mkdocs tool, as well as the theme files:
 
 >pip install mkdocs
 
->pip install mkdocs-windmill
+>pip install mkdocs-material
 
 
 To test out your edits to the site without having to build, open up a terminal session, navigate to the root dir of the repo and type:

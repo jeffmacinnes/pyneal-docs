@@ -1,86 +1,281 @@
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.0">
+    
+    
+      
+        <title>Setup - Pyneal Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.aa3de92b.css">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    
+  </head>
   
+    <body dir="ltr">
   
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    
-    <link rel="shortcut icon" href="../img/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Setup - Pyneal Docs</title>
-    <link href="../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/highlight.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../js/highlight.pack.js"></script>
-    
-    <base target="_top">
-    <script>
-      var base_url = '..';
-      var is_top_frame = false;
+    <svg class="md-svg">
+      <defs>
         
-        var pageToc = [
-          {title: "Pyneal Scanner", url: "#pyneal-scanner", children: [
-          ]},
-          {title: "Pyneal", url: "#pyneal", children: [
-          ]},
-        ];
-
-    </script>
-    <script src="../js/base.js"></script>
-      <script src="../search/require.js"></script>
-      <script src="../search/search.js"></script> 
-</head>
-
-<body>
-<script>
-if (is_top_frame) { $('body').addClass('wm-top-page'); }
-</script>
-
-
-
-<div class="container-fluid wm-page-content">
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+      <a href="#pyneal-scanner" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
     
-    <div class="wm-article-nav pull-right">
-      <a href="../troubleshooting/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../troubleshooting/" class="btn btn-xs btn-link">
-        Troubleshooting
-      </a>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Pyneal Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                Pyneal Docs
+              </span>
+              <span class="md-header-nav__topic">
+                Setup
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
     </div>
-    
-    <div class="wm-article-nav">
-      <a href="../installation/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../installation/" class="btn btn-xs btn-link">
-        Installation
-      </a>
-    </div>
-    
   </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <span class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </span>
+    Pyneal Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
 
     
+      
+      
+      
 
-    <h1 id="_1"></h1>
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Getting Started
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Getting Started
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+    <a href="./" title="Setup" class="md-nav__link md-nav__link--active">
+      Setup
+    </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
+      Troubleshooting
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>The set-up instructions are broken down by <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. If you haven't already, follow the <a href="../installation">installation instructions</a> to configure your environment, and read the section on <a href="../installation/#definitions-used">definitions</a>, as those definitions are used throughout these instructions. </p>
-<h2 id="pyneal-scanner">Pyneal Scanner</h2>
+<h2 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h2>
 <p>Copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>. </p>
 <p>Launch <strong>Pyneal Scanner</strong> from the command line by navigating in to the <code>pyneal_scanner</code> directory and running <code>pynealScanner.py</code></p>
 <blockquote>
@@ -129,7 +324,7 @@ pynealSocketPort: '9999'
 <li><strong>pynealSocketHost</strong>: I.P. address of the <strong>analysis computer</strong> running <strong>Pyneal</strong>.</li>
 <li><strong>pynealSocketPort</strong>: The port number over which <strong>Pyneal</strong> is listening for incoming data. </li>
 </ul>
-<h2 id="pyneal">Pyneal</h2>
+<h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>
 <p>Launch <strong>Pyneal</strong> from the command line by navigating in to the <code>pyneal</code> directory and running <code>pyneal.py</code></p>
 <blockquote>
 <p>cd pyneal <br />
@@ -197,38 +392,90 @@ launchDashboard: true
 </ul>
 <p>At the top of the setup GUI you have the option to load a custom settings file. A custom settings should be a <code>.yaml</code> file with values for one or more of the configuration keys above. By loading a custom settings file, the GUI will be populated with whichever configure keys are included; any non-included keys will get their values from the <code>setupConfig.yaml</code> file as normal. </p>
 <p>The option allows users to create settings files on a per-project basis, and easily configure <strong>Pyneal</strong> to match the project demands.  </p>
-
-  <br>
-    
-
-  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
-    
-    <div class="wm-article-nav pull-right">
-      <a href="../troubleshooting/" class="btn btn-xs btn-default pull-right">
-        Next
-        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </a>
-      <a href="../troubleshooting/" class="btn btn-xs btn-link">
-        Troubleshooting
-      </a>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../installation/" title="Installation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Installation
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../troubleshooting/" title="Troubleshooting" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Troubleshooting
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
     </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="http://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
     
-    <div class="wm-article-nav">
-      <a href="../installation/" class="btn btn-xs btn-default pull-left">
-        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-        Previous</a><a href="../installation/" class="btn btn-xs btn-link">
-        Installation
-      </a>
-    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <a href="https://github.com/jeffmacinnes/pyneal" class="md-footer-social__link fa fa-github"></a>
     
   </div>
 
-    <br>
-</div>
-
-<footer class="col-md-12 wm-page-content">
-
+      
+    </div>
+  </div>
 </footer>
-
-</body>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.9fb73e57.js"></script>
+      
+      <script>app.initialize({version:"0.17.2",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
 </html>

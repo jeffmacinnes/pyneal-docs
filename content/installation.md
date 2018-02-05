@@ -1,4 +1,4 @@
-#
+# Installation
 
 Pyneal is built and tested using `Python 3.6`. Download from [https://www.python.org/downloads/](https://www.python.org/downloads/) or via a distribution like [Anaconda](https://www.anaconda.com/download)
 
@@ -8,7 +8,6 @@ Pyneal requires additional libraries beyond the standard library. Instructions b
 
 If not, download and install pip from [https://pip.pypa.io/en/stable/installing/](https://pip.pypa.io/en/stable/installing/)
 
-## Overview
 
 The software tool is broken into two separate components: **Pyneal Scanner** and **Pyneal**. When first downloaded, **Pyneal Scanner** is contained in a separate directory within the **Pyneal** directory
 
@@ -22,7 +21,7 @@ This design allows the software to easily accommodate the various directory stru
 However, this feature also means that the specific installation instructions can vary by computing environments.
 
 
-### Definitions Used
+## Definitions Used
 
 For the purposes of these instructions, we'll refer to computers by their *functional* role:
 
@@ -89,7 +88,7 @@ If that fails for any reason, you can install manually one at a time:
 
 These versions reflect the primary environment in which **Pyneal** is tested. It is likely that other versions maintain compatibility, but use at your own risk.
 
-### Misc Utilities
+## Misc Utilities
 
 **Pyneal** itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool **createMask** can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan. 
 
