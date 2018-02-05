@@ -70,3 +70,9 @@ Launch **Pyneal** from the command line by navigating in to the `pyneal` directo
 The **Pyneal** configuration is set via GUI. When you launch `pyneal.py` a GUI will appear, allowing you to configure **Pyneal** to the current experiment
 
 ![](images/pynealSetupGUI.png)
+
+* **Communication**:
+	* **Pyneal-Scanner Port**: The port number over which **Pyneal** will be listening for incoming data from **Pyneal Scanner**. Note that this number should match the port number specified in the **pynealSocketPort** configuration field of the **Pyneal Scanner** set up. 
+	* **Results Server Port**: The port number that **Pyneal** will use to set up the **Results Server**. Remote machines that wish to retrieve real-time analysis output during a scan can send requests over this port number. See Formatting Results Server Requests [TODO]
+
+* **Mask**: 
