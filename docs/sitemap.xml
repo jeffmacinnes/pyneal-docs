@@ -27,6 +27,46 @@
 
     
     <url>
+     <loc>/quickOverview/</loc>
+     <lastmod>2018-02-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/pynealScanner/</loc>
+     <lastmod>2018-02-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/pyneal/</loc>
+     <lastmod>2018-02-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/simulations/</loc>
+     <lastmod>2018-02-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/miscTools/</loc>
+     <lastmod>2018-02-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>/troubleshooting/</loc>
      <lastmod>2018-02-05</lastmod>
      <changefreq>daily</changefreq>

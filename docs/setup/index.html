@@ -71,7 +71,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#pyneal-scanner" tabindex="1" class="md-skip">
+      <a href="#setup" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -82,7 +82,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href=".." title="Pyneal Docs" class="md-header-nav__button md-logo">
           
-            <i class="md-icon"></i>
+            <i class="md-icon">home</i>
           
         </a>
       </div>
@@ -154,7 +154,7 @@
   <label class="md-nav__title md-nav__title--site" for="drawer">
     <span class="md-nav__button md-logo">
       
-        <i class="md-icon"></i>
+        <i class="md-icon">home</i>
       
     </span>
     Pyneal Docs
@@ -221,15 +221,109 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Setup
+      </label>
+    
     <a href="./" title="Setup" class="md-nav__link md-nav__link--active">
       Setup
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pyneal-scanner" title="Pyneal Scanner" class="md-nav__link">
+    Pyneal Scanner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyneal" title="Pyneal" class="md-nav__link">
+    Pyneal
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
         
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../quickOverview/" title="Quick Overview" class="md-nav__link">
+      Quick Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../pynealScanner/" title="Pyneal Scanner" class="md-nav__link">
+      Pyneal Scanner
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../pyneal/" title="Pyneal" class="md-nav__link">
+      Pyneal
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../simulations/" title="Simulations" class="md-nav__link">
+      Simulations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../miscTools/" title="Misc Tools" class="md-nav__link">
+      Misc Tools
+    </a>
   </li>
 
     
@@ -262,6 +356,27 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pyneal-scanner" title="Pyneal Scanner" class="md-nav__link">
+    Pyneal Scanner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pyneal" title="Pyneal" class="md-nav__link">
+    Pyneal
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -273,17 +388,17 @@
               
                 
                 
-                <h1 id="_1"><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>The set-up instructions are broken down by <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. If you haven't already, follow the <a href="../installation">installation instructions</a> to configure your environment, and read the section on <a href="../installation/#definitions-used">definitions</a>, as those definitions are used throughout these instructions. </p>
+                <h1 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h1>
+<p>The set-up instructions are broken down by <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. If you haven't already, follow the <a href="../installation">installation instructions</a> to configure your environment, and read the section on <a href="../installation/#definitions-used">definitions</a>, as those definitions are used throughout these instructions.</p>
 <h2 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h2>
-<p>Copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>. </p>
+<p>Copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>.</p>
 <p>Launch <strong>Pyneal Scanner</strong> from the command line by navigating in to the <code>pyneal_scanner</code> directory and running <code>pynealScanner.py</code></p>
 <blockquote>
 <p>cd pyneal_scanner<br />
 python pynealScanner.py</p>
 </blockquote>
-<p><strong>Pyneal Scanner</strong> uses a set of configuration parameters that you can modify to fit your environment. These are stored in file named <code>scannerConfig.yaml</code> in the <code>pyneal_scanner</code> directory. </p>
-<p>If you're running <strong>Pyneal Scanner</strong> for the first time, this file won't exist yet. You can either create this file manually, or wait until <code>pynealScanner.py</code> prompts you to fill in any missing configuration values from the command line. Any values you enter from the command line will be saved in a new <code>scannerConfig.yaml</code> file. </p>
+<p><strong>Pyneal Scanner</strong> uses a set of configuration parameters that you can modify to fit your environment. These are stored in file named <code>scannerConfig.yaml</code> in the <code>pyneal_scanner</code> directory.</p>
+<p>If you're running <strong>Pyneal Scanner</strong> for the first time, this file won't exist yet. You can either create this file manually, or wait until <code>pynealScanner.py</code> prompts you to fill in any missing configuration values from the command line. Any values you enter from the command line will be saved in a new <code>scannerConfig.yaml</code> file.</p>
 <p>The <code>scannerConfig.yaml</code> file allows you to customize <strong>Pyneal Scanner</strong> to your scanning environment. The file contains just a few parameters stored as <em>key:value</em> pairs:</p>
 <pre><code class="yaml">scannerBaseDir: /path/to/new/scans
 scannerMake: GE
@@ -294,14 +409,14 @@ pynealSocketPort: '9999'
 <p><strong>Configuration Keys</strong>:</p>
 <ul>
 <li>
-<p><strong>scannerBaseDir</strong>: The <em>fixed</em> portion of the directory path to where new reconstructed images will be appear during a scan. That is, the part that remains constant from scan to scan. Knowing what to set this value to can differ accroding to different scanner manufacturers: </p>
+<p><strong>scannerBaseDir</strong>: The <em>fixed</em> portion of the directory path to where new reconstructed images will be appear during a scan. That is, the part that remains constant from scan to scan. Knowing what to set this value to can differ accroding to different scanner manufacturers:</p>
 <ul>
 <li>
 <p><strong>GE</strong>: During a scan, new slices dicom files are written to a directory on the scanner console. The path to that directory can be broken apart like <code>[scannerBaseDir]/[sessionDir]/[seriesDir]</code>, where</p>
 <ul>
 <li><strong>[scannerBaseDir]</strong>: path that remains constant across all scans</li>
 <li><strong>[sessionDir]</strong>: directories that can change from session to session, named like <code>p###/e###</code> where the specific <code>#</code> values are unknown in advance.</li>
-<li><strong>[seriesDir]</strong>: series specific directory named like <code>s###</code> where the specific <code>#</code> values are unknown in advance. Each new scan during a given exam session will be assigned a unique <code>s###</code> dir. </li>
+<li><strong>[seriesDir]</strong>: series specific directory named like <code>s###</code> where the specific <code>#</code> values are unknown in advance. Each new scan during a given exam session will be assigned a unique <code>s###</code> dir.</li>
 </ul>
 <p>You only need to specify the path to the <code>scannerBaseDir</code> in the <code>scannerConfig.yaml</code> file; <strong>Pyneal Scanner</strong> will automaticaly find the most recently modified session and series directories and monitor for new series directories to appear. When you run <code>pynealScanner.py</code> you will see a printout in the terminal window about the names, sizes, and modification dates of all series directories in the session directory.</p>
 </li>
@@ -322,7 +437,7 @@ pynealSocketPort: '9999'
 <p><strong>scannerMake</strong>: Scanner Manufacturer, must be one of <code>GE</code>, <code>Siemens</code>, or <code>Philips</code> (case sensitive)</p>
 </li>
 <li><strong>pynealSocketHost</strong>: I.P. address of the <strong>analysis computer</strong> running <strong>Pyneal</strong>.</li>
-<li><strong>pynealSocketPort</strong>: The port number over which <strong>Pyneal</strong> is listening for incoming data. </li>
+<li><strong>pynealSocketPort</strong>: The port number over which <strong>Pyneal</strong> is listening for incoming data.</li>
 </ul>
 <h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>
 <p>Launch <strong>Pyneal</strong> from the command line by navigating in to the <code>pyneal</code> directory and running <code>pyneal.py</code></p>
@@ -336,17 +451,17 @@ python pyneal.py</p>
 <li>
 <p><strong>Communication</strong>:</p>
 <ul>
-<li><strong>Pyneal-Scanner Port</strong>: The port number over which <strong>Pyneal</strong> will be listening for incoming data from <strong>Pyneal Scanner</strong>. Note that this number should match the port number specified in the <strong>pynealSocketPort</strong> configuration field of the <strong>Pyneal Scanner</strong> set up. </li>
+<li><strong>Pyneal-Scanner Port</strong>: The port number over which <strong>Pyneal</strong> will be listening for incoming data from <strong>Pyneal Scanner</strong>. Note that this number should match the port number specified in the <strong>pynealSocketPort</strong> configuration field of the <strong>Pyneal Scanner</strong> set up.</li>
 <li><strong>Results Server Port</strong>: The port number that <strong>Pyneal</strong> will use to set up the <strong>Results Server</strong>. Remote machines that wish to retrieve real-time analysis output during a scan can send requests over this port number. See Formatting Results Server Requests [TODO]</li>
 </ul>
 </li>
 <li>
 <p><strong>Mask</strong>: Path to mask file (Nifti - .nii/.nii.gz) to be used during real-time analysis. Each incoming 3D volume will be masked to remove non-relevant voxels. The mask will limit which voxels get passed on to the analysis stage. So, for example:</p>
 <ul>
-<li>To calculate the <strong>Average</strong> ROI activation at every timepoint, choose a mask file that represents the target ROI. </li>
-<li>For a <strong>Custom</strong> analysis that uses the entire brain volume, choose a mask file that represents a whole brain mask. </li>
-<li>In all cases, the mask <em>must</em> match the dimensions and orientation of incoming functional volumes [see Creating Masks for Real-time Analysis TODO]. </li>
-<li>If <strong>Weighted Mask?</strong> is checked, the voxel values will be used as weights during the analysis. </li>
+<li>To calculate the <strong>Average</strong> ROI activation at every timepoint, choose a mask file that represents the target ROI.</li>
+<li>For a <strong>Custom</strong> analysis that uses the entire brain volume, choose a mask file that represents a whole brain mask.</li>
+<li>In all cases, the mask <em>must</em> match the dimensions and orientation of incoming functional volumes [see Creating Masks for Real-time Analysis TODO].</li>
+<li>If <strong>Weighted Mask?</strong> is checked, the voxel values will be used as weights during the analysis.</li>
 </ul>
 </li>
 <li>
@@ -361,10 +476,10 @@ python pyneal.py</p>
 </ul>
 </li>
 <li>
-<p><strong>Output</strong>: </p>
+<p><strong>Output</strong>:</p>
 <ul>
 <li>Choose an output directory to store logs and results from the current scan.</li>
-<li><strong>Launch Dashboard</strong>: Check this box to launch an interactive dashboard that will allow you to monitor the status of the scan once it begins. </li>
+<li><strong>Launch Dashboard</strong>: Check this box to launch an interactive dashboard that will allow you to monitor the status of the scan once it begins.</li>
 </ul>
 </li>
 </ul>
@@ -390,7 +505,7 @@ launchDashboard: true
 <li><strong>outputPath</strong>: Path to output directory where logs and results will be saved</li>
 <li><strong>launchDashboard</strong>: Launch dashboard to monitor real-time scan [true/false]</li>
 </ul>
-<p>At the top of the setup GUI you have the option to load a custom settings file. A custom settings should be a <code>.yaml</code> file with values for one or more of the configuration keys above. By loading a custom settings file, the GUI will be populated with whichever configure keys are included; any non-included keys will get their values from the <code>setupConfig.yaml</code> file as normal. </p>
+<p>At the top of the setup GUI you have the option to load a custom settings file. A custom settings should be a <code>.yaml</code> file with values for one or more of the configuration keys above. By loading a custom settings file, the GUI will be populated with whichever configure keys are included; any non-included keys will get their values from the <code>setupConfig.yaml</code> file as normal.</p>
 <p>The option allows users to create settings files on a per-project basis, and easily configure <strong>Pyneal</strong> to match the project demands.  </p>
                 
                   
@@ -425,13 +540,13 @@ launchDashboard: true
           </a>
         
         
-          <a href="../troubleshooting/" title="Troubleshooting" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../quickOverview/" title="Quick Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Troubleshooting
+                Quick Overview
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

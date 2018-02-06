@@ -1,6 +1,8 @@
 # Installation
 
-Pyneal is built and tested using `Python 3.6`. Download from [https://www.python.org/downloads/](https://www.python.org/downloads/) or via a distribution like [Anaconda](https://www.anaconda.com/download)
+**Pyneal is built and tested using `Python 3.6`**
+
+Download Python from [https://www.python.org/downloads/](https://www.python.org/downloads/) or via a distribution like [Anaconda](https://www.anaconda.com/download)
 
 Pyneal requires additional libraries beyond the standard library. Instructions below use `pip` to install these libraries. Verify that you have `pip` installed:
 
@@ -9,35 +11,15 @@ Pyneal requires additional libraries beyond the standard library. Instructions b
 If not, download and install pip from [https://pip.pypa.io/en/stable/installing/](https://pip.pypa.io/en/stable/installing/)
 
 
-The software tool is broken into two separate components: **Pyneal Scanner** and **Pyneal**. When first downloaded, **Pyneal Scanner** is contained in a separate directory within the **Pyneal** directory
-
-* **Pyneal Scanner**: Accesses incoming data, modifies it to match a standardized format, and then sends the data out, one 3D volume at a time, to **Pyneal**
-
-* **Pyneal**: Listens for incoming 3D volumes from **Pyneal Scanner**, runs whatever analyses
-you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to
-
-This design allows the software to easily accommodate the various directory structures and  data formats that are found on different scanner models at different institutions around the world.
-
-However, this feature also means that the specific installation instructions can vary by computing environments.
-
-
-## Definitions Used
-
-For the purposes of these instructions, we'll refer to computers by their *functional* role:
-
-* **Scanner computer**: The computer where reconstructed images from the scanner appear. In the case of GE scanners, for instance, new slice dicom files appear in a directory on the scanner console. Siemens scanners, on the other hand, may export new images to a directory on a shared network drive. The **scanner computer** is simply the computer that has local access to the directory where new images appear
-
-* **Analysis computer**: The computer that will be running **Pyneal**. This is the computer on which users will setup their analysis, launch **Pyneal**, and monitor on-going scans.
-
-Note that in some cases, the *same physical computer* can play both functional roles. For instance, when working in a Siemens environment, new images from the scanner might be exported to a shared directory that is accessible on the **analysis computer**. In this case, the same machine could be playing the role of both the **scanner computer** and the **analysis computer**.
-
-
 ## Download Pyneal
 
 Download the [Pyneal repository](https://github.com/jeffmacinnes/pyneal) from GitHub, or clone to your local machine:
 
 
 >git clone https://github.com/jeffmacinnes/pyneal.git
+
+
+The installation instructions are broken down by **Pyneal Scanner** and **Pyneal**. If you haven't already, read the section on [definitions](#definitions-used), as those definitions are used throughout these instructions.
 
 
 ## Pyneal-Scanner
@@ -90,7 +72,7 @@ These versions reflect the primary environment in which **Pyneal** is tested. It
 
 ## Misc Utilities
 
-**Pyneal** itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool **createMask** can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan. 
+**Pyneal** itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool **createMask** can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.
 
 In order to use these additional tools, make sure you have installed the following:
 

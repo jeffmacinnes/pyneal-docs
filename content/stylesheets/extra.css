@@ -15,3 +15,29 @@
     padding-top: 1.3rem;
     padding-bottom: 1.3rem;
 }
+
+
+html .md-nav--primary .md-nav__title--site {
+    position: relative;
+    background-color: #A44754;
+    color: #fff;
+}
+
+
+.md-nav__link:focus, .md-nav__link:hover {
+    color: rgba(1,1,1,.2);
+}
+
+
+.md-typeset h2[id] .headerlink:focus, .md-typeset h2[id]:hover .headerlink:hover, .md-typeset h2[id]:target .headerlink {
+    color: #A44754;
+}
+
+.md-typeset a:active, .md-typeset a:hover {
+    color: #A44754;
+}
+
+
+.md-content__inner img{
+    max-height: 600px;
+}

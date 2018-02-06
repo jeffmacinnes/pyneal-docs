@@ -82,7 +82,7 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         <a href=".." title="Pyneal Docs" class="md-header-nav__button md-logo">
           
-            <i class="md-icon"></i>
+            <i class="md-icon">home</i>
           
         </a>
       </div>
@@ -154,7 +154,7 @@
   <label class="md-nav__title md-nav__title--site" for="drawer">
     <span class="md-nav__button md-logo">
       
-        <i class="md-icon"></i>
+        <i class="md-icon">home</i>
       
     </span>
     Pyneal Docs
@@ -226,13 +226,6 @@
   
     <label class="md-nav__title" for="toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#definitions-used" title="Definitions Used" class="md-nav__link">
-    Definitions Used
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#download-pyneal" title="Download Pyneal" class="md-nav__link">
@@ -320,6 +313,66 @@
 
 
   <li class="md-nav__item">
+    <a href="../quickOverview/" title="Quick Overview" class="md-nav__link">
+      Quick Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../pynealScanner/" title="Pyneal Scanner" class="md-nav__link">
+      Pyneal Scanner
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../pyneal/" title="Pyneal" class="md-nav__link">
+      Pyneal
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../simulations/" title="Simulations" class="md-nav__link">
+      Simulations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../miscTools/" title="Misc Tools" class="md-nav__link">
+      Misc Tools
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../troubleshooting/" title="Troubleshooting" class="md-nav__link">
       Troubleshooting
     </a>
@@ -345,13 +398,6 @@
   
     <label class="md-nav__title" for="toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#definitions-used" title="Definitions Used" class="md-nav__link">
-    Definitions Used
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#download-pyneal" title="Download Pyneal" class="md-nav__link">
@@ -423,40 +469,19 @@
                 
                 
                 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
-<p>Pyneal is built and tested using <code>Python 3.6</code>. Download from <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> or via a distribution like <a href="https://www.anaconda.com/download">Anaconda</a></p>
+<p><strong>Pyneal is built and tested using <code>Python 3.6</code></strong></p>
+<p>Download Python from <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> or via a distribution like <a href="https://www.anaconda.com/download">Anaconda</a></p>
 <p>Pyneal requires additional libraries beyond the standard library. Instructions below use <code>pip</code> to install these libraries. Verify that you have <code>pip</code> installed:</p>
 <blockquote>
 <p>which pip</p>
 </blockquote>
 <p>If not, download and install pip from <a href="https://pip.pypa.io/en/stable/installing/">https://pip.pypa.io/en/stable/installing/</a></p>
-<p>The software tool is broken into two separate components: <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. When first downloaded, <strong>Pyneal Scanner</strong> is contained in a separate directory within the <strong>Pyneal</strong> directory</p>
-<ul>
-<li>
-<p><strong>Pyneal Scanner</strong>: Accesses incoming data, modifies it to match a standardized format, and then sends the data out, one 3D volume at a time, to <strong>Pyneal</strong></p>
-</li>
-<li>
-<p><strong>Pyneal</strong>: Listens for incoming 3D volumes from <strong>Pyneal Scanner</strong>, runs whatever analyses
-you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to</p>
-</li>
-</ul>
-<p>This design allows the software to easily accommodate the various directory structures and  data formats that are found on different scanner models at different institutions around the world.</p>
-<p>However, this feature also means that the specific installation instructions can vary by computing environments.</p>
-<h2 id="definitions-used">Definitions Used<a class="headerlink" href="#definitions-used" title="Permanent link">&para;</a></h2>
-<p>For the purposes of these instructions, we'll refer to computers by their <em>functional</em> role:</p>
-<ul>
-<li>
-<p><strong>Scanner computer</strong>: The computer where reconstructed images from the scanner appear. In the case of GE scanners, for instance, new slice dicom files appear in a directory on the scanner console. Siemens scanners, on the other hand, may export new images to a directory on a shared network drive. The <strong>scanner computer</strong> is simply the computer that has local access to the directory where new images appear</p>
-</li>
-<li>
-<p><strong>Analysis computer</strong>: The computer that will be running <strong>Pyneal</strong>. This is the computer on which users will setup their analysis, launch <strong>Pyneal</strong>, and monitor on-going scans.</p>
-</li>
-</ul>
-<p>Note that in some cases, the <em>same physical computer</em> can play both functional roles. For instance, when working in a Siemens environment, new images from the scanner might be exported to a shared directory that is accessible on the <strong>analysis computer</strong>. In this case, the same machine could be playing the role of both the <strong>scanner computer</strong> and the <strong>analysis computer</strong>.</p>
 <h2 id="download-pyneal">Download Pyneal<a class="headerlink" href="#download-pyneal" title="Permanent link">&para;</a></h2>
 <p>Download the <a href="https://github.com/jeffmacinnes/pyneal">Pyneal repository</a> from GitHub, or clone to your local machine:</p>
 <blockquote>
 <p>git clone https://github.com/jeffmacinnes/pyneal.git</p>
 </blockquote>
+<p>The installation instructions are broken down by <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. If you haven't already, read the section on <a href="#definitions-used">definitions</a>, as those definitions are used throughout these instructions.</p>
 <h2 id="pyneal-scanner">Pyneal-Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h2>
 <p>The <code>pyneal_scanner</code> directory needs to be on the <strong>scanner computer</strong>. If the <strong>scanner computer</strong> is different from the <strong>analysis computer</strong> in your environment, copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>.  </p>
 <h3 id="dependencies">dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
@@ -495,7 +520,7 @@ pip install eventlet==0.21.0  </p>
 </blockquote>
 <p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
 <h2 id="misc-utilities">Misc Utilities<a class="headerlink" href="#misc-utilities" title="Permanent link">&para;</a></h2>
-<p><strong>Pyneal</strong> itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool <strong>createMask</strong> can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan. </p>
+<p><strong>Pyneal</strong> itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool <strong>createMask</strong> can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.</p>
 <p>In order to use these additional tools, make sure you have installed the following:</p>
 <ul>
 <li><a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">FSL 5.0</a></li>
