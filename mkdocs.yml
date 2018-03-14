@@ -23,6 +23,9 @@ pages:
         - Creating Masks: createMask.md
         - Customized Analyses: customAnalysis.md
     - Troubleshooting: troubleshooting.md
+    - Reference:
+        - Glossary: glossary.md
+        - Image Orientation: imageOrientation.md
 
 
 # Specify the path to a custom theme. NOTE: 'name' has to be an already installed theme

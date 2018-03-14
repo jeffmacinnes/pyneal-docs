@@ -208,33 +208,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#definitions-used" title="Definitions Used" class="md-nav__link">
-    Definitions Used
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#computers" title="Computers" class="md-nav__link">
-    Computers
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#additional-terms-used" title="Additional terms used" class="md-nav__link">
-    Additional terms used
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
       
       
     </ul>
@@ -400,6 +373,54 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Reference
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="glossary/" title="Glossary" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="imageOrientation/" title="Image Orientation" class="md-nav__link">
+      Image Orientation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -434,33 +455,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#definitions-used" title="Definitions Used" class="md-nav__link">
-    Definitions Used
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#computers" title="Computers" class="md-nav__link">
-    Computers
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#additional-terms-used" title="Additional terms used" class="md-nav__link">
-    Additional terms used
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
       
       
     </ul>
@@ -478,7 +472,8 @@
                 
                 <p><img alt="" src="./images/pynealLogo.png" /></p>
 <h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
-<p><a href="https://github.com/jeffmacinnes/pyneal">Pyneal GitHub repository</a></p>
+<p><a href="https://github.com/jeffmacinnes/pyneal"><img src="images/githubLogo.png" style="width:75px"></a>
+<a href="https://github.com/jeffmacinnes/pyneal"><strong>Pyneal GitHub repository</strong></a></p>
 <h2 id="what-is-it">What is it?<a class="headerlink" href="#what-is-it" title="Permanent link">&para;</a></h2>
 <p><strong>Pyneal</strong> is an open source software package to support real-time functional magnetic resonance imaging (fMRI). It is entirely Python-based and depends exclusively on free, open source neuroimaging libraries.</p>
 <p>It allows users to:</p>
@@ -491,7 +486,6 @@
 <p>It currently supports data formats used across 3 major MRI manufacturers: <strong>GE</strong>, <strong>Siemens</strong>, <strong>Philips</strong>.</p>
 <p>In addition to allowing users to compute basic, ROI-based analyses during a scan, <strong>Pyneal</strong> also provides a simple framework for designing and writing customized analyses that can be computed across the whole brain volume at each timepoint.</p>
 <h2 id="designstructure">Design/Structure<a class="headerlink" href="#designstructure" title="Permanent link">&para;</a></h2>
-<p>modular, customizable, fit the needs of diverse research groups...</p>
 <p>The software is broken into two separate components: <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. When first downloaded, <strong>Pyneal Scanner</strong> is contained in a separate directory within the <strong>Pyneal</strong> directory</p>
 <ul>
 <li>
@@ -503,27 +497,6 @@ you have specified, and hosts the results on a server, which other downstream co
 </li>
 </ul>
 <p>This design allows the software to easily accommodate the various directory structures and data formats that are found on different scanner models at different institutions around the world. (However, it also means that the steps to install, and run <strong>Pyneal</strong> can vary from environment to environment).</p>
-<h2 id="definitions-used">Definitions Used<a class="headerlink" href="#definitions-used" title="Permanent link">&para;</a></h2>
-<h3 id="computers">Computers<a class="headerlink" href="#computers" title="Permanent link">&para;</a></h3>
-<p>Throughout the documentation, we'll refer to computers by their <em>functional</em> role:</p>
-<ul>
-<li>
-<p><strong>Scanner computer</strong>: The computer where reconstructed images from the scanner appear. In the case of GE scanners, for instance, new slice dicom files appear in a directory on the scanner console. Siemens scanners, on the other hand, may export new images to a directory on a shared network drive. The <strong>scanner computer</strong> is simply the computer that has local access to the directory where new images appear</p>
-</li>
-<li>
-<p><strong>Analysis computer</strong>: The computer that will be running <strong>Pyneal</strong>. This is the computer on which users will setup their analysis, launch <strong>Pyneal</strong>, and monitor on-going scans.</p>
-</li>
-</ul>
-<p>Note that in some cases, the <em>same physical computer</em> can play both functional roles. For instance, when working in a Siemens environment, new images from the scanner might be exported to a shared directory that is accessible on the <strong>analysis computer</strong>. In this case, the same machine could be playing the role of both the <strong>scanner computer</strong> and the <strong>analysis computer</strong>.</p>
-<h3 id="additional-terms-used">Additional terms used<a class="headerlink" href="#additional-terms-used" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p><strong>Series</strong>: A complete scan representing either a single 3D anatomical image, or a 4D functional image.</p>
-</li>
-<li>
-<p><strong>Session</strong>:  A collection of series collected within the same experimental session. A <strong>session</strong> would typically represent all of the scans collected after the subject is placed in the scanner (e.g. Anatomical, functional series1, functional series2, etc...)</p>
-</li>
-</ul>
                 
                   
                 

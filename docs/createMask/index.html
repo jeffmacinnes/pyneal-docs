@@ -330,6 +330,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#specifying-a-reference-4d-functional-file" title="Specifying a reference 4D functional file" class="md-nav__link">
+    Specifying a reference 4D functional file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deciding-on-a-mask-type" title="Deciding on a mask type" class="md-nav__link">
+    Deciding on a mask type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whole-brain-mask" title="Whole Brain Mask" class="md-nav__link">
+    Whole Brain Mask
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-mni-space-masl" title="Transform MNI space masl" class="md-nav__link">
+    Transform MNI space masl
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
     </ul>
@@ -368,6 +402,54 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Reference
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../glossary/" title="Glossary" class="md-nav__link">
+      Glossary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../imageOrientation/" title="Image Orientation" class="md-nav__link">
+      Image Orientation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -395,6 +477,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#specifying-a-reference-4d-functional-file" title="Specifying a reference 4D functional file" class="md-nav__link">
+    Specifying a reference 4D functional file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deciding-on-a-mask-type" title="Deciding on a mask type" class="md-nav__link">
+    Deciding on a mask type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whole-brain-mask" title="Whole Brain Mask" class="md-nav__link">
+    Whole Brain Mask
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-mni-space-masl" title="Transform MNI space masl" class="md-nav__link">
+    Transform MNI space masl
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
     </ul>
@@ -413,6 +529,15 @@
                 <h1 id="creating-masks">Creating Masks<a class="headerlink" href="#creating-masks" title="Permanent link">&para;</a></h1>
 <p><strong>Pyneal</strong> requires that you input a mask for use during real-time analysis. This mask must have the same voxel dimensions and image orientation as the incoming functional data. </p>
 <p>The <code>createMask.py</code> tool will assist you in quickly creating these masks during a real-time session. </p>
+<p><strong>createMask</strong> provides you with two mask creation options:</p>
+<ul>
+<li>
+<p><strong>Whole Brain Mask</strong>: This option will create a whole brain mask from the functional data you supply. </p>
+</li>
+<li>
+<p><strong>Transform mask from MNI space</strong>: This option will take a mask defined in MNI space and transform it to the dimensions and orientation of the functional data you supply.</p>
+</li>
+</ul>
 <p><em>Note:</em> Behind the scenes, createMask.py relies on various functions from FSL. Make sure you have installed <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">FSL 5.0</a></p>
 <h2 id="launching-createmask">Launching createMask<a class="headerlink" href="#launching-createmask" title="Permanent link">&para;</a></h2>
 <p>The createMask tool is found in <code>pyneal/utils/createMask.py</code></p>
@@ -422,6 +547,12 @@
 python createMask.py</p>
 </blockquote>
 <p><img alt="" src="../images/createMaskGUI.png" /></p>
+<h2 id="specifying-a-reference-4d-functional-file">Specifying a reference 4D functional file<a class="headerlink" href="#specifying-a-reference-4d-functional-file" title="Permanent link">&para;</a></h2>
+<p>In order to create masks, we need to know the voxel size, 3D volume dimensions, and image orientation of the functional data for the current session. The easiest way to get this data is to include a brief (30sec or less) functional scan near the beginning of your session. Use the exact same slice prescriptions and image settings as you plan to use during your real-time scans. </p>
+<p>After the scan has finished, use the <code>getSeries.py</code> tool from <strong>Pyneal Scanner</strong> to convert the images to a 4D nifti file. Note that <code>getSeries.py</code> will automatically reorient the output data to RAS+ orientation. Thus, by using this data as our reference functional data we will create a mask that is also in RAS+. This is good since, during a real-time run, <strong>Pyneal</strong> will be receiving data in RAS+ orientation (see <a href="../imageOrientation">image orientation</a> for more info) </p>
+<h2 id="deciding-on-a-mask-type">Deciding on a mask type<a class="headerlink" href="#deciding-on-a-mask-type" title="Permanent link">&para;</a></h2>
+<h3 id="whole-brain-mask">Whole Brain Mask<a class="headerlink" href="#whole-brain-mask" title="Permanent link">&para;</a></h3>
+<h3 id="transform-mni-space-masl">Transform MNI space masl<a class="headerlink" href="#transform-mni-space-masl" title="Permanent link">&para;</a></h3>
                 
                   
                 

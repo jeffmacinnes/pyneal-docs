@@ -73,7 +73,7 @@ These versions reflect the primary environment in which **Pyneal** is tested. It
 
 ## Additional Tools
 
-**Pyneal** itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool **createMask** can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.
+**Pyneal** itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool [**createMask**](/createMask) can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.
 
 In order to use these additional tools, make sure you have installed the following:
 

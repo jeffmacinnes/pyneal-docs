@@ -34,9 +34,13 @@ html .md-nav--primary .md-nav__title--site {
 }
 
 .md-typeset a:active, .md-typeset a:hover {
-    color: #A44754;
+    color: #d5919b;
 }
 
+.md-typeset a {
+    color: #A44754;
+    word-break: break-word;
+}
 
 .md-content__inner img{
     max-height: 600px;
