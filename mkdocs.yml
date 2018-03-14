@@ -18,8 +18,10 @@ pages:
     - Quick Overview: quickOverview.md
     - Pyneal Scanner: pynealScanner.md
     - Pyneal: pyneal.md
-    - Simulations: simulations.md
-    - Misc Tools: miscTools.md
+    - Additional Tools:
+        - Simulations: simulations.md
+        - Creating Masks: createMask.md
+        - Customized Analyses: customAnalysis.md
     - Troubleshooting: troubleshooting.md
 
 

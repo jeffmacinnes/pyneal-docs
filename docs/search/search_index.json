@@ -37,7 +37,7 @@
         },
         {
             "location": "/installation/",
-            "text": "Installation\n\u00b6\n\n\nPyneal is built and tested using \nPython 3.6\n\n\nDownload Python from \nhttps://www.python.org/downloads/\n or via a distribution like \nAnaconda\n\n\nPyneal requires additional libraries beyond the standard library. Instructions below use \npip\n to install these libraries. Verify that you have \npip\n installed:\n\n\n\n\nwhich pip\n\n\n\n\nIf not, download and install pip from \nhttps://pip.pypa.io/en/stable/installing/\n\n\nDownload Pyneal\n\u00b6\n\n\nDownload the \nPyneal repository\n from GitHub, or clone to your local machine:\n\n\n\n\ngit clone https://github.com/jeffmacinnes/pyneal.git\n\n\n\n\nThe installation instructions are broken down by \nPyneal Scanner\n and \nPyneal\n. If you haven't already, read the section on \ndefinitions\n, as those definitions are used throughout these instructions.\n\n\nPyneal-Scanner\n\u00b6\n\n\nThe \npyneal_scanner\n directory needs to be on the \nscanner computer\n. If the \nscanner computer\n is different from the \nanalysis computer\n in your environment, copy the \npyneal_scanner\n directory to the \nscanner computer\n.  \n\n\ndependencies\n\u00b6\n\n\nThe \nscanner computer\n requires additional \npython\n libraries in order to run \nPyneal Scanner\n.\n\n\nYou can attempt to install all required libraries at once by navigating into the \npyneal_scanner\n directory and typing:\n\n\n\n\npip install -r requirements.txt\n\n\n\n\nIf that fails for any reason, you can install manually one at a time:\n\n\n\n\npip install numpy==1.13.1\n\npip install pydicom==1.0.2\n\npip install nibabel==2.1.0\n\npip install pyzmq==16.0.2\n\npip install pyyaml==3.12\n\n\n\n\nThese versions reflect the primary environment in which \nPyneal\n is tested. It is likely that other versions maintain compatibility, but use at your own risk.\n\n\nPyneal\n\u00b6\n\n\nThe \npyneal\n directory needs to be on the \nanalysis computer\n.\n\n\ndependencies\n\u00b6\n\n\nThe \nanalysis computer\n requires additional \npython\n libraries in order to run \nPyneal\n.\n\n\nYou can attempt to install all required libraries at once by navigating into the \npyneal\n directory and typing:\n\n\n\n\npip install -r requirements.txt\n\n\n\n\nIf that fails for any reason, you can install manually one at a time:\n\n\n\n\npip install numpy==1.13.1\n\npip install nibabel==2.1.0\n\npip install nipy==0.4.1 \npip install pyzmq==16.0.2\n\npip install pyyaml==3.12\n\npip install kivy==1.10.dev0\n\npip install flask==0.12.2\n\npip install flask_socketio==2.9.2\n\npip install eventlet==0.21.0  \n\n\n\n\nThese versions reflect the primary environment in which \nPyneal\n is tested. It is likely that other versions maintain compatibility, but use at your own risk.\n\n\nMisc Utilities\n\u00b6\n\n\nPyneal\n itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool \ncreateMask\n can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.\n\n\nIn order to use these additional tools, make sure you have installed the following:\n\n\n\n\nFSL 5.0",
+            "text": "Installation\n\u00b6\n\n\nPyneal is built and tested using \nPython 3.6\n\n\nDownload Python from \nhttps://www.python.org/downloads/\n or via a distribution like \nAnaconda\n\n\nPyneal requires additional libraries beyond the standard library. Instructions below use \npip\n to install these libraries. Verify that you have \npip\n installed:\n\n\n\n\nwhich pip\n\n\n\n\nIf not, download and install pip from \nhttps://pip.pypa.io/en/stable/installing/\n\n\nDownload Pyneal\n\u00b6\n\n\nDownload the \nPyneal repository\n from GitHub, or clone to your local machine:\n\n\n\n\ngit clone https://github.com/jeffmacinnes/pyneal.git\n\n\n\n\nThe installation instructions are broken down by \nPyneal Scanner\n and \nPyneal\n. If you haven't already, read the section on \ndefinitions\n, as those definitions are used throughout these instructions.\n\n\nPyneal-Scanner\n\u00b6\n\n\nThe \npyneal_scanner\n directory needs to be on the \nscanner computer\n. If the \nscanner computer\n is different from the \nanalysis computer\n in your environment, copy the \npyneal_scanner\n directory to the \nscanner computer\n.  \n\n\ndependencies\n\u00b6\n\n\nThe \nscanner computer\n requires additional \npython\n libraries in order to run \nPyneal Scanner\n.\n\n\nYou can attempt to install all required libraries at once by navigating into the \npyneal_scanner\n directory and typing:\n\n\n\n\npip install -r requirements.txt\n\n\n\n\nIf that fails for any reason, you can install manually one at a time:\n\n\n\n\npip install numpy==1.13.1\n\npip install pydicom==1.0.2\n\npip install nibabel==2.1.0\n\npip install pyzmq==16.0.2\n\npip install pyyaml==3.12\n\n\n\n\nThese versions reflect the primary environment in which \nPyneal\n is tested. It is likely that other versions maintain compatibility, but use at your own risk.\n\n\nPyneal\n\u00b6\n\n\nThe \npyneal\n directory needs to be on the \nanalysis computer\n.\n\n\ndependencies\n\u00b6\n\n\nThe \nanalysis computer\n requires additional \npython\n libraries in order to run \nPyneal\n.\n\n\nYou can attempt to install all required libraries at once by navigating into the \npyneal\n directory and typing:\n\n\n\n\npip install -r requirements.txt\n\n\n\n\nIf that fails for any reason, you can install manually one at a time:\n\n\n\n\npip install numpy==1.13.1\n\npip install nibabel==2.1.0\n\npip install nipy==0.4.1 \npip install pyzmq==16.0.2\n\npip install pyyaml==3.12\n\npip install kivy==1.10.dev0\n\npip install flask==0.12.2\n\npip install flask_socketio==2.9.2\n\npip install eventlet==0.21.0  \n\n\n\n\nThese versions reflect the primary environment in which \nPyneal\n is tested. It is likely that other versions maintain compatibility, but use at your own risk.\n\n\nAdditional Tools\n\u00b6\n\n\nPyneal\n itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool \ncreateMask\n can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.\n\n\nIn order to use these additional tools, make sure you have installed the following:\n\n\n\n\nFSL 5.0",
             "title": "Installation"
         },
         {
@@ -71,9 +71,9 @@
             "title": "dependencies"
         },
         {
-            "location": "/installation/#misc-utilities",
+            "location": "/installation/#additional-tools",
             "text": "Pyneal  itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool  createMask  can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.  In order to use these additional tools, make sure you have installed the following:   FSL 5.0",
-            "title": "Misc Utilities"
+            "title": "Additional Tools"
         },
         {
             "location": "/setup/",
@@ -136,14 +136,29 @@
             "title": "Simulations"
         },
         {
-            "location": "/miscTools/",
-            "text": "Miscellaneous Tools\n\u00b6\n\n\nTODO",
-            "title": "Misc Tools"
+            "location": "/createMask/",
+            "text": "Creating Masks\n\u00b6\n\n\nPyneal\n requires that you input a mask for use during real-time analysis. This mask must have the same voxel dimensions and image orientation as the incoming functional data. \n\n\nThe \ncreateMask.py\n tool will assist you in quickly creating these masks during a real-time session. \n\n\nNote:\n Behind the scenes, createMask.py relies on various functions from FSL. Make sure you have installed \nFSL 5.0\n\n\nLaunching createMask\n\u00b6\n\n\nThe createMask tool is found in \npyneal/utils/createMask.py\n\n\nYou can launch the createMask GUI by navigating to the \nutils\n directory via the terminal and running \ncreateMask.py\n with Python\n\n\n\n\ncd utils\n\npython createMask.py",
+            "title": "Creating Masks"
         },
         {
-            "location": "/miscTools/#miscellaneous-tools",
+            "location": "/createMask/#creating-masks",
+            "text": "Pyneal  requires that you input a mask for use during real-time analysis. This mask must have the same voxel dimensions and image orientation as the incoming functional data.   The  createMask.py  tool will assist you in quickly creating these masks during a real-time session.   Note:  Behind the scenes, createMask.py relies on various functions from FSL. Make sure you have installed  FSL 5.0",
+            "title": "Creating Masks"
+        },
+        {
+            "location": "/createMask/#launching-createmask",
+            "text": "The createMask tool is found in  pyneal/utils/createMask.py  You can launch the createMask GUI by navigating to the  utils  directory via the terminal and running  createMask.py  with Python   cd utils \npython createMask.py",
+            "title": "Launching createMask"
+        },
+        {
+            "location": "/customAnalysis/",
+            "text": "Customized Analyses\n\u00b6\n\n\nTODO",
+            "title": "Customized Analyses"
+        },
+        {
+            "location": "/customAnalysis/#customized-analyses",
             "text": "TODO",
-            "title": "Miscellaneous Tools"
+            "title": "Customized Analyses"
         },
         {
             "location": "/troubleshooting/",

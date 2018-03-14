@@ -36,7 +36,7 @@
     
     
       
-        <title>Simulations - Pyneal Docs</title>
+        <title>Creating Masks - Pyneal Docs</title>
       
     
     
@@ -71,7 +71,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
     
-      <a href="#simulations" tabindex="1" class="md-skip">
+      <a href="#creating-masks" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -97,7 +97,7 @@
                 Pyneal Docs
               </span>
               <span class="md-header-nav__topic">
-                Simulations
+                Creating Masks
               </span>
             
           
@@ -283,6 +283,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../simulations/" title="Simulations" class="md-nav__link">
+      Simulations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -293,22 +305,37 @@
       
     
     
-    <a href="./" title="Simulations" class="md-nav__link md-nav__link--active">
-      Simulations
-    </a>
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Creating Masks
+      </label>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../createMask/" title="Creating Masks" class="md-nav__link">
+    <a href="./" title="Creating Masks" class="md-nav__link md-nav__link--active">
       Creating Masks
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launching-createmask" title="Launching createMask" class="md-nav__link">
+    Launching createMask
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -358,6 +385,20 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launching-createmask" title="Launching createMask" class="md-nav__link">
+    Launching createMask
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -369,8 +410,18 @@
               
                 
                 
-                <h1 id="simulations">Simulations<a class="headerlink" href="#simulations" title="Permanent link">&para;</a></h1>
-<p>TODO</p>
+                <h1 id="creating-masks">Creating Masks<a class="headerlink" href="#creating-masks" title="Permanent link">&para;</a></h1>
+<p><strong>Pyneal</strong> requires that you input a mask for use during real-time analysis. This mask must have the same voxel dimensions and image orientation as the incoming functional data. </p>
+<p>The <code>createMask.py</code> tool will assist you in quickly creating these masks during a real-time session. </p>
+<p><em>Note:</em> Behind the scenes, createMask.py relies on various functions from FSL. Make sure you have installed <a href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki">FSL 5.0</a></p>
+<h2 id="launching-createmask">Launching createMask<a class="headerlink" href="#launching-createmask" title="Permanent link">&para;</a></h2>
+<p>The createMask tool is found in <code>pyneal/utils/createMask.py</code></p>
+<p>You can launch the createMask GUI by navigating to the <code>utils</code> directory via the terminal and running <code>createMask.py</code> with Python</p>
+<blockquote>
+<p>cd utils<br />
+python createMask.py</p>
+</blockquote>
+<p><img alt="" src="../images/createMaskGUI.png" /></p>
                 
                   
                 
@@ -389,7 +440,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../pyneal/" title="Pyneal" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../simulations/" title="Simulations" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -398,19 +449,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Pyneal
+                Simulations
               </span>
             </div>
           </a>
         
         
-          <a href="../createMask/" title="Creating Masks" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../customAnalysis/" title="Customized Analyses" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Creating Masks
+                Customized Analyses
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
