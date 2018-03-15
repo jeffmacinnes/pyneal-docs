@@ -61,7 +61,7 @@ If that fails for any reason, you can install manually one at a time:
 
 >pip install numpy==1.13.1  
 >pip install nibabel==2.1.0  
->pip install nipy==0.4.1 
+>pip install nipy==0.4.1  
 >pip install pyzmq==16.0.2  
 >pip install pyyaml==3.12  
 >pip install kivy==1.10.dev0  

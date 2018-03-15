@@ -33,7 +33,15 @@ After the scan has finished, use the `getSeries.py` tool from **Pyneal Scanner**
 ## Deciding on a mask type
 
 ### Whole Brain Mask
+If you check **Create whole-brain FUNC mask**, a 3D whole-brain mask will be created using the 4D FUNC file as a reference. Every brain voxel will be labeled **1** and every non-brain voxel will be labeled **0**.
+
+The output file will be found in `mask_transforms/FUNC_masks/wholeBrain_FUNC_mask.nii.gz`
+
+A whole-brain mask is useful in situations where you are using a custom analysis during real-time runs and want access to the entire 3D brain volume (e.g. calculating grand volume mean as a reference value for other steps in your analysis). 
+
+### Transform MNI space mask
 
 
-### Transform MNI space masl
+## Output
 
+The output from `createMask.py` will be saved to the same directory that contains your reference 4D file. Within that directory, you will find a new directory named `mask_transforms` that holds all of the output mask files and transformation matrices from `createMask.py`

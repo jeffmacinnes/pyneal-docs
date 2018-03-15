@@ -353,14 +353,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#transform-mni-space-masl" title="Transform MNI space masl" class="md-nav__link">
-    Transform MNI space masl
+  <a href="#transform-mni-space-mask" title="Transform MNI space mask" class="md-nav__link">
+    Transform MNI space mask
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" title="Output" class="md-nav__link">
+    Output
+  </a>
   
 </li>
       
@@ -500,14 +507,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#transform-mni-space-masl" title="Transform MNI space masl" class="md-nav__link">
-    Transform MNI space masl
+  <a href="#transform-mni-space-mask" title="Transform MNI space mask" class="md-nav__link">
+    Transform MNI space mask
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" title="Output" class="md-nav__link">
+    Output
+  </a>
   
 </li>
       
@@ -552,7 +566,12 @@ python createMask.py</p>
 <p>After the scan has finished, use the <code>getSeries.py</code> tool from <strong>Pyneal Scanner</strong> to convert the images to a 4D nifti file. Note that <code>getSeries.py</code> will automatically reorient the output data to RAS+ orientation. Thus, by using this data as our reference functional data we will create a mask that is also in RAS+. This is good since, during a real-time run, <strong>Pyneal</strong> will be receiving data in RAS+ orientation (see <a href="../imageOrientation">image orientation</a> for more info) </p>
 <h2 id="deciding-on-a-mask-type">Deciding on a mask type<a class="headerlink" href="#deciding-on-a-mask-type" title="Permanent link">&para;</a></h2>
 <h3 id="whole-brain-mask">Whole Brain Mask<a class="headerlink" href="#whole-brain-mask" title="Permanent link">&para;</a></h3>
-<h3 id="transform-mni-space-masl">Transform MNI space masl<a class="headerlink" href="#transform-mni-space-masl" title="Permanent link">&para;</a></h3>
+<p>If you check <strong>Create whole-brain FUNC mask</strong>, a 3D whole-brain mask will be created using the 4D FUNC file as a reference. Every brain voxel will be labeled <strong>1</strong> and every non-brain voxel will be labeled <strong>0</strong>.</p>
+<p>The output file will be found in <code>mask_transforms/FUNC_masks/wholeBrain_FUNC_mask.nii.gz</code></p>
+<p>A whole-brain mask is useful in situations where you are using a custom analysis during real-time runs and want access to the entire 3D brain volume (e.g. calculating grand volume mean as a reference value for other steps in your analysis). </p>
+<h3 id="transform-mni-space-mask">Transform MNI space mask<a class="headerlink" href="#transform-mni-space-mask" title="Permanent link">&para;</a></h3>
+<h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
+<p>The output from <code>createMask.py</code> will be saved to the same directory that contains your reference 4D file. Within that directory, you will find a new directory named <code>mask_transforms</code> that holds all of the output mask files and transformation matrices from <code>createMask.py</code></p>
                 
                   
                 
