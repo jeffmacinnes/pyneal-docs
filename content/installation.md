@@ -77,4 +77,4 @@ These versions reflect the primary environment in which **Pyneal** is tested. It
 
 In order to use these additional tools, make sure you have installed the following:
 
-* [FSL 5.0](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)
+* [**FSL 5.0**](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)
