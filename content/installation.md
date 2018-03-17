@@ -71,6 +71,8 @@ If that fails for any reason, you can install manually one at a time:
 
 These versions reflect the primary environment in which **Pyneal** is tested. It is likely that other versions maintain compatibility, but use at your own risk.
 
+Some users have reported problems installing the development version of kivy (under Pyneal dependencies). For assistance with this step, and other issues, see [**Troubleshooting**](/troubleshooting.md)
+
 ## Additional Tools
 
 **Pyneal** itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool [**createMask**](/createMask) can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.
