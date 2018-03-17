@@ -1,3 +1,10 @@
 # Quick Overview
 
-TODO
+## Main Components
+Pyneal is 
+
+
+## Workflow
+
+
+## Steps to running a scan
