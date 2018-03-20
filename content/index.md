@@ -32,3 +32,8 @@ The software is broken into two separate components: **Pyneal Scanner** and **Py
 you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to
 
 This design allows the software to easily accommodate the various directory structures and data formats that are found on different scanner models at different institutions around the world. (However, it also means that the steps to install, and run **Pyneal** can vary from environment to environment).
+
+
+## Terms/Definitions
+
+Throughout the documentation specific terms are used to describe the different components of the software, the underlying architecture, and the various processes involved. Despite sincere efforts to keep these terms intuitive, they're probably not in all cases. Please check the [**glossary**](/glossary.md) for any unfamiliar terms you come across. (You can also find it under `Reference` in the lefthand menu.

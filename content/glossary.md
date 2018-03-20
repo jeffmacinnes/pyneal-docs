@@ -9,6 +9,8 @@ The documentation refers to computers by their *functional* role:
 
 Note that in some cases, the *same physical computer* can play both functional roles. For instance, when working in a Siemens environment, new images from the scanner might be exported to a shared directory that is accessible on the **analysis computer**. In this case, the same machine could be playing the role of both the **scanner computer** and the **analysis computer**.
 
+* **End User**: Generic term for any computer/process that is making a request to **Pyneal** for results during a scan. For instance, a task presentation computer that is requesting specific feedback values to present to the participant. 
+
 ## Additional terms used
 
 * **Series**: A complete scan representing either a single 3D anatomical image, or a 4D functional image.
