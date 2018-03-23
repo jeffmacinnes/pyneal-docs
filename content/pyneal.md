@@ -21,7 +21,7 @@ This mask can take any form you want, with the caveat that it *must* be in the s
 
 ### Pyneal Dashboard
 
-### Making requests for results
+### Requesting Results
 
 ## After a real-time scan
 
