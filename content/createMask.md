@@ -14,7 +14,7 @@ The `createMask.py` tool will assist you in quickly creating whole-brain or anat
 
 * **Transform mask from MNI space**: This option will take a mask defined in MNI space and transform it to the dimensions and orientation of the functional data you supply.
 
-*Note:* Behind the scenes, createMask.py relies on various functions from FSL. Make sure you have installed [FSL 5.0](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)
+*Note:* Behind the scenes, createMask.py relies on various functions from FSL. Make sure you have installed [**FSL 5.0**](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki)
 
 ## Launching createMask
 The createMask tool is found in `pyneal/utils/createMask.py`
@@ -31,7 +31,7 @@ You can launch the createMask GUI by navigating to the `utils` directory via the
 
 In order to create masks, we need to know the voxel size, 3D volume dimensions, and image orientation of the functional data for the current session. The easiest way to get this data is to include a brief (30sec or less) functional scan near the beginning of your session. Use the exact same slice prescriptions and image settings as you plan to use during your real-time scans. 
 
-After the scan has finished, use the `getSeries.py` tool from **Pyneal Scanner** to convert the images to a 4D nifti file. Note that `getSeries.py` will automatically reorient the output data to RAS+ orientation. Thus, by using this data as our reference functional data we will create a mask that is also in RAS+. This is good since, during a real-time run, **Pyneal** will be receiving data in RAS+ orientation (see [image orientation](/imageOrientation) for more info) 
+After the scan has finished, use the `getSeries.py` tool from **Pyneal Scanner** to convert the images to a 4D nifti file. Note that `getSeries.py` will automatically reorient the output data to RAS+ orientation. Thus, by using this data as our reference functional data we will create a mask that is also in RAS+. This is good since, during a real-time run, **Pyneal** will be receiving data in RAS+ orientation (see [**image orientation**](/imageOrientation.md) for more info) 
 
 `createMask.py` will create an example 3D functional image for reference by taking the mean across time of the specified 4D functional. 
 

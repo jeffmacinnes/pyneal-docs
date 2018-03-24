@@ -1,6 +1,8 @@
 # Setup
 
-The set-up instructions are broken down by **Pyneal Scanner** and **Pyneal**. If you haven't already, follow the [installation instructions](/installation) to configure your environment, and read the section on [definitions](installation/#definitions-used), as those definitions are used throughout these instructions.
+The set-up instructions are broken down by **Pyneal Scanner** and **Pyneal**. If you haven't already, follow the [**installation instructions**](/installation) to configure your environment, and read the section on [**definitions**](installation/#definitions-used), as those definitions are used throughout these instructions.
+
+Once you have finished setting up **Pyneal Scanner** and **Pyneal**, are you ready to begin testing your install using the various [**simulation tools**](simulations.md). These tools are also helpful in troubleshooting any issues you may run into during install/setup. 
 
 
 ## Pyneal Scanner

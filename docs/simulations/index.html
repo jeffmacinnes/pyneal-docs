@@ -490,7 +490,27 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>In order to help with the initial setup, as well as test any analysis scripts and network communications later on, <strong>Pyneal</strong> includes a suite of simulation tools that mimic various inputs and outputs along the data flow path.</p>
 <p>These tools allow you to simulate <strong>Pyneal</strong> (or <strong>Pyneal Scanner</strong>) in a modular fashion without having to run the entire pipeline. If you are troubleshooting issues, these tools are immensely helpful.  </p>
+<p>Here is a diagram highlighting the various simulation tools, and where they enter the data flow pipeline. </p>
 <p><img alt="" src="../images/simulationSchematic.png" /></p>
+<p>During an actual real-time scan, data will flow through this diagram from left to right along the blue arrows. </p>
+<p>Simulation tools are indicated using dashed or dotted vertical lines.</p>
+<ul>
+<li>
+<p>A dashed line indicates a simulation tool that <strong>generates input</strong>. In other words, these tools mimic real data as it exists at a particular stage of the pipeline</p>
+</li>
+<li>
+<p>A dotted line indicates a simulation tool that <strong>receives output</strong>. In other words, these tools allow you to simulate the <em>next</em> stage of the pipeline</p>
+</li>
+</ul>
+<p>Both <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong> have their own set of simulation tools. </p>
+<ul>
+<li>
+<p><strong>Pyneal Scanner</strong> simulation tools can be found in <code>pyneal/pyneal_scanner/simulation</code> and are shown in light blue <em>below</em> the real data pipeline in the schematic. See below for more details</p>
+</li>
+<li>
+<p><strong>Pyneal</strong> simulation tools can be found in <code>pyneal/utils/simulation</code> and are shown in green <em>above</em> the real data pipeline in the schematic. See below for more details</p>
+</li>
+</ul>
 <h2 id="pyneal-scanner-simulation-tools">Pyneal Scanner Simulation Tools<a class="headerlink" href="#pyneal-scanner-simulation-tools" title="Permanent link">&para;</a></h2>
 <h2 id="pyneal-simulation-tools">Pyneal Simulation Tools<a class="headerlink" href="#pyneal-simulation-tools" title="Permanent link">&para;</a></h2>
                 
