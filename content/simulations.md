@@ -40,27 +40,57 @@ The format of the raw data will vary according to different scanner environments
 
 #### GE
 
-usage: `python GE_sim.py inputDir [-o outputDir -t/--TR TR]`
+***usage***: `python GE_sim.py inputDir [-o outputDir -t/--TR TR]`
 
-input args:  
+***input args***:  
  
-* inputDir: path to directory containing raw slice dicoms
-* -o outputDir: path to directory where slices will be copied to [default: <inputDir>/s9999]
+* inputDir: path to directory containing raw slice dicom images. 
+* -o outputDir: path to directory where slices will be copied to [default: create new directory named `s9999` in the parent directory of the inputDir]
 * -t/--TR TR: set the TR in ms [default: 1000]
- 
-In order to run this script, you must have a local directory that contains raw slice dicom files from an actual scan. 
+
+GE scanners 
+
+In order to run this script, you must have a local directory that contains raw slice dicom files from an actual scan. If you want to fully mimic the data directory structure of GE scanners, you can create a local directory path that follows the pattern `[baseDir]/p##/e##/s##` where the slice images are stored in a directory named like `s###`, which is nested two levels deep (`p###/e###`) from the `[basedir]`. 
 
 This script will copy all of the slices from the inputDir and copy them to the outputDir at a rate that is set by the TR. 
 
-After the script has completed, the temporary outputDir will be deleted
+After the script has completed, the outputDir will be deleted. 
+
 
 #### Philips
 
-usage: 
 
-input args:
+***usage***: `python Philips_sim.py inputDir [--outputDir] [--TR]`
 
-#### Siements
+***input args***:
+  
+* inputDir: path to directory containing raw slice dicom images. 
+* -o outputDir: path to directory where slices will be copied to [default: create new directory named `9999` in the parent directory of the inputDir]
+* -t/--TR TR: set the TR in ms [default: 1000]
+
+Philips scanners use XTC (eXTernal Control) to output reconstructed volumes to a directory during a scan. The files are written to a designated directory (e.g. XTC_Output), and within that directory, every series is assigned a new directory named sequentially starting with '0000'. For instance, volumes from the 3rd series will be stored like '.../XTC_Output/0002/'. This script will simulate the creation of a new series directory, and copy in PAR/REC files.
+
+You must specify a local path to the inputDir. That is, the directory that already
+contains a set of reconstructed PAR/REC files for a series (referred to as `seriesDir`. 
+
+To use this tool, you must specify an inputDir as the full path to the source data.
+
+[OPTIONAL]: You can specify the full path to an output directory where the PAR/REC files
+will be copied to. If you don't specify an output directory, this tool will default
+to creating a new `seriesDir`, named '9999' saved in the parent directory of the `seriesDir`.
+
+e.g. `python Philips_sim.py /Path/To/My/Existing/Series/0000 --outputDir /Where/I/Want/New/Slice/Data/To/appear`
+
+if you did not specify an outputDir, new PAR/RECs would be copied to:
+
+`/Path/To/My/Existing/Series/9999`
+
+[OPTIONAL]: You can specify the TR at which new PAR/REC data is copied. Default is 1000ms.
+
+e.g. `python GE_sim.py /Path/To/My/Existing/Series/0000 --TR 2000`
+
+
+#### Siemens
 
 usage: 
 
