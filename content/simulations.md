@@ -8,7 +8,7 @@ These tools allow you to simulate **Pyneal** (or **Pyneal Scanner**) in a modula
 
 Here is a diagram highlighting the various simulation tools, and where they enter the data flow pipeline. 
 
-![](images/simulationSchematic.png)
+![](images/simulation/simulationSchematic.png)
 
 During an actual real-time scan, data will flow through this diagram from left to right along the blue arrows. 
 
@@ -34,9 +34,12 @@ The **Pyneal Scanner** simulation tools can be found in `pyneal/pyneal_scanner/s
 ### Scanner Simulators
 **Use Case:** Testing **Pyneal Scanner** (and *anything else* downstream) with real data.
 
+![](images/simulation/scannerSimulators.png)
+
+
 This will simulate the appearance of raw data coming off of the scanner. This works by pointing the simulator to a folder containing real scanner data. The simulator will copy the real data to a new directory in a way that mimics the behavior of a real scan, allowing you to test **Pyneal Scanner** and anything else downstream. 
 
-The format of the raw data will vary according to different scanner environments/manufacturs. Accordingly, there are multiple scripts that will simulate different types of data:
+The format of the raw data will vary according to different scanner environments/manufacturers. Accordingly, there are multiple scripts that will simulate different scanner formats:
 
 #### GE
 
@@ -59,7 +62,6 @@ After the script has completed, the outputDir will be deleted.
 
 #### Philips
 
-
 ***usage***: `python Philips_sim.py inputDir [--outputDir] [--TR]`
 
 ***input args***:
@@ -71,9 +73,7 @@ After the script has completed, the outputDir will be deleted.
 Philips scanners use XTC (eXTernal Control) to output reconstructed volumes to a directory during a scan. The files are written to a designated directory (e.g. XTC_Output), and within that directory, every series is assigned a new directory named sequentially starting with '0000'. For instance, volumes from the 3rd series will be stored like '.../XTC_Output/0002/'. This script will simulate the creation of a new series directory, and copy in PAR/REC files.
 
 You must specify a local path to the inputDir. That is, the directory that already
-contains a set of reconstructed PAR/REC files for a series (referred to as `seriesDir`. 
-
-To use this tool, you must specify an inputDir as the full path to the source data.
+contains a set of reconstructed PAR/REC files for a series (referred to below as `seriesDir`). 
 
 [OPTIONAL]: You can specify the full path to an output directory where the PAR/REC files
 will be copied to. If you don't specify an output directory, this tool will default
@@ -92,13 +92,36 @@ e.g. `python GE_sim.py /Path/To/My/Existing/Series/0000 --TR 2000`
 
 #### Siemens
 
-usage: 
+***usage***: `python Siemens_sim.py inputDir seriesNum [--newSeriesNum] [--TR]`
 
-input args:
+***input args***:
+  
+* inputDir: path to directory containing raw slice dicom images. 
+* seriesNum: series number of data that you want to simulate
+* -n/--newSeriesNum: seriesNumber to assign to the new "simulated" data
+* -t/--TR TR: set the TR in ms [default: 1000]
+
+Siemens scanners stores reconstructed slices images by taking all of the slices for a single volume, and placing them side-by-side in a larger "mosaic" dicom image. A scan will produce one mosaic image per volume, and all mosaic images for all scans across a single session will be stored in the same directory. This script simulates the creation of that directory, and will pass in real mosaic images.
+
+You must specify a local path to the inputDir as well as the series number of the series you want to simulate.
+
+The input dir should be the directory that already contains a set of reconstructed mosaic images. A single session dir will hold all of the mosaic files for all of the scans for a given session. Mosaic files are named like:
+
+`[session#]_[series#]_[vol#].dcm`
+
+[OPTIONAL]: You can specify the series number that will be assigned to the "new" mosaic images. The default behavior is to assign a series number based on the next sequential number given the existing series. In the example below, the default would be to assign a newSeriesNum as '2', but we are overriding that to assign it as '19'
+
+e.g. `python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --newSeriesNum 19`
+
+[OPTIONAL]: You can specify the TR at which new slice data is copied. Default is 1000ms, and represents the approximate amount of time it should take to copy over all of the slices for one volume of data.
+
+e.g. `python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --TR 2000`
 
 
 ### pynealReceiver_sim.py
 **Use Case:** When you want to test **Pyneal Scanner** without having to actually run **Pyneal**
+
+![](images/simulation/pynealReceiver.png)
 
 This simulator will mimic the part of **Pyneal** that accepts incoming 3D volumes from **Pyneal Scanner**. This allows you to quickly test sending output with **Pyneal Scanner**, without having to fully run **Pyneal** (which entails a lot of extra overhead). 
 
