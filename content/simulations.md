@@ -43,6 +43,8 @@ The format of the raw data will vary according to different scanner environments
 
 #### GE
 
+***location***: `pyneal/pyneal_scanner/simulation/scannerSimulators/GE_sim.py`
+
 ***usage***: `python GE_sim.py inputDir [-o outputDir -t/--TR TR]`
 
 ***input args***:  
@@ -61,6 +63,8 @@ After the script has completed, the outputDir will be deleted.
 
 
 #### Philips
+
+***location***: `pyneal/pyneal_scanner/simulation/scannerSimulators/Philips_sim.py`
 
 ***usage***: `python Philips_sim.py inputDir [--outputDir] [--TR]`
 
@@ -92,6 +96,8 @@ e.g. `python GE_sim.py /Path/To/My/Existing/Series/0000 --TR 2000`
 
 #### Siemens
 
+***location***: `pyneal/pyneal_scanner/simulation/scannerSimulators/Siemens_sim.py`
+
 ***usage***: `python Siemens_sim.py inputDir seriesNum [--newSeriesNum] [--TR]`
 
 ***input args***:
@@ -99,7 +105,7 @@ e.g. `python GE_sim.py /Path/To/My/Existing/Series/0000 --TR 2000`
 * inputDir: path to directory containing raw slice dicom images. 
 * seriesNum: series number of data that you want to simulate
 * -n/--newSeriesNum: seriesNumber to assign to the new "simulated" data
-* -t/--TR TR: set the TR in ms [default: 1000]
+* -t/--TR: set the TR in ms [default: 1000]
 
 Siemens scanners stores reconstructed slices images by taking all of the slices for a single volume, and placing them side-by-side in a larger "mosaic" dicom image. A scan will produce one mosaic image per volume, and all mosaic images for all scans across a single session will be stored in the same directory. This script simulates the creation of that directory, and will pass in real mosaic images.
 
@@ -123,12 +129,20 @@ e.g. `python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --TR 2000`
 
 ![](images/simulation/pynealReceiver.png)
 
-This simulator will mimic the part of **Pyneal** that accepts incoming 3D volumes from **Pyneal Scanner**. This allows you to quickly test sending output with **Pyneal Scanner**, without having to fully run **Pyneal** (which entails a lot of extra overhead). 
+This simulator will mimic the part of **Pyneal** that accepts incoming 3D volumes from **Pyneal Scanner**. This allows you to quickly test sending output with **Pyneal Scanner**, without having to fully run **Pyneal** (which entails a lot of extra overhead). You can (and should) run `pynealReceiver_sim.py` from the **Scanner Computer**. 
 
-usage: `python pynealReceiver_sim.py`
+***location***: `pyneal/pyneal_scanner/simulation/pynealReceiver_sim.py`
 
-This simulator is hardcoded to be listening for incoming data on port `5556`. Make sure **Pyneal Scanner** is configured to use that same port number for `pynealSocketPort` (see [**Pyneal Scanner Setup**](/setup.md#pyneal-scanner))
+***usage***: `python pynealReceiver_sim.py [--port] [--nVols]`
+
+***input args***:
+  
+* -p/--port: port number to listen on for incoming data [default: 5556]
+* -n/--nVols: number of 3D volumes to expect from **Pyneal Scanner** [default: 60]
+
+Make sure **Pyneal Scanner** is configured to use the same port number for `pynealSocketPort` (see [**Pyneal Scanner Setup**](/setup.md#pyneal-scanner))
+
+After the scan is complete and all of the data has arrived, this will save the received 4D volume as a nifti image at  `pyneal/pyneal_scanner/simulation/receivedImg.nii.gz`
  
-
 
 ## Pyneal Simulation Tools
