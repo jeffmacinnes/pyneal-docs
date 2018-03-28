@@ -45,7 +45,7 @@ The format of the raw data will vary according to different scanner environments
 
 ***location***: `pyneal/pyneal_scanner/simulation/scannerSimulators/GE_sim.py`
 
-***usage***: `python GE_sim.py inputDir [-o outputDir -t/--TR TR]`
+***usage***: `python GE_sim.py inputDir [--outputDir] [--TR]`
 
 ***input args***:  
  
@@ -83,7 +83,7 @@ contains a set of reconstructed PAR/REC files for a series (referred to below as
 will be copied to. If you don't specify an output directory, this tool will default
 to creating a new `seriesDir`, named '9999' saved in the parent directory of the `seriesDir`.
 
-e.g. `python Philips_sim.py /Path/To/My/Existing/Series/0000 --outputDir /Where/I/Want/New/Slice/Data/To/appear`
+>python Philips_sim.py /Path/To/My/Existing/Series/0000 --outputDir /Where/I/Want/New/Slice/Data/To/appear
 
 if you did not specify an outputDir, new PAR/RECs would be copied to:
 
@@ -91,7 +91,7 @@ if you did not specify an outputDir, new PAR/RECs would be copied to:
 
 [OPTIONAL]: You can specify the TR at which new PAR/REC data is copied. Default is 1000ms.
 
-e.g. `python GE_sim.py /Path/To/My/Existing/Series/0000 --TR 2000`
+>python Philips_sim.py /Path/To/My/Existing/Series/0000 --TR 2000
 
 
 #### Siemens
@@ -117,11 +117,11 @@ The input dir should be the directory that already contains a set of reconstruct
 
 [OPTIONAL]: You can specify the series number that will be assigned to the "new" mosaic images. The default behavior is to assign a series number based on the next sequential number given the existing series. In the example below, the default would be to assign a newSeriesNum as '2', but we are overriding that to assign it as '19'
 
-e.g. `python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --newSeriesNum 19`
+> python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --newSeriesNum 19
 
 [OPTIONAL]: You can specify the TR at which new slice data is copied. Default is 1000ms, and represents the approximate amount of time it should take to copy over all of the slices for one volume of data.
 
-e.g. `python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --TR 2000`
+> python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --TR 2000
 
 
 ### pynealReceiver_sim.py
@@ -146,3 +146,47 @@ After the scan is complete and all of the data has arrived, this will save the r
  
 
 ## Pyneal Simulation Tools
+
+The **Pyneal** simulation tools can be found in `pyneal/utils/simulation`
+
+* **pynealScanner_sim.py**: simulate the behavior of **Pyneal Scanner** (i.e. sends 3D vols to Pyneal) 
+* **pynealResults_sim.py**: simulate the results server of **Pyneal** (i.e. launches a server that stores fake results that can receive and respond to messages from the **End User**)
+* **endUser_sim.py**: simulate the behavior of an **End User** (i.e. sends request to **Pyneal** for results from a specific volume, then waits for response)
+
+### pynealScanner_sim.py
+**Use Case:** When you want to test **Pyneal** without having to actually run **Pyneal Scanner**
+
+![](images/simulation/pynealScanner.png)
+
+***location***: `pyneal/utils/simulation/pynealScanner_sim.py`
+
+***usage***: `python pynealScanner_sim.py [--filePath] [--random] [--dims] [--tr] [--sockethost] [--socketport]`
+
+***input args***:
+
+* -f/--filePath: path to 4D nifti image that you want to use as the "scan" data
+* -r/--random: flag to generate random data instead of using a pre-existing nifti image 
+* -d/--dims: desired dimensions of randomly generated dataset [default: 64 64 18 60] 
+* -t/--TR: set the TR in ms [default: 1000]
+* -sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]
+* -sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5555]
+
+
+This tool will simulate the behavior of **Pyneal Scanner**. During a real scan, pynealScanner will send data to pyneal over a socket connection. Each tranmission comes in 2 phases: first a json header with metadata about the volume, then the volume itself. This tool will send data in that same format, using either a pre-existing 4D nifti image, or randomly generated data.
+
+You can either supply real 4D image data:
+
+> python pynealScanner_sim.py --filePath /path/to/my/data.nii.gz
+
+or use the tool to generate a dataset of random values
+
+> python pynealScanner_sim.py --random --dims 64 64 32 100 
+
+[OPTIONAL]: You can specify the TR at which 3D vols are sent to **Pyneal**. Default is 1000ms.
+
+> python pynealScanner_sim.py --filePath /path/to/my/data.nii.gz --TR 2000
+
+[OPTIONAL]: You can set the socketHost and socketPort used for communication with **Pyneal**. Default host is `127.0.0.1`, which allows you to run this tool alongside **Pyneal** on the same computer. Default socket port number is `5555`. You must make sure that **Pyneal** is configured to be listening for incoming data on this port number (see [**Pyneal Set Up**](setup.md#pyneal))
+
+
+### pynealResults_sim.py

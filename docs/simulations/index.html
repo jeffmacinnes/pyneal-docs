@@ -377,6 +377,26 @@
     Pyneal Simulation Tools
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pynealscanner_simpy" title="pynealScanner_sim.py" class="md-nav__link">
+    pynealScanner_sim.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pynealresults_simpy" title="pynealResults_sim.py" class="md-nav__link">
+    pynealResults_sim.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -563,6 +583,26 @@
     Pyneal Simulation Tools
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pynealscanner_simpy" title="pynealScanner_sim.py" class="md-nav__link">
+    pynealScanner_sim.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pynealresults_simpy" title="pynealResults_sim.py" class="md-nav__link">
+    pynealResults_sim.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -618,7 +658,7 @@
 <p>The format of the raw data will vary according to different scanner environments/manufacturers. Accordingly, there are multiple scripts that will simulate different scanner formats:</p>
 <h4 id="ge">GE<a class="headerlink" href="#ge" title="Permanent link">&para;</a></h4>
 <p><strong><em>location</em></strong>: <code>pyneal/pyneal_scanner/simulation/scannerSimulators/GE_sim.py</code></p>
-<p><strong><em>usage</em></strong>: <code>python GE_sim.py inputDir [-o outputDir -t/--TR TR]</code></p>
+<p><strong><em>usage</em></strong>: <code>python GE_sim.py inputDir [--outputDir] [--TR]</code></p>
 <p><strong><em>input args</em></strong>:  </p>
 <ul>
 <li>inputDir: path to directory containing raw slice dicom images. </li>
@@ -644,11 +684,15 @@ contains a set of reconstructed PAR/REC files for a series (referred to below as
 <p>[OPTIONAL]: You can specify the full path to an output directory where the PAR/REC files
 will be copied to. If you don't specify an output directory, this tool will default
 to creating a new <code>seriesDir</code>, named '9999' saved in the parent directory of the <code>seriesDir</code>.</p>
-<p>e.g. <code>python Philips_sim.py /Path/To/My/Existing/Series/0000 --outputDir /Where/I/Want/New/Slice/Data/To/appear</code></p>
+<blockquote>
+<p>python Philips_sim.py /Path/To/My/Existing/Series/0000 --outputDir /Where/I/Want/New/Slice/Data/To/appear</p>
+</blockquote>
 <p>if you did not specify an outputDir, new PAR/RECs would be copied to:</p>
 <p><code>/Path/To/My/Existing/Series/9999</code></p>
 <p>[OPTIONAL]: You can specify the TR at which new PAR/REC data is copied. Default is 1000ms.</p>
-<p>e.g. <code>python GE_sim.py /Path/To/My/Existing/Series/0000 --TR 2000</code></p>
+<blockquote>
+<p>python Philips_sim.py /Path/To/My/Existing/Series/0000 --TR 2000</p>
+</blockquote>
 <h4 id="siemens">Siemens<a class="headerlink" href="#siemens" title="Permanent link">&para;</a></h4>
 <p><strong><em>location</em></strong>: <code>pyneal/pyneal_scanner/simulation/scannerSimulators/Siemens_sim.py</code></p>
 <p><strong><em>usage</em></strong>: <code>python Siemens_sim.py inputDir seriesNum [--newSeriesNum] [--TR]</code></p>
@@ -664,9 +708,13 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p>The input dir should be the directory that already contains a set of reconstructed mosaic images. A single session dir will hold all of the mosaic files for all of the scans for a given session. Mosaic files are named like:</p>
 <p><code>[session#]_[series#]_[vol#].dcm</code></p>
 <p>[OPTIONAL]: You can specify the series number that will be assigned to the "new" mosaic images. The default behavior is to assign a series number based on the next sequential number given the existing series. In the example below, the default would be to assign a newSeriesNum as '2', but we are overriding that to assign it as '19'</p>
-<p>e.g. <code>python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --newSeriesNum 19</code></p>
+<blockquote>
+<p>python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --newSeriesNum 19</p>
+</blockquote>
 <p>[OPTIONAL]: You can specify the TR at which new slice data is copied. Default is 1000ms, and represents the approximate amount of time it should take to copy over all of the slices for one volume of data.</p>
-<p>e.g. <code>python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --TR 2000</code></p>
+<blockquote>
+<p>python Siemens_sim.py /Path/To/My/Existing/inputDir 1 --TR 2000</p>
+</blockquote>
 <h3 id="pynealreceiver_simpy">pynealReceiver_sim.py<a class="headerlink" href="#pynealreceiver_simpy" title="Permanent link">&para;</a></h3>
 <p><strong>Use Case:</strong> When you want to test <strong>Pyneal Scanner</strong> without having to actually run <strong>Pyneal</strong></p>
 <p><img alt="" src="../images/simulation/pynealReceiver.png" /></p>
@@ -681,6 +729,41 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p>Make sure <strong>Pyneal Scanner</strong> is configured to use the same port number for <code>pynealSocketPort</code> (see <a href="../setup/#pyneal-scanner"><strong>Pyneal Scanner Setup</strong></a>)</p>
 <p>After the scan is complete and all of the data has arrived, this will save the received 4D volume as a nifti image at  <code>pyneal/pyneal_scanner/simulation/receivedImg.nii.gz</code></p>
 <h2 id="pyneal-simulation-tools">Pyneal Simulation Tools<a class="headerlink" href="#pyneal-simulation-tools" title="Permanent link">&para;</a></h2>
+<p>The <strong>Pyneal</strong> simulation tools can be found in <code>pyneal/utils/simulation</code></p>
+<ul>
+<li><strong>pynealScanner_sim.py</strong>: simulate the behavior of <strong>Pyneal Scanner</strong> (i.e. sends 3D vols to Pyneal) </li>
+<li><strong>pynealResults_sim.py</strong>: simulate the results server of <strong>Pyneal</strong> (i.e. launches a server that stores fake results that can receive and respond to messages from the <strong>End User</strong>)</li>
+<li><strong>endUser_sim.py</strong>: simulate the behavior of an <strong>End User</strong> (i.e. sends request to <strong>Pyneal</strong> for results from a specific volume, then waits for response)</li>
+</ul>
+<h3 id="pynealscanner_simpy">pynealScanner_sim.py<a class="headerlink" href="#pynealscanner_simpy" title="Permanent link">&para;</a></h3>
+<p><strong>Use Case:</strong> When you want to test <strong>Pyneal</strong> without having to actually run <strong>Pyneal Scanner</strong></p>
+<p><img alt="" src="../images/simulation/pynealScanner.png" /></p>
+<p><strong><em>location</em></strong>: <code>pyneal/utils/simulation/pynealScanner_sim.py</code></p>
+<p><strong><em>usage</em></strong>: <code>python pynealScanner_sim.py [--filePath] [--random] [--dims] [--tr] [--sockethost] [--socketport]</code></p>
+<p><strong><em>input args</em></strong>:</p>
+<ul>
+<li>-f/--filePath: path to 4D nifti image that you want to use as the "scan" data</li>
+<li>-r/--random: flag to generate random data instead of using a pre-existing nifti image </li>
+<li>-d/--dims: desired dimensions of randomly generated dataset [default: 64 64 18 60] </li>
+<li>-t/--TR: set the TR in ms [default: 1000]</li>
+<li>-sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]</li>
+<li>-sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5555]</li>
+</ul>
+<p>This tool will simulate the behavior of <strong>Pyneal Scanner</strong>. During a real scan, pynealScanner will send data to pyneal over a socket connection. Each tranmission comes in 2 phases: first a json header with metadata about the volume, then the volume itself. This tool will send data in that same format, using either a pre-existing 4D nifti image, or randomly generated data.</p>
+<p>You can either supply real 4D image data:</p>
+<blockquote>
+<p>python pynealScanner_sim.py --filePath /path/to/my/data.nii.gz</p>
+</blockquote>
+<p>or use the tool to generate a dataset of random values</p>
+<blockquote>
+<p>python pynealScanner_sim.py --random --dims 64 64 32 100 </p>
+</blockquote>
+<p>[OPTIONAL]: You can specify the TR at which 3D vols are sent to <strong>Pyneal</strong>. Default is 1000ms.</p>
+<blockquote>
+<p>python pynealScanner_sim.py --filePath /path/to/my/data.nii.gz --TR 2000</p>
+</blockquote>
+<p>[OPTIONAL]: You can set the socketHost and socketPort used for communication with <strong>Pyneal</strong>. Default host is <code>127.0.0.1</code>, which allows you to run this tool alongside <strong>Pyneal</strong> on the same computer. Default socket port number is <code>5555</code>. You must make sure that <strong>Pyneal</strong> is configured to be listening for incoming data on this port number (see <a href="../setup/#pyneal"><strong>Pyneal Set Up</strong></a>)</p>
+<h3 id="pynealresults_simpy">pynealResults_sim.py<a class="headerlink" href="#pynealresults_simpy" title="Permanent link">&para;</a></h3>
                 
                   
                 

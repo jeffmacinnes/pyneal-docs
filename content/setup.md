@@ -80,10 +80,10 @@ The **Pyneal** configuration is set via GUI. When you launch `pyneal.py` a GUI w
 	* **Pyneal-Scanner Port**: The port number over which **Pyneal** will be listening for incoming data from **Pyneal Scanner**. Note that this number should match the port number specified in the **pynealSocketPort** configuration field of the **Pyneal Scanner** set up.
 	* **Results Server Port**: The port number that **Pyneal** will use to set up the **Results Server**. Remote machines that wish to retrieve real-time analysis output during a scan can send requests over this port number. See Formatting Results Server Requests [TODO]
 
-* **Mask**: Path to mask file (Nifti - .nii/.nii.gz) to be used during real-time analysis. Each incoming 3D volume will be masked to remove non-relevant voxels. The mask *must* match the dimensions and orientation of incoming functional data [see [**Creating Masks**](/createMask.md) for Real-time Analysis]. The mask will limit which voxels get passed on to the analysis stage. So, for example:
+* **Mask**: Path to mask file (Nifti - .nii/.nii.gz) to be used during real-time analysis. Each incoming 3D volume will be masked to remove non-relevant voxels. The mask *must* match the dimensions and orientation of incoming functional data (see [**Creating Masks**](/createMask.md) for Real-time Analysis). The mask will limit which voxels get passed on to the analysis stage. So, for example:
 	* To calculate the **Average** ROI activation at every timepoint, choose a mask file that represents the target ROI.
 	* If **Weighted Mask?** is checked, the voxel values will be used as weights during the analysis.	
-	* For a **Custom** analysis that uses the entire brain volume, choose a mask file that represents a whole brain mask [see Creating Masks for Real-time Analysis TODO].
+	* For a **Custom** analysis that uses the entire brain volume, choose a mask file that represents a whole brain mask (see [**Creating Masks**](/createMask.md) for Real-time Analysis).
 
 * **Preprocessing**: Set the number of timepoints for the current scan
 
