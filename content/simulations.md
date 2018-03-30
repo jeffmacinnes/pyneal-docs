@@ -220,5 +220,25 @@ For more information on formatting requests and interpretting responses, see [**
  
  
  
+### endUser_sim.py
+**Use Case:** When you want to test sending requests to **Pyneal** without having to actually run a real **End User** 
 
+![](images/simulation/endUser.png)
+
+***location***: `pyneal/utils/simulation/endUser_sim.py`
+
+***usage***: `python pynealResults_sim.py [volIdx]`
+
+***input args***:
+
+* volIdx: the index of the volume you'd like to request results from [default: 0000]. Note: volume indices are 0-based
+
+This tool will simulate and demo how an **End User** may request results from **Pyneal**
+during a real-time scan.
+
+In a neurofeedback context, for example, the end-user may be the software that is controlling the experimental task. In this case, anytime the task wants to present feedback to the participant, it must request the output of the real-time analysis for a specific set of timepoints (or volumes).
+
+This is an example of how requests should be formatted and sent to **Pyneal**. Requests are made on a per-volume basis, and each request should take the form of a 4-character string representing the desired volume index (using a 0-based index). For example, to request the first volume in the series, the string would be '0000'; to request the 25th volume in the series the string would be '0024', and so on...
+
+For more information on formatting requests and interpretting responses, see [**requesting results**](TODO) TODO)
  
