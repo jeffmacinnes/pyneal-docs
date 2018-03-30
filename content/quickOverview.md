@@ -8,7 +8,7 @@ This schematic gives a very broad overview of the path that data follows through
 
 ![](images/overview.png)
 
-* Once the scan begins, raw images are collected by **Pyneal Scanner*, and then converted and reoriented to a standardized format (see [**image orientation**](/imageOrientation.md) for more info). 
+* Once the scan begins, raw images are collected by **Pyneal Scanner**, and then converted and reoriented to a standardized format (see [**image orientation**](/imageOrientation.md) for more info). 
 * **Pyneal Scanner** exports converted 3D volumes to **Pyneal**.
 * **Pyneal** receives 3D volumes, and concatenates them into a 4D volume over time throughout the scan. With every new 3D volume that arrives, **Pyneal** will **preprocess** the volume, and run any specified analyses. 
 * The analysis results for each volume are stored on a separate server, which listens for requests from remote end users or devices throughout the scan (see [**requesting results**](/pyneal.md#requesting-results) for more info). 

@@ -53,8 +53,6 @@ The format of the raw data will vary according to different scanner environments
 * -o outputDir: path to directory where slices will be copied to [default: create new directory named `s9999` in the parent directory of the inputDir]
 * -t/--TR TR: set the TR in ms [default: 1000]
 
-GE scanners 
-
 In order to run this script, you must have a local directory that contains raw slice dicom files from an actual scan. If you want to fully mimic the data directory structure of GE scanners, you can create a local directory path that follows the pattern `[baseDir]/p##/e##/s##` where the slice images are stored in a directory named like `s###`, which is nested two levels deep (`p###/e###`) from the `[basedir]`. 
 
 This script will copy all of the slices from the inputDir and copy them to the outputDir at a rate that is set by the TR. 

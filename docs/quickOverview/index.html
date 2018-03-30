@@ -477,7 +477,7 @@
 <p>This schematic gives a very broad overview of the path that data follows throughout a real-time scan with <strong>Pyneal</strong></p>
 <p><img alt="" src="../images/overview.png" /></p>
 <ul>
-<li>Once the scan begins, raw images are collected by *<em>Pyneal Scanner</em>, and then converted and reoriented to a standardized format (see <a href="../imageOrientation/"><strong>image orientation</strong></a> for more info). </li>
+<li>Once the scan begins, raw images are collected by <strong>Pyneal Scanner</strong>, and then converted and reoriented to a standardized format (see <a href="../imageOrientation/"><strong>image orientation</strong></a> for more info). </li>
 <li><strong>Pyneal Scanner</strong> exports converted 3D volumes to <strong>Pyneal</strong>.</li>
 <li><strong>Pyneal</strong> receives 3D volumes, and concatenates them into a 4D volume over time throughout the scan. With every new 3D volume that arrives, <strong>Pyneal</strong> will <strong>preprocess</strong> the volume, and run any specified analyses. </li>
 <li>The analysis results for each volume are stored on a separate server, which listens for requests from remote end users or devices throughout the scan (see <a href="../pyneal/#requesting-results"><strong>requesting results</strong></a> for more info). </li>
