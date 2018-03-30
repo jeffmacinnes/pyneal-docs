@@ -265,27 +265,6 @@
   
 
 
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
-    
-    <label class="md-nav__link" for="nav-6">
-      Additional Tools
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        Additional Tools
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-  
-
-
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
@@ -407,6 +386,25 @@
     
   </li>
 
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Additional Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Additional Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
         
           
           
@@ -456,13 +454,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
     
-    <label class="md-nav__link" for="nav-8">
+    <label class="md-nav__link" for="nav-9">
       Reference
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
+      <label class="md-nav__title" for="nav-9">
         Reference
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -739,7 +737,7 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p><strong>Use Case:</strong> When you want to test <strong>Pyneal</strong> without having to actually run <strong>Pyneal Scanner</strong></p>
 <p><img alt="" src="../images/simulation/pynealScanner.png" /></p>
 <p><strong><em>location</em></strong>: <code>pyneal/utils/simulation/pynealScanner_sim.py</code></p>
-<p><strong><em>usage</em></strong>: <code>python pynealScanner_sim.py [--filePath] [--random] [--dims] [--tr] [--sockethost] [--socketport]</code></p>
+<p><strong><em>usage</em></strong>: <code>python pynealScanner_sim.py [--filePath] [--random] [--dims] [--TR] [--sockethost] [--socketport]</code></p>
 <p><strong><em>input args</em></strong>:</p>
 <ul>
 <li>-f/--filePath: path to 4D nifti image that you want to use as the "scan" data</li>
@@ -764,6 +762,23 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 </blockquote>
 <p>[OPTIONAL]: You can set the socketHost and socketPort used for communication with <strong>Pyneal</strong>. Default host is <code>127.0.0.1</code>, which allows you to run this tool alongside <strong>Pyneal</strong> on the same computer. Default socket port number is <code>5555</code>. You must make sure that <strong>Pyneal</strong> is configured to be listening for incoming data on this port number (see <a href="../setup/#pyneal"><strong>Pyneal Set Up</strong></a>)</p>
 <h3 id="pynealresults_simpy">pynealResults_sim.py<a class="headerlink" href="#pynealresults_simpy" title="Permanent link">&para;</a></h3>
+<p><strong>Use Case:</strong> When you want to test an <strong>End User</strong> without having to actually run <strong>Pyneal</strong> (or anything else further upstream)</p>
+<p><img alt="" src="../images/simulation/pynealResults.png" /></p>
+<p><strong><em>location</em></strong>: <code>pyneal/utils/simulation/pynealResults_sim.py</code></p>
+<p><strong><em>usage</em></strong>: <code>python pynealResults_sim.py [--TR] [--sockethost] [--socketport]</code></p>
+<p><strong><em>input args</em></strong>:</p>
+<ul>
+<li>-t/--TR: set the TR in ms [default: 1000]</li>
+<li>-sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]</li>
+<li>-sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5556]</li>
+</ul>
+<p>This tool will launch a server that listen in for requests for results from a remote <strong>End User</strong> (e.g. a task presentation machine). This tools behaves exactly the same way as the results server component of Pyneal, allowing you to test the <strong>End User</strong> behavior.</p>
+<p>In this case the results that are returned are from a made up dataset generated each time the tool is called. There are 500 volumes in the generated dataset, and each volume has an associated "Average" result that is a random value drawn from a normal distribution (mean: 2400, stdDev: 15). Results for each volume will be available on the simulated results server at a rate set by the TR. For instance, with a 1000ms TR, it will take 500s for all of the results to appear. </p>
+<p>While this simulated results server is running, it will listen for requests from an <strong>End User</strong>. With each request that appears, it will check to see if the result from the requested volume has appeared yet. If it has, it will send back a message that looks something like:</p>
+<p><code>{foundResults: True, Average: #####}</code></p>
+<p>If not, the response message will simply be:</p>
+<p><code>{foundResults: False}</code></p>
+<p>For more information on formatting requests and interpretting responses, see <a href="../TODO"><strong>requesting results</strong></a> TODO)</p>
                 
                   
                 

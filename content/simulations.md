@@ -160,7 +160,7 @@ The **Pyneal** simulation tools can be found in `pyneal/utils/simulation`
 
 ***location***: `pyneal/utils/simulation/pynealScanner_sim.py`
 
-***usage***: `python pynealScanner_sim.py [--filePath] [--random] [--dims] [--tr] [--sockethost] [--socketport]`
+***usage***: `python pynealScanner_sim.py [--filePath] [--random] [--dims] [--TR] [--sockethost] [--socketport]`
 
 ***input args***:
 
@@ -190,3 +190,35 @@ or use the tool to generate a dataset of random values
 
 
 ### pynealResults_sim.py
+**Use Case:** When you want to test an **End User** without having to actually run **Pyneal** (or anything else further upstream)
+
+![](images/simulation/pynealResults.png)
+
+***location***: `pyneal/utils/simulation/pynealResults_sim.py`
+
+***usage***: `python pynealResults_sim.py [--TR] [--sockethost] [--socketport]`
+
+***input args***:
+
+* -t/--TR: set the TR in ms [default: 1000]
+* -sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]
+* -sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5556]
+
+This tool will launch a server that listen in for requests for results from a remote **End User** (e.g. a task presentation machine). This tools behaves exactly the same way as the results server component of Pyneal, allowing you to test the **End User** behavior.
+
+In this case the results that are returned are from a made up dataset generated each time the tool is called. There are 500 volumes in the generated dataset, and each volume has an associated "Average" result that is a random value drawn from a normal distribution (mean: 2400, stdDev: 15). Results for each volume will be available on the simulated results server at a rate set by the TR. For instance, with a 1000ms TR, it will take 500s for all of the results to appear. 
+
+While this simulated results server is running, it will listen for requests from an **End User**. With each request that appears, it will check to see if the result from the requested volume has appeared yet. If it has, it will send back a message that looks something like:
+
+`{foundResults: True, Average: #####}`
+
+If not, the response message will simply be:
+
+`{foundResults: False}`
+ 
+For more information on formatting requests and interpretting responses, see [**requesting results**](TODO) TODO)
+ 
+ 
+ 
+
+ 
