@@ -2,24 +2,24 @@
 
 **Pyneal is built and tested using `Python 3.6`**
 
-Download Python from [https://www.python.org/downloads/](https://www.python.org/downloads/) or via a distribution like [Anaconda](https://www.anaconda.com/download)
+Download Python from [**https://www.python.org/downloads/**](https://www.python.org/downloads/) or via a distribution like [**Anaconda**](https://www.anaconda.com/download)
 
 Pyneal requires additional libraries beyond the standard library. Instructions below use `pip` to install these libraries. Verify that you have `pip` installed:
 
 >which pip
 
-If not, download and install pip from [https://pip.pypa.io/en/stable/installing/](https://pip.pypa.io/en/stable/installing/)
+If not, download and install pip from [**https://pip.pypa.io/en/stable/installing/**](https://pip.pypa.io/en/stable/installing/)
 
 
 ## Download Pyneal
 
-Download the [Pyneal repository](https://github.com/jeffmacinnes/pyneal) from GitHub, or clone to your local machine:
+Download the [**Pyneal repository**](https://github.com/jeffmacinnes/pyneal) from GitHub, or clone to your local machine:
 
 
 >git clone https://github.com/jeffmacinnes/pyneal.git
 
 
-The installation instructions are broken down by **Pyneal Scanner** and **Pyneal**. If you haven't already, read the section on [definitions](#definitions-used), as those definitions are used throughout these instructions.
+The installation instructions are broken down by **Pyneal Scanner** and **Pyneal**. If you haven't already, read the section on [**definitions**](#definitions-used), as those definitions are used throughout these instructions.
 
 
 ## Pyneal-Scanner

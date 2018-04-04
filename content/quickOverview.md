@@ -6,7 +6,7 @@ For a more in-depth discussion of the main components, see [**Pyneal Scanner**](
 ## Data flow
 This schematic gives a very broad overview of the path that data follows throughout a real-time scan with **Pyneal**
 
-![](images/overview.png)
+![](images/dataFlow.png)
 
 * Once the scan begins, raw images are collected by **Pyneal Scanner**, and then converted and reoriented to a standardized format (see [**image orientation**](/imageOrientation.md) for more info). 
 * **Pyneal Scanner** exports converted 3D volumes to **Pyneal**.
@@ -15,13 +15,35 @@ This schematic gives a very broad overview of the path that data follows through
 * Anytime a request is received, the server checks to see if that volume has been processed yet. If so, it returns the results; if not, it sends a message saying that volume has not been processed yet
 
 
-## Prior to the scan...
+## Pyneal Scanner
 
-* Make sure you have followed the [**installation**](/installation.md) and [**setup**](/setup.md) instructions. 
+First step, make sure you've followed the instructions at [**setup: Pyneal Scanner**](setup.md#pyneal-scanner) to configure **Pyneal Scanner** to your environment. 
 
-* Figure out the IP address of the machine that is going to be the **analysis computer** running **Pyneal**. You'll need this address in order to configure **Pyneal Scanner**, as well as to request any results during the scan itself. This IP address must be accessible from the same network as the **scanner computer** (and any **end user** computer that will be making requests to **Pyneal** for results during the scan)
+To launch **Pyneal Scanner** from the **scanner computer**, open the command line and navigate to the `pyneal_scanner` directory. From the `pyneal_scanner` directory, type:
 
-* Determine the port numbers to use for commmuncation. Pyneal will need to have one available port number dedicated for communication with **Pyneal Scanner**, and an additional port number dedicated for communication with remote end users or devices. 
-	* If you don't know which port numbers to use, try choosing ones in the range of 1024-49151. If you happen to choose a port number that is already in use, **Pyneal** will return an error message. In that event, try a different number. 
+> python pynealScanner.py
 
-* Once you have determined the IP address and port numbers to use with **Pyneal** on the **analysis computer**, complete the [**set up steps for Pyneal Scanner**](/setup.md#pyneal-scanner)
+If you have set up **Pyneal Scanner** correctly, you will see a print out of your settings, info about any existing series directories in the `scannerBaseDir` path, and a message that **Pyneal Scanner** is attempting to connect to **Pyneal** over the specified `pynealSocket`:
+
+> ===============  
+> SCANNER SETTINGS:  
+> pynealSocketHost: 127.0.0.1  
+> pynealSocketPort: 5555  
+> scannerBaseDir: /path/to/scanner/baseDir  
+> scannerMake: GE    
+> ============     
+> Session Dir:  
+> /path/to/scanner/baseDir/p1/e666  
+> Series Dirs:  
+> 		s1923	 23.6 MB	5 min, 13 s ago  
+> 		s1925	 26.2 MB	1 min, 10 s ago    
+> MainThread -  Connecting to pynealSocket...  
+
+Once you launch **Pyneal** on the **analysis computer**, you will see a confirmation that **Pyneal Scanner** has connected to **Pyneal**, and is now waiting for new data to arrive from the scanner:
+
+> MainThread -  pynealSocket connected  
+> MainThread -  Waiting for new seriesDir...
+
+## Pyneal
+
+## End User

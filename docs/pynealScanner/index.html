@@ -248,9 +248,36 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Pyneal Scanner
+      </label>
+    
     <a href="./" title="Pyneal Scanner" class="md-nav__link md-nav__link--active">
       Pyneal Scanner
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prior-to-the-scan" title="Prior to the scan..." class="md-nav__link">
+    Prior to the scan...
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -404,6 +431,20 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prior-to-the-scan" title="Prior to the scan..." class="md-nav__link">
+    Prior to the scan...
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -416,7 +457,24 @@
                 
                 
                 <h1 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h1>
-<p>TODO</p>
+<h2 id="prior-to-the-scan">Prior to the scan...<a class="headerlink" href="#prior-to-the-scan" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Make sure you have followed the <a href="../installation/"><strong>installation</strong></a> and <a href="../setup/"><strong>setup</strong></a> instructions. </p>
+</li>
+<li>
+<p>Figure out the IP address of the machine that is going to be the <strong>analysis computer</strong> running <strong>Pyneal</strong>. You'll need this address in order to configure <strong>Pyneal Scanner</strong>, as well as to request any results during the scan itself. This IP address must be accessible from the same network as the <strong>scanner computer</strong> (and any <strong>end user</strong> computer that will be making requests to <strong>Pyneal</strong> for results during the scan)</p>
+</li>
+<li>
+<p>Determine the port numbers to use for commmuncation. Pyneal will need to have one available port number dedicated for communication with <strong>Pyneal Scanner</strong>, and an additional port number dedicated for communication with remote end users or devices. </p>
+<ul>
+<li>If you don't know which port numbers to use, try choosing ones in the range of 1024-49151. If you happen to choose a port number that is already in use, <strong>Pyneal</strong> will return an error message. In that event, try a different number. </li>
+</ul>
+</li>
+<li>
+<p>Once you have determined the IP address and port numbers to use with <strong>Pyneal</strong> on the <strong>analysis computer</strong>, complete the <a href="../setup/#pyneal-scanner"><strong>set up steps for Pyneal Scanner</strong></a></p>
+</li>
+</ul>
                 
                   
                 

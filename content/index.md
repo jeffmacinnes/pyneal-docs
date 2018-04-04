@@ -31,7 +31,10 @@ The software is broken into two separate components: **Pyneal Scanner** and **Py
 * **Pyneal**: Listens for incoming 3D volumes from **Pyneal Scanner**, runs whatever analyses
 you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to
 
-This design allows the software to easily accommodate the various directory structures and data formats that are found on different scanner models at different institutions around the world. (However, it also means that the steps to install, and run **Pyneal** can vary from environment to environment).
+This design allows the software to easily accommodate the various directory structures and data formats that are found on different scanner models at different institutions around the world. (However, it also means that the steps to install, and setup **Pyneal** can vary from environment to environment):
+
+* [**Installation guide**](installation.md)
+* [**Setup guide**](setup.md)
 
 
 ## Terms/Definitions
