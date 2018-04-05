@@ -588,6 +588,12 @@ MainThread -  Results Server alive and listening....  </p>
 <li>processing time plot showing processing time per volume (in sec)</li>
 <li>request log showing incoming requests for results and each corresponding reply  </li>
 </ul>
+<p>After the scan has completed, the <code>seriesOutputDir</code> will contain the folling output files:</p>
+<ul>
+<li><code>pynealLog.log</code> - detailed log messages from the current scan</li>
+<li><code>results.json</code> - JSON formatted file containg all of the analysis results from the current scan</li>
+<li><code>receivedFunc.nii.gz</code> - nifti formatted 4D file containing the series data itself, as received by <strong>Pyneal</strong>, from the current scan  </li>
+</ul>
 <p>For a more detailed look at how <strong>Pyneal</strong> works, see <a href="../pyneal/"><strong>Pyneal (detailed)</strong></a></p>
 <h2 id="end-user">End User<a class="headerlink" href="#end-user" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../images/overview/endUser.png" /></p>

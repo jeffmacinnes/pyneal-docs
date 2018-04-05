@@ -104,6 +104,13 @@ The dashboard contains:
 * processing time plot showing processing time per volume (in sec)
 * request log showing incoming requests for results and each corresponding reply  
 
+After the scan has completed, the `seriesOutputDir` will contain the folling output files:
+
+* `pynealLog.log` - detailed log messages from the current scan
+* `results.json` - JSON formatted file containg all of the analysis results from the current scan
+* `receivedFunc.nii.gz` - nifti formatted 4D file containing the series data itself, as received by **Pyneal**, from the current scan  
+
+
 For a more detailed look at how **Pyneal** works, see [**Pyneal (detailed)**](pyneal.md)
 
 
