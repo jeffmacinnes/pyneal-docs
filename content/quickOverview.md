@@ -6,7 +6,7 @@ For a more in-depth discussion of the main components, see [**Pyneal Scanner**](
 ## Data flow
 This schematic gives a very broad overview of the path that data follows throughout a real-time scan with **Pyneal**
 
-![](images/dataFlow.png)
+![](images/overview/dataflow.png)
 
 * Once the scan begins, raw images are collected by **Pyneal Scanner**, and then converted and reoriented to a standardized format (see [**image orientation**](/imageOrientation.md) for more info). 
 * **Pyneal Scanner** exports converted 3D volumes to **Pyneal**.
@@ -16,6 +16,7 @@ This schematic gives a very broad overview of the path that data follows through
 
 
 ## Pyneal Scanner
+![](images/overview/pynealScanner.png)
 
 First step, make sure you've followed the instructions at [**setup: Pyneal Scanner**](setup.md#pyneal-scanner) to configure **Pyneal Scanner** to your environment. 
 
@@ -44,6 +45,72 @@ Once you launch **Pyneal** on the **analysis computer**, you will see a confirma
 > MainThread -  pynealSocket connected  
 > MainThread -  Waiting for new seriesDir...
 
+For a more detailed look at how **Pyneal Scanner** works, see [**Pyneal Scanner (detailed)**](pynealScanner.md)
+
+
 ## Pyneal
+![](images/overview/pyneal.png)
+
+First step, make sure you've followed the instructions at [**setup: Pyneal**](setup.md#pyneal) to configure **Pyneal** to your environment. 
+
+To launch **Pyneal** from the **analysis computer**, open the command line and navigate to the `pyneal` directory. From the `pyneal` directory, type:
+
+> python pyneal.py
+
+The GUI will appear, allowing you to enter the appropriate settings for your environment/session:
+
+![](images/pynealSetupGUI.png)
+
+Once you hit submit, the command line will print a message showing you where log files for the current series will be stored, as well as all of the configuration settings for this series:
+
+> Logs written to: /path/to/outputDir/pyneal_001/pynealLog.log      
+> MainThread -  Setting: analysisChoice: Average  
+> MainThread -  Setting: dashboardClientPort: 5558  
+> MainThread -  Setting: dashboardPort: 5557  
+> MainThread -  Setting: launchDashboard: True   
+> MainThread -  Setting: maskFile: /path/to/maskFile.nii.gz   
+> MainThread -  Setting: maskIsWeighted: False  
+> MainThread -  Setting: numTimepts: 60  
+> MainThread -  Setting: outputPath: /path/to/outputDir    
+> MainThread -  Setting: pynealHost: 127.0.0.1  
+> MainThread -  Setting: pynealScannerPort: 5555  
+> MainThread -  Setting: resultsServerPort: 5556  
+> MainThread -  Setting: seriesOutputDir: /path/to/outputDir/pyneal_001  
+
+At the end of the message, you'll see a status indicator for the various subcomponents of **Pyneal**:
+
+> --------------------  
+> MainThread -  ScanReceiver Server alive and listening....  
+> Waiting for connection from pyneal_scanner  
+> MainThread -  Results Server alive and listening....  
+
+If everything is working properly, it'll say that both the `ScanReceiver Server` and `Results Server` are alive and listening. (for more information about what these components are doing, see [**Pyneal (detailed)**](pyneal.md). 
+
+You should also see a message indicating that **Pyneal** is waiting to connect to **Pyneal Scanner**. Once you launch **Pyneal Scanner**, this message will update to:
+
+> Received message:  hello from pyneal_scanner  
+
+In addition to the command line output, you can monitor the status of the scan from the web-based dashboard. 
+
+![](images/overview/dashboardAnnotated.png)
+
+The dashboard will launch automatically, but if you happen to close the window you can relaunch it at any time during the scan by opening a webbrowser and entering the URL `127.0.0.1:<dashboardClientPort>`, where `<dashboardClientPort>` can be found from series configuration settings that are printed to the command line. For example, using the settings from above, the URL would be: `127.0.0.1:5558`
+
+The dashboard contains:
+
+* progress bar indicating the % completed of the current scan
+* head motion plot showing relative (to ref volume) and absolute displacement (in mm)
+* scanner communication log showing volume indices as they arrive from the scanner
+* processing time plot showing processing time per volume (in sec)
+* request log showing incoming requests for results and each corresponding reply  
+
+For a more detailed look at how **Pyneal** works, see [**Pyneal (detailed)**](pyneal.md)
+
 
 ## End User
+
+![](images/overview/endUser.png)
+
+We refer to *any* component that requests results from **Pyneal** during a scan as an **End User**. For instance, a potential **End User** could be task presentation software that periodically makes requests for analysis results in order to update a neurofeedback display for the participant. 
+
+For more details about how to format requests and parse responses, see [**Requesting Results**](pyneal.md#formatting-requests)
