@@ -1,0 +1,26 @@
+Setup
+	- setting up your network
+	- Pyneal Scanner
+	- Pyneal
+
+Overview
+Dataflow
+Pyneal Scanner
+	- basic usage
+	- how it works
+	- additional commands
+	- Directory structure and data formats by scanner make
+		- GE
+		- Philips
+		- Siemens
+
+Pyneal
+	- overview
+	- prior to scan
+		- creating masks
+		- choosing analyses
+	- during scan
+		- Dashboard
+		- Requesting Results
+	- after scan
+	 

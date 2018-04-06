@@ -151,3 +151,4 @@ dashboardClientPort: 5558
 At the top of the setup GUI you have the option to load a custom settings file. A custom settings should be a `.yaml` file with values for one or more of the configuration keys above. By loading a custom settings file, the GUI will be populated with whichever configure keys are included; any non-included keys will get their values from the `setupConfig.yaml` file as normal.
 
 The option allows users to create settings files on a per-project basis, and easily configure **Pyneal** to match the project demands.  
+

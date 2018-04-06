@@ -1,20 +1,51 @@
-# Pyneal Scanner (detailed)
+# Pyneal Scanner
 
-This section will provided a more detailed overview of **Pyneal Scanner**, what is happening behind the scenes, and how to customize it for different imaging environments. 
+![](images/pynealScanner/pynealScanner.png)
 
-Before beginning, make sure you've followed the instructions at [**setup: Pyneal Scanner**](/setup.md#pyneal-scanner) to configure **Pyneal Scanner** to your environment. 
+First step, make sure you've followed the instructions at [**setup: Pyneal Scanner**](setup.md#pyneal-scanner) to configure **Pyneal Scanner** to your environment. 
 
 
+## Basic Usage 
 
-## 
+To launch **Pyneal Scanner** from the **scanner computer**, open the command line and navigate to the `pyneal_scanner` directory. From the `pyneal_scanner` directory, type:
 
-* Make sure you have followed the [**installation**](/installation.md) and [**setup**](/setup.md) instructions. 
+> python pynealScanner.py
 
-* Figure out the IP address of the machine that is going to be the **analysis computer** running **Pyneal**. You'll need this address in order to configure **Pyneal Scanner**, as well as to request any results during the scan itself. This IP address must be accessible from the same network as the **scanner computer** (and any **end user** computer that will be making requests to **Pyneal** for results during the scan)
+If you have set up **Pyneal Scanner** correctly, you will see a print out of your settings, info about any existing series directories in the `scannerBaseDir` path, and a message that **Pyneal Scanner** is attempting to connect to **Pyneal** over the specified `pynealSocket`:
 
-* Determine the port numbers to use for commmuncation. Pyneal will need to have one available port number dedicated for communication with **Pyneal Scanner**, and an additional port number dedicated for communication with remote end users or devices. 
-	* If you don't know which port numbers to use, try choosing ones in the range of 1024-49151. If you happen to choose a port number that is already in use, **Pyneal** will return an error message. In that event, try a different number. 
+> ===============  
+> SCANNER SETTINGS:  
+> pynealSocketHost: 127.0.0.1  
+> pynealSocketPort: 5555  
+> scannerBaseDir: /path/to/scanner/baseDir  
+> scannerMake: GE    
+> ============     
+> Session Dir:  
+> /path/to/scanner/baseDir/p1/e666  
+> Series Dirs:  
+> 		s1923	 23.6 MB	5 min, 13 s ago  
+> 		s1925	 26.2 MB	1 min, 10 s ago    
+> MainThread -  Connecting to pynealSocket...  
 
-* Once you have determined the IP address and port numbers to use with **Pyneal** on the **analysis computer**
+Once you launch **Pyneal** on the **analysis computer**, you will see a confirmation that **Pyneal Scanner** has connected to **Pyneal**, and is now waiting for new data to arrive from the scanner:
 
-## 
+> MainThread -  pynealSocket connected  
+> MainThread -  Waiting for new seriesDir...
+
+## How it works
+
+## Additional commands
+
+### listSeries
+### getSeries
+
+## Directory structures and data formats by scanner make
+
+**Pyneal Scanner** is designed to handle the standard data formats used across the 3 dominant scanner manufacturers, **GE**, **Philips**, and **Siemens**. This section will provide details on the directory structures and data formats across each in order to help make sure you configure **Pyneal Scanner** correctly. 
+
+### GE
+
+### Philips
+
+### Siemens
+

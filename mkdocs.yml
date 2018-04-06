@@ -15,9 +15,11 @@ pages:
     - Getting Started:
         - Installation: installation.md
         - Setup: setup.md
-    - Quick Overview: quickOverview.md
-    - Pyneal Scanner: pynealScanner.md
-    - Pyneal: pyneal.md
+    - Overview:
+      - Data Flow: dataflow.md
+      - Pyneal Scanner: pynealScanner.md
+      - Pyneal: pyneal.md
+      - End User: endUser.md
     - Simulations: simulations.md
     - Additional Tools:
         - Creating Masks: createMask.md
