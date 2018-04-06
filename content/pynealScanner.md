@@ -1,6 +1,12 @@
-# Pyneal Scanner
+# Pyneal Scanner (detailed)
 
-## Prior to the scan...
+This section will provided a more detailed overview of **Pyneal Scanner**, what is happening behind the scenes, and how to customize it for different imaging environments. 
+
+Before beginning, make sure you've followed the instructions at [**setup: Pyneal Scanner**](/setup.md#pyneal-scanner) to configure **Pyneal Scanner** to your environment. 
+
+
+
+## 
 
 * Make sure you have followed the [**installation**](/installation.md) and [**setup**](/setup.md) instructions. 
 
@@ -9,4 +15,6 @@
 * Determine the port numbers to use for commmuncation. Pyneal will need to have one available port number dedicated for communication with **Pyneal Scanner**, and an additional port number dedicated for communication with remote end users or devices. 
 	* If you don't know which port numbers to use, try choosing ones in the range of 1024-49151. If you happen to choose a port number that is already in use, **Pyneal** will return an error message. In that event, try a different number. 
 
-* Once you have determined the IP address and port numbers to use with **Pyneal** on the **analysis computer**, complete the [**set up steps for Pyneal Scanner**](/setup.md#pyneal-scanner)
+* Once you have determined the IP address and port numbers to use with **Pyneal** on the **analysis computer**
+
+## 

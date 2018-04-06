@@ -1,7 +1,7 @@
 # Quick Overview
 This section will provide a quick overview of running a scan with Pyneal. The aim is to  familiarize you with the interface and commands you would use during a scan session, without getting lost in the details about what is happening underneath the hood. 
 
-For a more in-depth discussion of the main components, see [**Pyneal Scanner**](/pynealScanner.md) and [**Pyneal**](/pyneal.md).
+For a more in-depth discussion of the main components, see [**Pyneal Scanner (detailed)**](/pynealScanner.md) and [**Pyneal (detailed)**](/pyneal.md).
 
 ## Data flow
 This schematic gives a very broad overview of the path that data follows throughout a real-time scan with **Pyneal**

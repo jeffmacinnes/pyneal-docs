@@ -2,14 +2,35 @@
 
 The set-up instructions are broken down by **Pyneal Scanner** and **Pyneal**. If you haven't already, follow the [**installation instructions**](/installation) to configure your environment, and read the section on [**definitions**](installation/#definitions-used), as those definitions are used throughout these instructions.
 
-Once you have finished setting up **Pyneal Scanner** and **Pyneal**, are you ready to begin testing your install using the various [**simulation tools**](simulations.md). These tools are also helpful in troubleshooting any issues you may run into during install/setup. 
+Once you have finished setting up **Pyneal Scanner** and **Pyneal**, are you ready to begin testing your install using the various [**simulation tools**](simulations.md). These tools are also helpful in troubleshooting any issues you may run into during install/setup.
+
+
+![](images/overview.png)
+ 
+
+## Setting up your network
+**Pyneal** communicates with other components in the pipeline, like **Pyneal Scanner** and any **End User**, via TCP/IP sockets. These are network communication portals very similar to how an internet browser communicates with websites hosted on remote servers. 
+
+For this type of commnunication, it's useful to think of one end as the *server*, listening for and responding to requests from remote *clients*. Clients connect to the server by specifying the server's IP address and a specific port number. 
+
+In our case, **Pyneal** (running on the **analysis computer**) is always playing the role of the *server*. The IP address you use for **Pyneal** will depend on how the rest of your environment is set up:
+
+* If all components are running on the same machine, you can use the generic loopback IP address `127.0.0.1`. Put another way, you can use this address if and only if **Pyneal Scanner** and **Pyneal** and any **End User** that requests data are all running from the same physical machine. This might be the case, for instance, if you are testing/debugging certain steps of your analysis (see [**simulation tools**](simulations.md))
+
+* In all other cases, you have to figure out the IP address assigned to the **analysis computer** running **Pyneal**. 
+
+**Pyneal** will use one available port number for communication with **Pyneal Scanner**, and an additional port number dedicated for communication with remote end users or devices. You can manually specify the port number to use when setting up **Pyneal** 
+
+If you don't know which port numbers to use, check with a network administrator, or simply try choosing ones in the range of 1024-49151. If you happen to choose a port number that is unavailable, **Pyneal** will return an error message. In that event, try a different number. 
 
 
 ## Pyneal Scanner
 
-Copy the `pyneal_scanner` directory to the **scanner computer**.
+When you first download **Pyneal** everything is contained in the `pyneal` directory. 
 
-Launch **Pyneal Scanner** from the command line by navigating in to the `pyneal_scanner` directory and running `pynealScanner.py`
+From the `pyneal` directory, copy the `pyneal_scanner` directory to the **scanner computer**.
+
+Launch **Pyneal Scanner** from the command line by navigating to the `pyneal_scanner` directory and running `pynealScanner.py`
 
 
 

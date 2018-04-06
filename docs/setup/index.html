@@ -240,6 +240,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#setting-up-your-network" title="Setting up your network" class="md-nav__link">
+    Setting up your network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pyneal-scanner" title="Pyneal Scanner" class="md-nav__link">
     Pyneal Scanner
   </a>
@@ -444,6 +451,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#setting-up-your-network" title="Setting up your network" class="md-nav__link">
+    Setting up your network
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pyneal-scanner" title="Pyneal Scanner" class="md-nav__link">
     Pyneal Scanner
   </a>
@@ -474,10 +488,26 @@
                 
                 <h1 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h1>
 <p>The set-up instructions are broken down by <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. If you haven't already, follow the <a href="../installation"><strong>installation instructions</strong></a> to configure your environment, and read the section on <a href="../installation/#definitions-used"><strong>definitions</strong></a>, as those definitions are used throughout these instructions.</p>
-<p>Once you have finished setting up <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>, are you ready to begin testing your install using the various <a href="../simulations/"><strong>simulation tools</strong></a>. These tools are also helpful in troubleshooting any issues you may run into during install/setup. </p>
+<p>Once you have finished setting up <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>, are you ready to begin testing your install using the various <a href="../simulations/"><strong>simulation tools</strong></a>. These tools are also helpful in troubleshooting any issues you may run into during install/setup.</p>
+<p><img alt="" src="../images/overview.png" /></p>
+<h2 id="setting-up-your-network">Setting up your network<a class="headerlink" href="#setting-up-your-network" title="Permanent link">&para;</a></h2>
+<p><strong>Pyneal</strong> communicates with other components in the pipeline, like <strong>Pyneal Scanner</strong> and any <strong>End User</strong>, via TCP/IP sockets. These are network communication portals very similar to how an internet browser communicates with websites hosted on remote servers. </p>
+<p>For this type of commnunication, it's useful to think of one end as the <em>server</em>, listening for and responding to requests from remote <em>clients</em>. Clients connect to the server by specifying the server's IP address and a specific port number. </p>
+<p>In our case, <strong>Pyneal</strong> (running on the <strong>analysis computer</strong>) is always playing the role of the <em>server</em>. The IP address you use for <strong>Pyneal</strong> will depend on how the rest of your environment is set up:</p>
+<ul>
+<li>
+<p>If all components are running on the same machine, you can use the generic loopback IP address <code>127.0.0.1</code>. Put another way, you can use this address if and only if <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong> and any <strong>End User</strong> that requests data are all running from the same physical machine. This might be the case, for instance, if you are testing/debugging certain steps of your analysis (see <a href="../simulations/"><strong>simulation tools</strong></a>)</p>
+</li>
+<li>
+<p>In all other cases, you have to figure out the IP address assigned to the <strong>analysis computer</strong> running <strong>Pyneal</strong>. </p>
+</li>
+</ul>
+<p><strong>Pyneal</strong> will use one available port number for communication with <strong>Pyneal Scanner</strong>, and an additional port number dedicated for communication with remote end users or devices. You can manually specify the port number to use when setting up <strong>Pyneal</strong> </p>
+<p>If you don't know which port numbers to use, check with a network administrator, or simply try choosing ones in the range of 1024-49151. If you happen to choose a port number that is unavailable, <strong>Pyneal</strong> will return an error message. In that event, try a different number. </p>
 <h2 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h2>
-<p>Copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>.</p>
-<p>Launch <strong>Pyneal Scanner</strong> from the command line by navigating in to the <code>pyneal_scanner</code> directory and running <code>pynealScanner.py</code></p>
+<p>When you first download <strong>Pyneal</strong> everything is contained in the <code>pyneal</code> directory. </p>
+<p>From the <code>pyneal</code> directory, copy the <code>pyneal_scanner</code> directory to the <strong>scanner computer</strong>.</p>
+<p>Launch <strong>Pyneal Scanner</strong> from the command line by navigating to the <code>pyneal_scanner</code> directory and running <code>pynealScanner.py</code></p>
 <blockquote>
 <p>cd pyneal_scanner<br />
 python pynealScanner.py</p>
