@@ -9,7 +9,7 @@ Once you have finished setting up **Pyneal Scanner** and **Pyneal**, are you rea
  
 
 ## Setting up your network
-**Pyneal** communicates with other components in the pipeline, like **Pyneal Scanner** and any **End User**, via TCP/IP sockets. These are network communication portals very similar to how an internet browser communicates with websites hosted on remote servers. 
+**Pyneal** communicates with other components in the pipeline, like **Pyneal Scanner** and any **End User**, via TCP/IP sockets. These are network communication portals very similar to how a webbrowser communicates with websites hosted on remote servers. 
 
 For this type of commnunication, it's useful to think of one end as the *server*, listening for and responding to requests from remote *clients*. Clients connect to the server by specifying the server's IP address and a specific port number. 
 
