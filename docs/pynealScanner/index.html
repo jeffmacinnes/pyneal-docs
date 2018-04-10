@@ -766,7 +766,13 @@ MainThread -  Waiting for new seriesDir...</p>
 </ul>
 <p><strong>Pyneal</strong> will use information in the header message to rebuild the volume array, and carry out all subsequent preprocessing and analysis steps. </p>
 <h2 id="additional-commands">Additional commands<a class="headerlink" href="#additional-commands" title="Permanent link">&para;</a></h2>
+<p>The <code>pyneal_scanner</code> directory also contains a couple of other commands that may be useful during a real-time session</p>
 <h3 id="listseries">listSeries<a class="headerlink" href="#listseries" title="Permanent link">&para;</a></h3>
+<ul>
+<li>location: <code>pyneal_scanner/listSeries.py</code></li>
+<li>usage: <code>python listSeries.py</code></li>
+</ul>
+<p><code>listSeries.py</code> will print to the screen a list of all of the series for the current session. Each series will include information like the relevant paths, directory/file sizes, and creation dates. In the case of GE scanners, this will also report the <code>p###/e###</code> parent directories (i.e. the <code>sessionDir</code>) of new series directories. </p>
 <h3 id="getseries">getSeries<a class="headerlink" href="#getseries" title="Permanent link">&para;</a></h3>
                 
                   

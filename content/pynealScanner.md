@@ -112,5 +112,13 @@ Specifically, **Pyneal Scanner** will send data as 3D volumes. Each transmission
 
 ## Additional commands
 
+The `pyneal_scanner` directory also contains a couple of other commands that may be useful during a real-time session
+
 ### listSeries
+
+* location: `pyneal_scanner/listSeries.py`
+* usage: `python listSeries.py`
+
+`listSeries.py` will print to the screen a list of all of the series for the current session. Each series will include information like the relevant paths, directory/file sizes, and creation dates. In the case of GE scanners, this will also report the `p###/e###` parent directories (i.e. the `sessionDir`) of new series directories. 
+
 ### getSeries
