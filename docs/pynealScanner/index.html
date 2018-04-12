@@ -774,6 +774,14 @@ MainThread -  Waiting for new seriesDir...</p>
 </ul>
 <p><code>listSeries.py</code> will print to the screen a list of all of the series for the current session. Each series will include information like the relevant paths, directory/file sizes, and creation dates. In the case of GE scanners, this will also report the <code>p###/e###</code> parent directories (i.e. the <code>sessionDir</code>) of new series directories. </p>
 <h3 id="getseries">getSeries<a class="headerlink" href="#getseries" title="Permanent link">&para;</a></h3>
+<ul>
+<li>location: <code>pyneal_scanner/getSeries.py</code></li>
+<li>usage: <code>python getSeries.py</code></li>
+</ul>
+<p><code>getSeries.py</code> will build a nifti file from a selected series from the current session. When called, it will print a list of all series for the current session, and prompt you to select one. You will also be prompted to specify an 'output prefix' that will be used to name the output file.  </p>
+<p>You can select series that correspond to either 3D structural series or 4D functional series. The selected series will be converted to a single nifti file, and saved as:</p>
+<p><code>pyneal_scanner/data/&lt;output prefix&gt;_&lt;seriesName&gt;.nii.gz</code></p>
+<p>This tool is useful if you need to retrieve data during a session (for example, a localizer run that will be analyzed to create ROIs for the real-time runs).</p>
                 
                   
                 
