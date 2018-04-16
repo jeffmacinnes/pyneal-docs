@@ -619,7 +619,10 @@ python createMask.py</p>
 <p>The resulting <code>mni2func.mat</code> matrix is used to transform the specifed MNI-space mask to functional space. </p>
 <p>Specify the following input to <code>createMask.py</code> when selecting <strong>Transform MNI mask to FUNC</strong>:</p>
 <ul>
-<li><strong>hi-res ANAT</strong>: path to participant's high-resolution anatomical image, collected during the current scanning session</li>
+<li><strong>hi-res ANAT</strong>: path to participant's high-resolution anatomical image, collected during the current scanning session<ul>
+<li>if the anatomical image has not been skull stripped yet, check <code>Skull Strip?</code>. If you have already manually skull stripped the anatomical image, make sure this box is deselected. </li>
+</ul>
+</li>
 <li><strong>MNI-standard</strong>: path to the MNI standard. This standard must be in the same space as the mask you wish to transform. For instance, if your mask is in MNI space with a resolution of 1mm, you must select the MNI152_T1_1mm standard image. Sample MNI standard images can be found in <code>pyneal/utils/MNI_templates</code></li>
 <li><strong>MNI mask</strong>: The mask file you wish to transform</li>
 <li><strong>Output Prefix:</strong>: The output prefix that will be prepended to the transformed masks. </li>
