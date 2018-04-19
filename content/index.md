@@ -39,4 +39,4 @@ This design allows the software to easily accommodate the various directory stru
 
 ## Terms/Definitions
 
-Throughout the documentation specific terms are used to describe the different components of the software, the underlying architecture, and the various processes involved. Despite sincere efforts to keep these terms intuitive, they're probably not in all cases. Please check the [**glossary**](/glossary.md) for any unfamiliar terms you come across. (You can also find it under `Reference` in the lefthand menu.
+Throughout the documentation specific terms are used to describe the different components of the software, the underlying architecture, and the various processes involved. Despite sincere efforts to keep these terms intuitive, they're probably not in all cases. Please check the [**glossary**](/glossary.md) for any unfamiliar terms you come across. (You can also find it under `Reference` in the lefthand menu)

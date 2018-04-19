@@ -4,12 +4,17 @@
 
 First step, make sure you've followed the instructions at [**setup: Pyneal**](setup.md#pyneal) to configure **Pyneal** to your environment. 
 
-## Prior to a real-time scan
+## Basic Usage
+
+## How it works
+
+
+## Preparing for a real-time scan
 
 ### Creating Masks
 Pyneal requires the user to supply a mask that will specify which voxels to include during the real-time analysis. 
 
-This mask can take any form you want, with the caveat that it *must* be in the same space (i.e. voxel size, image resolution, and orientation) as the incoming functional data throughout the real-time scan.
+This mask can take any form you want, with the caveat that it *must* be in the same space (i.e. voxel size, slice dimensions, and orientation) as the incoming functional data throughout the real-time scan. One way to ensure this would to collect a short localizer scan at the beginning of the session that has the desired scan parameters, and use this data to create/register/align your mask for the subsequent real-time runs. 
 
 **Examples:**
 
@@ -20,7 +25,7 @@ This mask can take any form you want, with the caveat that it *must* be in the s
 
 ### Choosing Analyses
 
-## During a real-time scan
+## Running a real-time scan
 
 To launch **Pyneal** from the **analysis computer**, open the command line and navigate to the `pyneal` directory. From the `pyneal` directory, type:
 

@@ -2,14 +2,14 @@
 
 The set-up instructions are broken down by **Pyneal Scanner** and **Pyneal**. If you haven't already, follow the [**installation instructions**](/installation) to configure your environment, and read the section on [**definitions**](installation/#definitions-used), as those definitions are used throughout these instructions.
 
-Once you have finished setting up **Pyneal Scanner** and **Pyneal**, are you ready to begin testing your install using the various [**simulation tools**](simulations.md). These tools are also helpful in troubleshooting any issues you may run into during install/setup.
+After you have finished setting up **Pyneal Scanner** and **Pyneal** using the instructions below, you can verify your install using various [**simulation tools**](simulations.md). These tools are helpful in troubleshooting any issues you may run into during install/setup.
 
 
 ![](images/overview.png)
  
 
 ## Setting up your network
-**Pyneal** communicates with other components in the pipeline, like **Pyneal Scanner** and any **End User**, via TCP/IP sockets. These are network communication portals very similar to how a webbrowser communicates with websites hosted on remote servers. 
+**Pyneal** communicates with other components in the pipeline, like **Pyneal Scanner** and any **End User**, via TCP/IP sockets. These are network communication portals very similar to how a web browser communicates with websites hosted on remote servers. 
 
 For this type of commnunication, it's useful to think of one end as the *server*, listening for and responding to requests from remote *clients*. Clients connect to the server by specifying the server's IP address and a specific port number. 
 
@@ -26,11 +26,11 @@ If you don't know which port numbers to use, check with a network administrator,
 
 ## Pyneal Scanner
 
-When you first download **Pyneal** everything is contained in the `pyneal` directory. 
+When you download **Pyneal** everything is contained in the root `pyneal` directory. 
 
-From the `pyneal` directory, copy the `pyneal_scanner` directory to the **scanner computer**.
+From the `pyneal` directory, copy the `pyneal_scanner` directory to a new location on the **scanner computer**.
 
-Launch **Pyneal Scanner** from the command line by navigating to the `pyneal_scanner` directory and running `pynealScanner.py`
+On the **scanner computer**, launch **Pyneal Scanner** from the command line by navigating to the `pyneal_scanner` directory and running `pynealScanner.py`
 
 
 
@@ -54,7 +54,7 @@ pynealSocketPort: '9999'
 
 **Configuration Keys**:
 
-* **scannerBaseDir**: The *fixed* portion of the directory path to where new reconstructed images will be appear during a scan. That is, the part that remains constant from scan to scan. Knowing what to set this value to can differ accroding to different scanner manufacturers:
+* **scannerBaseDir**: The *fixed* portion of the directory path to where new reconstructed images will be appear during a scan. That is, the part that remains constant from scan to scan. Knowing what to set this value to can differ according to different scanner manufacturers:
 
 	* **GE**: During a scan, new slices dicom files are written to a directory on the scanner console. The path to that directory can be broken apart like `[scannerBaseDir]/[sessionDir]/[seriesDir]`, where
 		* **[scannerBaseDir]**: path that remains constant across all scans
@@ -64,9 +64,12 @@ pynealSocketPort: '9999'
 		You only need to specify the path to the `scannerBaseDir` in the `scannerConfig.yaml` file; **Pyneal Scanner** will automaticaly find the most recently modified session and series directories and monitor for new series directories to appear. When you run `pynealScanner.py` you will see a printout in the terminal window about the names, sizes, and modification dates of all series directories in the session directory.
 
 
-	* **Siemens**: Siemens scanners can export reconstructed dicom images to a remote directory. The dicom images are mosaic files, one per volume, in which all slices from the volume are arranged in a 2D grid (er, mosaic, if you will). Siemens will export all files from your session to the same directory; the series number associated with each file can be found in the file name. 
-		* **[scannerBaseDir]**: path to remote directory that will receive all files throughout the session.
-
+	* **Siemens**: Siemens scanners can export reconstructed dicom images to a remote directory. The dicom images are mosaic files, one per volume, in which all slices from the volume are arranged in a 2D grid (or, mosaic, if you will). Siemens will export all files from all series during your session to the same directory, which we'll refer to as the `scannerBaseDir`. Each mosaic file follows a naming pattern that indicates the series number and volume number of the data contained within. The full path to a given mosaic file will look like `[scannerBaseDir]/[session#]_[series#]_[volume#].dcm`, where
+		* **[scannerBaseDir]**: path to remote directory that will receive all files throughout the session.  
+		* **[session#]**: 3 characters representing the current session number, *e.g. session 1: `001`*
+		* **[series#]**: 6 characters representing the current series number, *e.g. series 5: `000005`*
+		* **[volume#]**: 6 characters represenitng the current volume number, *e.g. volume 4: `000004`* 
+	
 
 	* **Philips**: Philips scanners have the option to export reconstructed PAR/REC files to a remote directory. The path to that directory can be broken apart like `[scannerBaseDir]/[seriesDir]`, where
 		* **[scannerBaseDir]**: path to remote directory that remains constant across all scans

@@ -13,7 +13,7 @@ If not, download and install pip from [**https://pip.pypa.io/en/stable/installin
 
 ## Download Pyneal
 
-Download the [**Pyneal repository**](https://github.com/jeffmacinnes/pyneal) from GitHub, or clone to your local machine:
+Download the [**Pyneal repository**](https://github.com/jeffmacinnes/pyneal) from GitHub, or clone the repository to your local machine:
 
 
 >git clone https://github.com/jeffmacinnes/pyneal.git
