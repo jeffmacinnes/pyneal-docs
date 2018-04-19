@@ -408,6 +408,40 @@
     Dashboard
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#head-motion-plot" title="Head Motion Plot" class="md-nav__link">
+    Head Motion Plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-time-plot" title="Processing Time Plot" class="md-nav__link">
+    Processing Time Plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyneal-scanner-log" title="Pyneal Scanner Log" class="md-nav__link">
+    Pyneal Scanner Log
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-server-log" title="Results Server Log" class="md-nav__link">
+    Results Server Log
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -724,6 +758,40 @@
     Dashboard
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#head-motion-plot" title="Head Motion Plot" class="md-nav__link">
+    Head Motion Plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#processing-time-plot" title="Processing Time Plot" class="md-nav__link">
+    Processing Time Plot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pyneal-scanner-log" title="Pyneal Scanner Log" class="md-nav__link">
+    Pyneal Scanner Log
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#results-server-log" title="Results Server Log" class="md-nav__link">
+    Results Server Log
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -886,14 +954,30 @@ MainThread -  Results Server alive and listening....  </p>
 <h3 id="dashboard">Dashboard<a class="headerlink" href="#dashboard" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../images/pyneal/dashboardAnnotated.png" /></p>
 <p>The dashboard will launch automatically, but if you happen to close the window you can relaunch it at any time during the scan by opening a webbrowser and entering the URL <code>127.0.0.1:&lt;dashboardClientPort&gt;</code>, where <code>&lt;dashboardClientPort&gt;</code> can be found from series configuration settings that are printed to the command line. For example, using the settings from above, the URL would be: <code>127.0.0.1:5558</code></p>
-<p>The dashboard contains:</p>
+<p>The top of the dashboard contains a progress bar indicating the % completed of the current scan, as well as additional settings and details. Lower down, the dashboard contains:</p>
+<h4 id="head-motion-plot">Head Motion Plot<a class="headerlink" href="#head-motion-plot" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../images/pyneal/dashboard_headMotion.png" /></p>
+<p>Plot displaying head motion throughout the scan. Head motion is expressed in both absolute displacement (<em>abs</em>, dark blue) from a fixed reference volume (typically the 4th volume in the series), as well as relative displacement (<em>rel</em>, light blue) relative to the previous volume. </p>
+<p>Head motion estimates are based on <a href="http://nipy.org/nipy/api/generated/nipy.algorithms.registration.histogram_registration.html">histogram registration</a> algorithms, and are applied to fMRI data using a similar approach as found in <a href="https://github.com/cni/rtfmri/blob/master/rtfmri/analyzers.py">https://github.com/cni/rtfmri/blob/master/rtfmri/analyzers.py</a></p>
+<h4 id="processing-time-plot">Processing Time Plot<a class="headerlink" href="#processing-time-plot" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../images/pyneal/dashboard_processingTime.png" /></p>
+<p>Plot displaying the processing time per volume throughout a scan. You can use this plot to verify that your analyses are successfully keeping pace with the TR of data collection.</p>
+<h4 id="pyneal-scanner-log">Pyneal Scanner Log<a class="headerlink" href="#pyneal-scanner-log" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../images/pyneal/dashboard_scannerLog.png" /></p>
+<p>Simple log message area indicating incoming volumes from <strong>Pyneal Scanner</strong> as they arrive. </p>
+<h4 id="results-server-log">Results Server Log<a class="headerlink" href="#results-server-log" title="Permanent link">&para;</a></h4>
+<p><img alt="" src="../images/pyneal/dashboard_resultsServerLog.png" /></p>
+<p>A log window allowing you to monitor communication between <strong>Pyneal</strong> (specifically, the results server) and any remote <strong>End User</strong>. Each request for results sent from an <strong>End User</strong> will appear on the right half of the log window, along with a blue circle and details as to which volume the results are requested from. </p>
+<p>The response from the results server will be shown immediately below each request, left-aligned within the log window. </p>
 <ul>
-<li>progress bar indicating the % completed of the current scan</li>
-<li>head motion plot showing relative (to ref volume) and absolute displacement (in mm)</li>
-<li>scanner communication log showing volume indices as they arrive from the scanner</li>
-<li>processing time plot showing processing time per volume (in sec)</li>
-<li>request log showing incoming requests for results and each corresponding reply  </li>
+<li>
+<p>If the requested results are found, the status circle will be maroon, and you will see the JSON message that was returned to the <strong>End User</strong>. The JSON message will contain a key:value pair indicating the requested results were found (<code>"foundResults":true</code>), as well as other key:value pairs containing the results themselves. </p>
+</li>
+<li>
+<p>If the requested results are not found (for instance, if the requested volume has not arrived and been analyzed yet), the status circle will be grey, and you will see a returned JSON message with a single key:value pair indicating that the results were not found (<code>"foundResults":false</code>)</p>
+</li>
 </ul>
+<p>For more info, see <a href="../endUser/#sending-requests"><strong>sending requests</strong></a> and <a href="../endUser/#parsing-responses"><strong>parsing responses</strong></a></p>
 <h2 id="after-a-real-time-scan">After a real-time scan<a class="headerlink" href="#after-a-real-time-scan" title="Permanent link">&para;</a></h2>
 <p>After the scan has completed, the <code>seriesOutputDir</code> will contain the folling output files:</p>
 <ul>

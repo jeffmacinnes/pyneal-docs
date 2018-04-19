@@ -140,14 +140,37 @@ Throughout the scan, the terminal will update with status and log messages repor
 
 The dashboard will launch automatically, but if you happen to close the window you can relaunch it at any time during the scan by opening a webbrowser and entering the URL `127.0.0.1:<dashboardClientPort>`, where `<dashboardClientPort>` can be found from series configuration settings that are printed to the command line. For example, using the settings from above, the URL would be: `127.0.0.1:5558`
 
-The dashboard contains:
+The top of the dashboard contains a progress bar indicating the % completed of the current scan, as well as additional settings and details. Lower down, the dashboard contains:
 
-* progress bar indicating the % completed of the current scan
-* head motion plot showing relative (to ref volume) and absolute displacement (in mm)
-* scanner communication log showing volume indices as they arrive from the scanner
-* processing time plot showing processing time per volume (in sec)
-* request log showing incoming requests for results and each corresponding reply  
+#### Head Motion Plot
+![](images/pyneal/dashboard_headMotion.png)
 
+Plot displaying head motion throughout the scan. Head motion is expressed in both absolute displacement (*abs*, dark blue) from a fixed reference volume (typically the 4th volume in the series), as well as relative displacement (*rel*, light blue) relative to the previous volume. 
+
+Head motion estimates are based on [histogram registration](http://nipy.org/nipy/api/generated/nipy.algorithms.registration.histogram_registration.html) algorithms, and are applied to fMRI data using a similar approach as found in [https://github.com/cni/rtfmri/blob/master/rtfmri/analyzers.py](https://github.com/cni/rtfmri/blob/master/rtfmri/analyzers.py)
+
+#### Processing Time Plot
+![](images/pyneal/dashboard_processingTime.png)
+
+Plot displaying the processing time per volume throughout a scan. You can use this plot to verify that your analyses are successfully keeping pace with the TR of data collection.
+
+#### Pyneal Scanner Log
+![](images/pyneal/dashboard_scannerLog.png)
+
+Simple log message area indicating incoming volumes from **Pyneal Scanner** as they arrive. 
+
+#### Results Server Log
+![](images/pyneal/dashboard_resultsServerLog.png)
+
+A log window allowing you to monitor communication between **Pyneal** (specifically, the results server) and any remote **End User**. Each request for results sent from an **End User** will appear on the right half of the log window, along with a blue circle and details as to which volume the results are requested from. 
+
+The response from the results server will be shown immediately below each request, left-aligned within the log window. 
+
+* If the requested results are found, the status circle will be maroon, and you will see the JSON message that was returned to the **End User**. The JSON message will contain a key:value pair indicating the requested results were found (`"foundResults":true`), as well as other key:value pairs containing the results themselves. 
+
+* If the requested results are not found (for instance, if the requested volume has not arrived and been analyzed yet), the status circle will be grey, and you will see a returned JSON message with a single key:value pair indicating that the results were not found (`"foundResults":false`)
+
+For more info, see [**sending requests**](endUser.md#sending-requests) and [**parsing responses**](endUser.md#parsing-responses)
 
 
 ## After a real-time scan
