@@ -7,7 +7,7 @@ First step, make sure you've followed the instructions at [**setup: Pyneal Scann
 
 ## Basic Usage 
 
-To launch **Pyneal Scanner** from the **scanner computer**, open the command line and navigate to the `pyneal_scanner` directory. From the `pyneal_scanner` directory, type:
+To launch **Pyneal Scanner** from the **scanner computer**, open a terminal and navigate to the `pyneal_scanner` directory. From the `pyneal_scanner` directory, type:
 
 > python pynealScanner.py
 

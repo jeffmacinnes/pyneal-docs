@@ -102,7 +102,7 @@ The **Pyneal** configuration is set via GUI. When you launch `pyneal.py` a GUI w
 * **Communication**:
 	* **Pyneal Host IP**: The IP address of the machine running **Pyneal** (i.e. the **analysis machine**). This is the IP address that **Pyneal Scanner** will try to connect to, as well as any end user that is making requests for results. Make sure, therefore, that this is an IP address that is accessible to any remote machine that needs it. If you are doing everything locally from the same machine (e.g. testing, running simulations, etc), you can set this to the local host, or loopback address, at `127.0.0.1`. However, in all other situations, you'll probably want this to be the unique IP address assigned to the network card in the **analysis machine**. 
 	* **Pyneal-Scanner Port**: The port number over which **Pyneal** will be listening for incoming data from **Pyneal Scanner**. Note that this number should match the port number specified in the **pynealSocketPort** configuration field of the **Pyneal Scanner** set up.
-	* **Results Server Port**: The port number that **Pyneal** will use to set up the **Results Server**. Remote machines that wish to retrieve real-time analysis output during a scan can send requests over this port number. See Formatting Results Server Requests [TODO]
+	* **Results Server Port**: The port number that **Pyneal** will use to set up the **Results Server**. Remote machines that wish to retrieve real-time analysis output during a scan can send requests over this port number. See [**Requesting Results**](endUser.md#sending-requests)
 
 * **Mask**: Path to mask file (Nifti - .nii/.nii.gz) to be used during real-time analysis. Each incoming 3D volume will be masked to remove non-relevant voxels. The mask *must* match the dimensions and orientation of incoming functional data (see [**Creating Masks**](/createMask.md) for Real-time Analysis). The mask will limit which voxels get passed on to the analysis stage. So, for example:
 	* To calculate the **Average** ROI activation at every timepoint, choose a mask file that represents the target ROI.
@@ -114,7 +114,7 @@ The **Pyneal** configuration is set via GUI. When you launch `pyneal.py` a GUI w
 * **Analysis**: Real-time analysis options. The analysis you select will be computed at every timepoint throughout the scan.
 	* **Average**: Compute the average activation at each timepoint across all voxels within the mask
 	* **Median**: Compute the median activation at each timepoint across all voxels within the mask
-	* **Custom**: Choose a custom analysis script. This script will be executed at each new timepoint [see Setting up Custom Analysis Scripts TODO]
+	* **Custom**: Choose a custom analysis script. This script will be executed at each new timepoint (see [**Custom Analysis Scripts**](customAnalysis.md))
 
 * **Output**:
 	* Choose an output directory to store logs and results from the current session. The output from each new series will be stored as a subdirectory in this directory, named sequentially like 'pyneal_001'.  
