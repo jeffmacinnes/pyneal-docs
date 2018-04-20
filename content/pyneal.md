@@ -89,9 +89,9 @@ Specify how many timepoints will be in the upcoming series. The other dimensions
 
 Choose the analyses you want to carry out during the real-time run
 
-* **Average**: Built-in analysis routine. Compute the mean activation over all voxels in the **Mask** specified above. If the `Weighted Mask?` option is selected on the **Mask** panel, a *weighted* average will be calculated, using voxel values as weights. 
-* **Median**: Built-in analysis routine. Compute the median activation value over all voxels in the **Mask** specifed above. If the `Weighted Mask?` option is selected on the **Mask** panel, a *weighted* mean will be calculated, using voxel values as weights. (see [**weightedstats**](https://pypi.python.org/pypi/weightedstats/0.2) for algorithm).
-*  **Custom**: Load a custom analysis script. The analysis algorithms specified in the script will be executed on every incoming timepoint during the scan. (see [**Custom Analysis Scripts**](customAnalysis.md))
+* **Average**: Built-in analysis routine. Compute the mean activation over all voxels in the **Mask** specified above. The results will be stored as a dictionary under the key name `average`. If the `Weighted Mask?` option is selected on the **Mask** panel, a *weighted* average will be calculated, using voxel values as weights. In this case, the results will be stored in a dictionary under the key name `weightedAverage`. 
+* **Median**: Built-in analysis routine. Compute the median activation value over all voxels in the **Mask** specifed above. The results will be stored in a dictionary under the key name `median`. If the `Weighted Mask?` option is selected on the **Mask** panel, a *weighted* mean will be calculated, using voxel values as weights. (see [**weightedstats**](https://pypi.python.org/pypi/weightedstats/0.2) for algorithm). In this case, the results will be stored in a dictionary under the key name `weightedMedian`. 
+*  **Custom**: Load a custom analysis script. The analysis algorithms specified in the script will be executed on every incoming timepoint during the scan. How the results get stored in the results dictionary throughout a scan is up to your particular script (see [**Custom Analysis Scripts**](customAnalysis.md))
 
 #### Output
 ![](images/pyneal/setupGUI_output.png)
@@ -194,9 +194,58 @@ The series output directory has the following structure:
 Each series will contain the following output files:
 
 * `pynealLog.log` - detailed log messages from the current series
-* `results.json` - JSON formatted file containg all of the analysis results from the current series
+* `results.json` - JSON formatted file containg all of the analysis results from the current series. (see below on [**Interpreting the results file**](pyneal.md#interpreting-the-results-file) for more info) 
 * `receivedFunc.nii.gz` - nifti formatted 4D file containing the series data itself, as received by **Pyneal**, from the current series  
 
+
+### Interpreting the results file
+The results from the analyses computed in real-time will be stored in the output directory in a file named `results.json`
+
+This file will have an entry for every volume in the series, and each entry will contain a nested JSON object that has all of the results for that particular volume. For instance, if the real-time analysis is calculating the average signal within the mask, the results file would look like:
+
+```
+{
+"0":
+	{"average": 2149.81},
+"1":
+	{"average": 2234.32},
+"2":
+	{"average": 1981.45},
+.
+.
+.
+}
+```
+
+Note that the top-level keys are volume indices that use a 0-based index. 
+
+In the above example, we're computing a single result on every volume (i.e. "average"). However, if you are using a custom analysis script that is computing multple results on every volume, the same idea holds, and you'll see all of those results for each volume. For instance, if you have a custom analysis script that is computing the mean activation separately in 3 ROIs, the results may look like:
+
+```
+{
+"0":
+	{
+	"roi1_average": 2149.81, 
+	"roi2_average": 2519.11, 
+	"roi3_average": 2543.61
+	},
+"1":
+	{
+	"roi1_average": 1884.51, 
+	"roi2_average": 2341.43, 
+	"roi3_average": 2253.67
+	},
+"2":
+	{
+	"roi1_average": 2001.76, 
+	"roi2_average": 2214.23, 
+	"roi3_average": 2877.17
+	},
+.
+.
+.
+}
+```
 
 ## Pyneal subcomponents
 
