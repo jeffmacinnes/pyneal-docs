@@ -175,11 +175,27 @@ For more info, see [**sending requests**](endUser.md#sending-requests) and [**pa
 
 ## After a real-time scan
 
-After the scan has completed, the `seriesOutputDir` will contain the folling output files:
+After the scan has completed, all output files will be found in a unique subdirectory for each scan. Subdirectories will appear within the `Output Directory` that was specified in the **Pyneal** setup GUI. Subdirectories follow the naming convention `pyneal_###`, staring with `pyneal_001` for the first scan, and named sequentially thereafter.
 
-* `pynealLog.log` - detailed log messages from the current scan
-* `results.json` - JSON formatted file containg all of the analysis results from the current scan
-* `receivedFunc.nii.gz` - nifti formatted 4D file containing the series data itself, as received by **Pyneal**, from the current scan  
+***Note:*** you can find the full path to the unique series output directory in the command line output for this series:
+
+> MainThread -  Setting: seriesOutputDir: /path/to/outputDir/pyneal_001  
+
+The series output directory has the following structure:
+
+```
+<seriesOutputDir>
+		└── pyneal_001
+			├── pynealLog.log
+			├── receivedFunc.nii.gz
+			└── results.json
+```
+
+Each series will contain the following output files:
+
+* `pynealLog.log` - detailed log messages from the current series
+* `results.json` - JSON formatted file containg all of the analysis results from the current series
+* `receivedFunc.nii.gz` - nifti formatted 4D file containing the series data itself, as received by **Pyneal**, from the current series  
 
 
 ## Pyneal subcomponents

@@ -214,7 +214,7 @@ If not, the response message will simply be:
 
 `{foundResults: False}`
  
-For more information on formatting requests and interpretting responses, see [**requesting results**](TODO) TODO)
+For more information on formatting requests and interpretting responses, see [**requesting results**](endUser.md#sending-requests))
  
  
  
@@ -238,5 +238,5 @@ In a neurofeedback context, for example, the end-user may be the software that i
 
 This is an example of how requests should be formatted and sent to **Pyneal**. Requests are made on a per-volume basis, and each request should take the form of a 4-character string representing the desired volume index (using a 0-based index). For example, to request the first volume in the series, the string would be '0000'; to request the 25th volume in the series the string would be '0024', and so on...
 
-For more information on formatting requests and interpretting responses, see [**requesting results**](TODO) TODO)
+For more information on formatting requests and interpretting responses, see [**requesting results**](endUser.md#sending-requests) and [**parsing responses**](endUser.md#parsing-responses)
  

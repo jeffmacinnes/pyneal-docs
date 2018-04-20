@@ -979,11 +979,24 @@ MainThread -  Results Server alive and listening....  </p>
 </ul>
 <p>For more info, see <a href="../endUser/#sending-requests"><strong>sending requests</strong></a> and <a href="../endUser/#parsing-responses"><strong>parsing responses</strong></a></p>
 <h2 id="after-a-real-time-scan">After a real-time scan<a class="headerlink" href="#after-a-real-time-scan" title="Permanent link">&para;</a></h2>
-<p>After the scan has completed, the <code>seriesOutputDir</code> will contain the folling output files:</p>
+<p>After the scan has completed, all output files will be found in a unique subdirectory for each scan. Subdirectories will appear within the <code>Output Directory</code> that was specified in the <strong>Pyneal</strong> setup GUI. Subdirectories follow the naming convention <code>pyneal_###</code>, staring with <code>pyneal_001</code> for the first scan, and named sequentially thereafter.</p>
+<p><strong><em>Note:</em></strong> you can find the full path to the unique series output directory in the command line output for this series:</p>
+<blockquote>
+<p>MainThread -  Setting: seriesOutputDir: /path/to/outputDir/pyneal_001  </p>
+</blockquote>
+<p>The series output directory has the following structure:</p>
+<pre><code>&lt;seriesOutputDir&gt;
+        └── pyneal_001
+            ├── pynealLog.log
+            ├── receivedFunc.nii.gz
+            └── results.json
+</code></pre>
+
+<p>Each series will contain the following output files:</p>
 <ul>
-<li><code>pynealLog.log</code> - detailed log messages from the current scan</li>
-<li><code>results.json</code> - JSON formatted file containg all of the analysis results from the current scan</li>
-<li><code>receivedFunc.nii.gz</code> - nifti formatted 4D file containing the series data itself, as received by <strong>Pyneal</strong>, from the current scan  </li>
+<li><code>pynealLog.log</code> - detailed log messages from the current series</li>
+<li><code>results.json</code> - JSON formatted file containg all of the analysis results from the current series</li>
+<li><code>receivedFunc.nii.gz</code> - nifti formatted 4D file containing the series data itself, as received by <strong>Pyneal</strong>, from the current series  </li>
 </ul>
 <h2 id="pyneal-subcomponents">Pyneal subcomponents<a class="headerlink" href="#pyneal-subcomponents" title="Permanent link">&para;</a></h2>
 <h3 id="scanreceiver">scanReceiver<a class="headerlink" href="#scanreceiver" title="Permanent link">&para;</a></h3>

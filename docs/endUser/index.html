@@ -507,7 +507,29 @@
                 <p><img alt="" src="../images/endUser/endUser.png" /></p>
 <p>We refer to <em>any</em> component that requests results from <strong>Pyneal</strong> during a scan as an <strong>End User</strong>. For instance, a potential <strong>End User</strong> could be task presentation software that periodically makes requests for analysis results in order to update a neurofeedback display for the participant. </p>
 <h2 id="sending-requests">Sending requests<a class="headerlink" href="#sending-requests" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/endUser/endUser_request.png" /></p>
+<p>Sending a request to <strong>Pyneal</strong> for the results from a specific volume simply requires you to establish a connection to <strong>Pyneal</strong> and send the index value of the volume you'd like to request (0-based index). The volume index should be formatted as a 4-character string, with zero-padded as needed. For instance, to request the results from the 9th volume (i.e. index 8), the request would be formatted as <code>0008</code>. </p>
+<p>Here is an example, written in <code>python</code> for how you might <em>send</em> a request for the 9th volume:</p>
+<pre><code>import socket
+
+# socket configs
+host = '127.0.0.1'  # Pyneal address
+port = 5556     # results server port number
+
+# connect to the results server of Pyneal
+clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+clientSocket.connect((host, port))
+
+# format request for the 9th volume (index 8).
+request = '0008'
+
+# send the request
+clientSocket.send(request.encode())
+</code></pre>
+
+<p>This approach can be incorporated into any <strong>End User</strong> application (e.g. an experimental task) to request specific results throughout a scan. </p>
 <h2 id="parsing-responses">Parsing Responses<a class="headerlink" href="#parsing-responses" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/endUser/endUser_response.png" /></p>
                 
                   
                 
