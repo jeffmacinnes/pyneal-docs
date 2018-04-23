@@ -248,12 +248,25 @@ In the above example, we're computing a single result on every volume (i.e. "ave
 ```
 
 ## Pyneal subcomponents
+![](images/pyneal/pynealSubcomponents.png)
+
+Under the hood, **Pyneal** uses multiple threads to manage the various subcomponents and handle communication with remote components efficiently. This section will provide a brief overview of relevant threads in order to better understand how **Pyneal** works, and help with interpreting the content `pynealLog.log` output files. 
+
+### MainThread
+The `MainThread` of **Pyneal** can be thought of as the backbone, coordinating the various subcomponents and running the main analysis. The `MainThread` presents the setup GUI, initializes **Pyneal** based on the user-specified settings, and launches the various subthreads. 
+
+Once the scan begins, the `MainThread` iterates through each expected volume in the series. It checks in with the [**scanReceiver**](pyneal.md#scanReceiver) to see which volumes have arrived. As soon as each volume is available, it will run the specified analyses, and send the results to the [**resultsServer**](pyneal.md#resultsSever). 
 
 ### scanReceiver
+The `scanReceiver` runs on `Thread-1`. Once the `scanReceiver` is launched by the `MainThread`, it opens a socket connection to **Pyneal Scanner** and waits for the scan to begin. 
+
+Once the scan begins, **Pyneal Scanner** sends reformatted 3D volumes (and header information) over the socket connection. The `scanReceiver` receives this data, converts the byte stream into an array, and adds this data to the 4D matrix for the series (using the header information to determine the appropriate volume index).  
 
 ### resultsServer
 
+The `resultsServer` runs on `Thread-2`. During a scan, the `resultsServer` will listen for incoming requests from a remote **End User**. Each time a request is received, the `resultsServer` will check to see if the requested volume has arrived and been analyzed. If so, it will return a response containing the results for that volume. If not, it will return a response indicating that it could not find results for that volume. 
 
+For more info, see [**sending requests**](endUser.md#sending-requests) and [**parsing responses**](endUser.md#parsing-responses)
 
 
 

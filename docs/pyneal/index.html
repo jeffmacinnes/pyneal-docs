@@ -454,6 +454,19 @@
     After a real-time scan
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interpreting-the-results-file" title="Interpreting the results file" class="md-nav__link">
+    Interpreting the results file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -463,6 +476,13 @@
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mainthread" title="MainThread" class="md-nav__link">
+    MainThread
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#scanreceiver" title="scanReceiver" class="md-nav__link">
@@ -804,6 +824,19 @@
     After a real-time scan
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interpreting-the-results-file" title="Interpreting the results file" class="md-nav__link">
+    Interpreting the results file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -813,6 +846,13 @@
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mainthread" title="MainThread" class="md-nav__link">
+    MainThread
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#scanreceiver" title="scanReceiver" class="md-nav__link">
@@ -911,9 +951,9 @@
 <p><img alt="" src="../images/pyneal/setupGUI_analysis.png" /></p>
 <p>Choose the analyses you want to carry out during the real-time run</p>
 <ul>
-<li><strong>Average</strong>: Built-in analysis routine. Compute the mean activation over all voxels in the <strong>Mask</strong> specified above. If the <code>Weighted Mask?</code> option is selected on the <strong>Mask</strong> panel, a <em>weighted</em> average will be calculated, using voxel values as weights. </li>
-<li><strong>Median</strong>: Built-in analysis routine. Compute the median activation value over all voxels in the <strong>Mask</strong> specifed above. If the <code>Weighted Mask?</code> option is selected on the <strong>Mask</strong> panel, a <em>weighted</em> mean will be calculated, using voxel values as weights. (see <a href="https://pypi.python.org/pypi/weightedstats/0.2"><strong>weightedstats</strong></a> for algorithm).</li>
-<li><strong>Custom</strong>: Load a custom analysis script. The analysis algorithms specified in the script will be executed on every incoming timepoint during the scan. (see <a href="../customAnalysis/"><strong>Custom Analysis Scripts</strong></a>)</li>
+<li><strong>Average</strong>: Built-in analysis routine. Compute the mean activation over all voxels in the <strong>Mask</strong> specified above. The results will be stored as a dictionary under the key name <code>average</code>. If the <code>Weighted Mask?</code> option is selected on the <strong>Mask</strong> panel, a <em>weighted</em> average will be calculated, using voxel values as weights. In this case, the results will be stored in a dictionary under the key name <code>weightedAverage</code>. </li>
+<li><strong>Median</strong>: Built-in analysis routine. Compute the median activation value over all voxels in the <strong>Mask</strong> specifed above. The results will be stored in a dictionary under the key name <code>median</code>. If the <code>Weighted Mask?</code> option is selected on the <strong>Mask</strong> panel, a <em>weighted</em> mean will be calculated, using voxel values as weights. (see <a href="https://pypi.python.org/pypi/weightedstats/0.2"><strong>weightedstats</strong></a> for algorithm). In this case, the results will be stored in a dictionary under the key name <code>weightedMedian</code>. </li>
+<li><strong>Custom</strong>: Load a custom analysis script. The analysis algorithms specified in the script will be executed on every incoming timepoint during the scan. How the results get stored in the results dictionary throughout a scan is up to your particular script (see <a href="../customAnalysis/"><strong>Custom Analysis Scripts</strong></a>)</li>
 </ul>
 <h4 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
 <p><img alt="" src="../images/pyneal/setupGUI_output.png" /></p>
@@ -995,12 +1035,64 @@ MainThread -  Results Server alive and listening....  </p>
 <p>Each series will contain the following output files:</p>
 <ul>
 <li><code>pynealLog.log</code> - detailed log messages from the current series</li>
-<li><code>results.json</code> - JSON formatted file containg all of the analysis results from the current series</li>
+<li><code>results.json</code> - JSON formatted file containg all of the analysis results from the current series. (see below on <a href="./#interpreting-the-results-file"><strong>Interpreting the results file</strong></a> for more info) </li>
 <li><code>receivedFunc.nii.gz</code> - nifti formatted 4D file containing the series data itself, as received by <strong>Pyneal</strong>, from the current series  </li>
 </ul>
+<h3 id="interpreting-the-results-file">Interpreting the results file<a class="headerlink" href="#interpreting-the-results-file" title="Permanent link">&para;</a></h3>
+<p>The results from the analyses computed in real-time will be stored in the output directory in a file named <code>results.json</code></p>
+<p>This file will have an entry for every volume in the series, and each entry will contain a nested JSON object that has all of the results for that particular volume. For instance, if the real-time analysis is calculating the average signal within the mask, the results file would look like:</p>
+<pre><code>{
+&quot;0&quot;:
+    {&quot;average&quot;: 2149.81},
+&quot;1&quot;:
+    {&quot;average&quot;: 2234.32},
+&quot;2&quot;:
+    {&quot;average&quot;: 1981.45},
+.
+.
+.
+}
+</code></pre>
+
+<p>Note that the top-level keys are volume indices that use a 0-based index. </p>
+<p>In the above example, we're computing a single result on every volume (i.e. "average"). However, if you are using a custom analysis script that is computing multple results on every volume, the same idea holds, and you'll see all of those results for each volume. For instance, if you have a custom analysis script that is computing the mean activation separately in 3 ROIs, the results may look like:</p>
+<pre><code>{
+&quot;0&quot;:
+    {
+    &quot;roi1_average&quot;: 2149.81, 
+    &quot;roi2_average&quot;: 2519.11, 
+    &quot;roi3_average&quot;: 2543.61
+    },
+&quot;1&quot;:
+    {
+    &quot;roi1_average&quot;: 1884.51, 
+    &quot;roi2_average&quot;: 2341.43, 
+    &quot;roi3_average&quot;: 2253.67
+    },
+&quot;2&quot;:
+    {
+    &quot;roi1_average&quot;: 2001.76, 
+    &quot;roi2_average&quot;: 2214.23, 
+    &quot;roi3_average&quot;: 2877.17
+    },
+.
+.
+.
+}
+</code></pre>
+
 <h2 id="pyneal-subcomponents">Pyneal subcomponents<a class="headerlink" href="#pyneal-subcomponents" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="../images/pyneal/pynealSubcomponents.png" /></p>
+<p>Under the hood, <strong>Pyneal</strong> uses multiple threads to manage the various subcomponents and handle communication with remote components efficiently. This section will provide a brief overview of relevant threads in order to better understand how <strong>Pyneal</strong> works, and help with interpreting the content <code>pynealLog.log</code> output files. </p>
+<h3 id="mainthread">MainThread<a class="headerlink" href="#mainthread" title="Permanent link">&para;</a></h3>
+<p>The <code>MainThread</code> of <strong>Pyneal</strong> can be thought of as the backbone, coordinating the various subcomponents and running the main analysis. The <code>MainThread</code> presents the setup GUI, initializes <strong>Pyneal</strong> based on the user-specified settings, and launches the various subthreads. </p>
+<p>Once the scan begins, the <code>MainThread</code> iterates through each expected volume in the series. It checks in with the <a href="./#scanReceiver"><strong>scanReceiver</strong></a> to see which volumes have arrived. As soon as each volume is available, it will run the specified analyses, and send the results to the <a href="./#resultsSever"><strong>resultsServer</strong></a>. </p>
 <h3 id="scanreceiver">scanReceiver<a class="headerlink" href="#scanreceiver" title="Permanent link">&para;</a></h3>
+<p>The <code>scanReceiver</code> runs on <code>Thread-1</code>. Once the <code>scanReceiver</code> is launched by the <code>MainThread</code>, it opens a socket connection to <strong>Pyneal Scanner</strong> and waits for the scan to begin. </p>
+<p>Once the scan begins, <strong>Pyneal Scanner</strong> sends reformatted 3D volumes (and header information) over the socket connection. The <code>scanReceiver</code> receives this data, converts the byte stream into an array, and adds this data to the 4D matrix for the series (using the header information to determine the appropriate volume index).  </p>
 <h3 id="resultsserver">resultsServer<a class="headerlink" href="#resultsserver" title="Permanent link">&para;</a></h3>
+<p>The <code>resultsServer</code> runs on <code>Thread-2</code>. During a scan, the <code>resultsServer</code> will listen for incoming requests from a remote <strong>End User</strong>. Each time a request is received, the <code>resultsServer</code> will check to see if the requested volume has arrived and been analyzed. If so, it will return a response containing the results for that volume. If not, it will return a response indicating that it could not find results for that volume. </p>
+<p>For more info, see <a href="../endUser/#sending-requests"><strong>sending requests</strong></a> and <a href="../endUser/#parsing-responses"><strong>parsing responses</strong></a></p>
                 
                   
                 

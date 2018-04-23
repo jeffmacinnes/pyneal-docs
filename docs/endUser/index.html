@@ -530,6 +530,37 @@ clientSocket.send(request.encode())
 <p>This approach can be incorporated into any <strong>End User</strong> application (e.g. an experimental task) to request specific results throughout a scan. </p>
 <h2 id="parsing-responses">Parsing Responses<a class="headerlink" href="#parsing-responses" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../images/endUser/endUser_response.png" /></p>
+<p>Continuing from the previous section, once the results server on <strong>Pyneal</strong> <em>receives</em> a request for volume index <code>0008</code>, it will check to see if that volume has arrived and been analyzed yet.</p>
+<ul>
+<li>
+<p>If the volume <strong>has not</strong> arrived, the response will be a JSON message that contains a single key:value pair: <code>"foundResults":False</code></p>
+</li>
+<li>
+<p>If the volume <strong><em>has</em></strong> arrived, the response will be a JSON message that contains the key:value pair <code>"foundResults":True</code> as well all of the results key:value pairs for that volume. For instance, if the real-time analysis is set to compute the average activation with the selected mask, the response message for volume <code>0008</code> may look like <code>{'foundResults': True, 'average':2432}</code>. If you are using a custom analysis script that computes multiple results on each volume, all of those results will appear in the response message. For instance, if you have a custom analysis script that is computing the mean activation separately in 3 ROIs, the response message may look like <code>{'foundResults': True, "roi1_average": 2149.81, "roi2_average": 2519.11, "roi3_average": 2543.61}</code></p>
+</li>
+</ul>
+<p>Since the length of the response message can vary depending on A) whether the results were found or not, and B) the number of results that are being returned, the response itself will get sent to the remote <strong>End User</strong> in 2 waves:</p>
+<p>1) First, a header that simply reports the number of characters in the upcoming response message. </p>
+<p>2) The response message itself. </p>
+<p>This way, the <strong>End User</strong> can know precisely how many bytes to read from the socket connection. </p>
+<p>For reference, here is the code that the results server uses to send responses:</p>
+<pre><code>def sendResults(self, connection, results):
+    &quot;&quot;&quot;
+    Format the results dict to a json string, and send results to the client.
+    Message will be sent in 2 waves: first a header indicating the msg length,
+    and then the message itself
+    &quot;&quot;&quot;
+    # format as json string and then convert to bytes
+    formattedMsg = json.dumps(results).encode()
+
+    # build then send header with info about msg length
+    hdr = '{:d}\n'.format(len(formattedMsg))
+    connection.send(hdr.encode())
+
+    # send results as formatted message
+    connection.sendall(formattedMsg)
+    self.logger.debug('Sent result: {}'.format(formattedMsg))
+</code></pre>
                 
                   
                 
