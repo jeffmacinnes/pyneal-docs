@@ -1,6 +1,6 @@
 This schematic gives a very broad overview of the path that data follows throughout a real-time scan with **Pyneal**
 
-![](images/dataflow/dataflow.png)
+![](images/dataflow/dataFlow.png)
 
 * Once the scan begins, raw images are collected by **Pyneal Scanner**, and then converted and reoriented to a standardized format (see [**image orientation**](/imageOrientation.md) for more info). 
 * [**Pyneal Scanner**](pynealScanner.md) exports converted 3D volumes to [**Pyneal**](pyneal.md).

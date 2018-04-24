@@ -8,7 +8,7 @@ First step, make sure you've followed the instructions at [**setup: Pyneal**](se
 
 To launch **Pyneal** from the **analysis computer**, open a terminal and navigate to the `pyneal` directory. From there, type:
 
-> python3 pyneal.py
+> python pyneal.py
 
 This will launch a GUI that will allow you to set up **Pyneal** for a particular real-time scan. Once you hit submit, a dashboard will appear (if selected in the GUI) that allows you to monitor the progress of your scan. Additional log messages will appear in the terminal throughout the scan. 
 
