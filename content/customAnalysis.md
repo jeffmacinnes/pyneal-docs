@@ -115,6 +115,85 @@ def __init__(self, mask_img):
     ########################################################################
 ```    
 
-First, note that a reference to the mask file specified in the GUI (`mask_img`) is passed into this class. 
+#### Preset variables, and creating new ones
+
+First, note that the mask data from the mask file specified in the GUI (`mask_img`, nibabel-like object) is passed into this class, in case you want to use the mask during your analysis. However, in order to use the `mask_img` in the `compute` method (or any other method), you have to create a local variable that is accessible within the class:
+
+```python
+# local reference to MASK from Pyneal setup GUI
+self.mask = mask_img
+```
+
+Now, you can reference the mask in any other method by referring to `self.mask`. In fact, the same thing is true for any variable you create in the `__init__` method; in order to access the variable in other method, you must prepend the variable name with `self.`
+
+The `__init__` method also contains a couple of other useful tidbits near the top. First, we add the directory that contains your custom analysis script to the path. This way, you can easily load any additional files that are exist in that same directory. 
+
+```python
+# Add the directory that this script lives in to the path. This way it
+# is easy to load any additional files you want to put in the same
+# directory as your custom analysis script
+self.customAnalysisDir = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(self.customAnalysisDir)
+```
+#### Adding log messages
+It also creates a reference to the logger, which is the tool that adds new messages to the `pynealLog.log` output file. You can use this reference anywhere in your script to add new log messages, which will be automatically timestamped and included in the output file. You can even control the type of log message
+
+* **info** messages will get written to the output file ***AND*** appear in the stdOut of the terminal
+* **debug** messages will only get written to the output file
+
+```python 
+# Import the logger. If desired, you can write log messages to the
+# Pyneal log file using:
+# self.logger.info('my log message') - log file and stdOut
+# self.logger.debug('my log message') - log file only
+self.logger = logging.getLogger('PynealLog')
+```
+
+#### User-specified `__init__` code
+Finally, at the bottom of the `__init__` method is space for you to include any additional code that is needed. 
+
+```python
+########################################################################
+############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+self.myResult = 1
+
+
+
+############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+########################################################################
+```
+
+In order to illustrate, in the example above we're simply creating a new variable (`self.myResult`) and assigning it a value of `1`.
+
 
 ### `compute` 
+
+The `compute` method is what actually gets called during a scan. In fact, it gets called each time a new 3D volume appears from the scanner. Here's the code in more detail:
+
+```python
+def compute(self, volume, volIdx):
+    """
+    Code that will be executed on EACH new 3D volume that arrives DURING the
+    real-time scan. Results must be returned in a dictionary. No restrictions
+    on dict key names or values, but note that the volume index will get added
+    automatically by Pyneal before the result gets placed on the results
+    server, so no need to specify that here
+    """
+    ########################################################################
+    ############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+    self.myResult += 1
+
+
+
+
+    ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+    ########################################################################
+
+    return {'result': self.myResult}
+```
+
+#### User-specified `compute` code
+
+
+
+#### Storing results
