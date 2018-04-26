@@ -380,15 +380,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#initialize" title="Initialize" class="md-nav__link">
-    Initialize
+  <a href="#__init__-initialize" title="__init__ (initialize)" class="md-nav__link">
+    __init__ (initialize)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#compute" title="Compute" class="md-nav__link">
-    Compute
+  <a href="#compute" title="compute" class="md-nav__link">
+    compute
   </a>
   
 </li>
@@ -501,15 +501,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#initialize" title="Initialize" class="md-nav__link">
-    Initialize
+  <a href="#__init__-initialize" title="__init__ (initialize)" class="md-nav__link">
+    __init__ (initialize)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#compute" title="Compute" class="md-nav__link">
-    Compute
+  <a href="#compute" title="compute" class="md-nav__link">
+    compute
   </a>
   
 </li>
@@ -543,7 +543,7 @@
 <p>The best way to ensure these constraints are met is to base your script off of the template file included with <strong>Pyneal</strong>. You can find this template in </p>
 <p><code>pyneal/utils/customAnalyses/customAnalysisTemplate.py</code></p>
 <p>Or, you can simply copy the text here:</p>
-<pre><code>import sys
+<pre><code class="python">import sys
 import os
 from os.path import join
 import logger
@@ -602,8 +602,41 @@ class CustomAnalysis:
         return {'result': self.myResult}
 </code></pre>
 
-<h3 id="initialize">Initialize<a class="headerlink" href="#initialize" title="Permanent link">&para;</a></h3>
-<h3 id="compute">Compute<a class="headerlink" href="#compute" title="Permanent link">&para;</a></h3>
+<p>The script class consists of a single class (<code>CustomAnalysis</code>) with two methods: <code>__init__</code> and <code>compute</code>. You are welcome to include any additional methods that are useful, just make sure these two methods exist. See below for details on what each method does and how to customize them. </p>
+<h3 id="__init__-initialize"><code>__init__</code> (initialize)<a class="headerlink" href="#__init__-initialize" title="Permanent link">&para;</a></h3>
+<p>The <code>__init__</code> method is called as soon as you hit <code>submit</code> on the setup GUI. In other words, the code in this method runs <em>before</em> the scan begins. Thus, the <code>__init__</code> method is where you will specify any set up code that needs to be initialized before the scan begins (e.g. loading multiple mask files).</p>
+<p>Let's take a look at the code in more detail:</p>
+<pre><code class="python">def __init__(self, mask_img):
+    &quot;&quot;&quot;
+    Everything in the __init__ class will be executed BEFORE the scan begins
+    &quot;&quot;&quot;
+    # local reference to MASK from Pyneal setup GUI
+    self.mask = mask_img
+
+    # Add the directory that this script lives in to the path. This way it
+    # is easy to load any additional files you want to put in the same
+    # directory as your custom analysis script
+    self.customAnalysisDir = os.path.abspath(os.path.dirname(__file__))
+    sys.path.append(self.customAnalysisDir)
+
+    # Import the logger. If desired, you can write log messages to the
+    # Pyneal log file using:
+    # self.logger.info('my log message') - log file and stdOut
+    # self.logger.debug('my log message') - log file only
+    self.logger = logging.getLogger('PynealLog')
+
+    ########################################################################
+    ############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+    self.myResult = 1
+
+
+
+    ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+    ########################################################################
+</code></pre>
+
+<p>First, note that a reference to the mask file specified in the GUI (<code>mask_img</code>) is passed into this class. </p>
+<h3 id="compute"><code>compute</code><a class="headerlink" href="#compute" title="Permanent link">&para;</a></h3>
                 
                   
                 
