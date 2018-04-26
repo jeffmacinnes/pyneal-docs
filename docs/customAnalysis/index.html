@@ -353,9 +353,56 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Customized Analyses
+      </label>
+    
     <a href="./" title="Customized Analyses" class="md-nav__link md-nav__link--active">
       Customized Analyses
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-analysis-script" title="Custom Analysis Script" class="md-nav__link">
+    Custom Analysis Script
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize" title="Initialize" class="md-nav__link">
+    Initialize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute" title="Compute" class="md-nav__link">
+    Compute
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -442,6 +489,40 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-analysis-script" title="Custom Analysis Script" class="md-nav__link">
+    Custom Analysis Script
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initialize" title="Initialize" class="md-nav__link">
+    Initialize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute" title="Compute" class="md-nav__link">
+    Compute
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -454,7 +535,75 @@
                 
                 
                 <h1 id="customized-analyses">Customized Analyses<a class="headerlink" href="#customized-analyses" title="Permanent link">&para;</a></h1>
-<p>TODO</p>
+<p>One of <strong>Pyneal's</strong> most powerful features is its ability to run customized analyses during a real-time scan. This means you can design your own analyses to fit your unique experimental needs, and <strong>Pyneal</strong> will execute those analyses on every new timepoint and store the results. </p>
+<p>To take advantage of this feature, you write a custom analysis script (in <code>python</code>), and select the <code>Custom</code> button in the Analysis pane of the GUI:</p>
+<p><img alt="" src="../images/customAnalysis/customAnalysis_GUI.png" /></p>
+<h2 id="custom-analysis-script">Custom Analysis Script<a class="headerlink" href="#custom-analysis-script" title="Permanent link">&para;</a></h2>
+<p>While custom analyses offer a lot of flexibility, there are a couple of important constraints that need to be included in the script to ensure it can be integrated into the typical <strong>Pyneal</strong> data flow. </p>
+<p>The best way to ensure these constraints are met is to base your script off of the template file included with <strong>Pyneal</strong>. You can find this template in </p>
+<p><code>pyneal/utils/customAnalyses/customAnalysisTemplate.py</code></p>
+<p>Or, you can simply copy the text here:</p>
+<pre><code>import sys
+import os
+from os.path import join
+import logger
+
+import numpy as np
+
+class CustomAnalysis:
+    def __init__(self, mask_img):
+        &quot;&quot;&quot;
+        Everything in the __init__ class will be executed BEFORE the scan begins
+        &quot;&quot;&quot;
+        # local reference to MASK from Pyneal setup GUI
+        self.mask = mask_img
+
+        # Add the directory that this script lives in to the path. This way it
+        # is easy to load any additional files you want to put in the same
+        # directory as your custom analysis script
+        self.customAnalysisDir = os.path.abspath(os.path.dirname(__file__))
+        sys.path.append(self.customAnalysisDir)
+
+        # Import the logger. If desired, you can write log messages to the
+        # Pyneal log file using:
+        # self.logger.info('my log message') - log file and stdOut
+        # self.logger.debug('my log message') - log file only
+        self.logger = logging.getLogger('PynealLog')
+
+        ########################################################################
+        ############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+        self.myResult = 1
+
+
+
+        ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+        ########################################################################
+
+
+
+    def compute(self, volume, volIdx):
+        &quot;&quot;&quot;
+        Code that will be executed on EACH new 3D volume that arrives DURING the
+        real-time scan. Results must be returned in a dictionary. No restrictions
+        on dict key names or values, but note that the volume index will get added
+        automatically by Pyneal before the result gets placed on the results
+        server, so no need to specify that here
+        &quot;&quot;&quot;
+        ########################################################################
+        ############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+        self.myResult += 1
+
+
+
+
+        ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+        ########################################################################
+
+        return {'result': self.myResult}
+</code></pre>
+
+<h3 id="initialize">Initialize<a class="headerlink" href="#initialize" title="Permanent link">&para;</a></h3>
+<h3 id="compute">Compute<a class="headerlink" href="#compute" title="Permanent link">&para;</a></h3>
                 
                   
                 
