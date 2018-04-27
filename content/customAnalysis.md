@@ -192,8 +192,43 @@ def compute(self, volume, volIdx):
     return {'result': self.myResult}
 ```
 
+Note that the `compute` method passes in references to the current `volume` (3D numpy array, [x,y,z]), as well as the `volIdx`, an integer representing the current volume index (in 4th dimension; 0-based index). 
+
+
 #### User-specified `compute` code
 
+The `compute` method includes space for you to insert your own analysis code:
+
+```python
+########################################################################
+############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+self.myResult += 1
 
 
+
+
+############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+########################################################################
+
+```
+
+You can use this area to write customized analysis code that will be executed on each volume. In the simple example above, each time a new volume arrives, the `compute` method will increment the `self.myResult` variable (created in the `__init__` method) by 1.
+
+ 
 #### Storing results
+
+The `compute` method must return a python dictionary containing the analysis result (or results) for the current volume. 
+
+```python
+return {'result': self.myResult}
+```
+
+That said, you are free to customize the contents of this dictionary as needed to fit your experimental needs. For instance, if you are calculating the mean signal in multiple ROIs (and storing those value in variables named `roi1_meanSignal`, `roi2_meanSignal`, and `roi3_meanSignal`) your dictionary could look something like this:
+
+```python
+{'roi1_mean': roi1_meanSignal,
+'roi2_mean`: roi2_meanSignal,
+'roi3_mean`: roi3_meanSignal}
+```
+
+**Pyneal** automatically tacks on the current `volIdx` as an entry to the dictionary later on, so no need to include that information here. 

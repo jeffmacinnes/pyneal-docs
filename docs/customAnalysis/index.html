@@ -384,12 +384,59 @@
     __init__ (initialize)
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preset-variables-and-creating-new-ones" title="Preset variables, and creating new ones" class="md-nav__link">
+    Preset variables, and creating new ones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-log-messages" title="Adding log messages" class="md-nav__link">
+    Adding log messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-specified-__init__-code" title="User-specified __init__ code" class="md-nav__link">
+    User-specified __init__ code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#compute" title="compute" class="md-nav__link">
     compute
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-specified-compute-code" title="User-specified compute code" class="md-nav__link">
+    User-specified compute code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-results" title="Storing results" class="md-nav__link">
+    Storing results
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -505,12 +552,59 @@
     __init__ (initialize)
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preset-variables-and-creating-new-ones" title="Preset variables, and creating new ones" class="md-nav__link">
+    Preset variables, and creating new ones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-log-messages" title="Adding log messages" class="md-nav__link">
+    Adding log messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-specified-__init__-code" title="User-specified __init__ code" class="md-nav__link">
+    User-specified __init__ code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#compute" title="compute" class="md-nav__link">
     compute
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-specified-compute-code" title="User-specified compute code" class="md-nav__link">
+    User-specified compute code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-results" title="Storing results" class="md-nav__link">
+    Storing results
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -635,8 +729,98 @@ class CustomAnalysis:
     ########################################################################
 </code></pre>
 
-<p>First, note that a reference to the mask file specified in the GUI (<code>mask_img</code>) is passed into this class. </p>
+<h4 id="preset-variables-and-creating-new-ones">Preset variables, and creating new ones<a class="headerlink" href="#preset-variables-and-creating-new-ones" title="Permanent link">&para;</a></h4>
+<p>First, note that the mask data from the mask file specified in the GUI (<code>mask_img</code>, nibabel-like object) is passed into this class, in case you want to use the mask during your analysis. However, in order to use the <code>mask_img</code> in the <code>compute</code> method (or any other method), you have to create a local variable that is accessible within the class:</p>
+<pre><code class="python"># local reference to MASK from Pyneal setup GUI
+self.mask = mask_img
+</code></pre>
+
+<p>Now, you can reference the mask in any other method by referring to <code>self.mask</code>. In fact, the same thing is true for any variable you create in the <code>__init__</code> method; in order to access the variable in other method, you must prepend the variable name with <code>self.</code></p>
+<p>The <code>__init__</code> method also contains a couple of other useful tidbits near the top. First, we add the directory that contains your custom analysis script to the path. This way, you can easily load any additional files that are exist in that same directory. </p>
+<pre><code class="python"># Add the directory that this script lives in to the path. This way it
+# is easy to load any additional files you want to put in the same
+# directory as your custom analysis script
+self.customAnalysisDir = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(self.customAnalysisDir)
+</code></pre>
+
+<h4 id="adding-log-messages">Adding log messages<a class="headerlink" href="#adding-log-messages" title="Permanent link">&para;</a></h4>
+<p>It also creates a reference to the logger, which is the tool that adds new messages to the <code>pynealLog.log</code> output file. You can use this reference anywhere in your script to add new log messages, which will be automatically timestamped and included in the output file. You can even control the type of log message</p>
+<ul>
+<li><strong>info</strong> messages will get written to the output file <strong><em>AND</em></strong> appear in the stdOut of the terminal</li>
+<li><strong>debug</strong> messages will only get written to the output file</li>
+</ul>
+<pre><code class="python"># Import the logger. If desired, you can write log messages to the
+# Pyneal log file using:
+# self.logger.info('my log message') - log file and stdOut
+# self.logger.debug('my log message') - log file only
+self.logger = logging.getLogger('PynealLog')
+</code></pre>
+
+<h4 id="user-specified-__init__-code">User-specified <code>__init__</code> code<a class="headerlink" href="#user-specified-__init__-code" title="Permanent link">&para;</a></h4>
+<p>Finally, at the bottom of the <code>__init__</code> method is space for you to include any additional code that is needed. </p>
+<pre><code class="python">########################################################################
+############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+self.myResult = 1
+
+
+
+############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+########################################################################
+</code></pre>
+
+<p>In order to illustrate, in the example above we're simply creating a new variable (<code>self.myResult</code>) and assigning it a value of <code>1</code>.</p>
 <h3 id="compute"><code>compute</code><a class="headerlink" href="#compute" title="Permanent link">&para;</a></h3>
+<p>The <code>compute</code> method is what actually gets called during a scan. In fact, it gets called each time a new 3D volume appears from the scanner. Here's the code in more detail:</p>
+<pre><code class="python">def compute(self, volume, volIdx):
+    &quot;&quot;&quot;
+    Code that will be executed on EACH new 3D volume that arrives DURING the
+    real-time scan. Results must be returned in a dictionary. No restrictions
+    on dict key names or values, but note that the volume index will get added
+    automatically by Pyneal before the result gets placed on the results
+    server, so no need to specify that here
+    &quot;&quot;&quot;
+    ########################################################################
+    ############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+    self.myResult += 1
+
+
+
+
+    ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+    ########################################################################
+
+    return {'result': self.myResult}
+</code></pre>
+
+<p>Note that the <code>compute</code> method passes in references to the current <code>volume</code> (3D numpy array, [x,y,z]), as well as the <code>volIdx</code>, an integer representing the current volume index (in 4th dimension; 0-based index). </p>
+<h4 id="user-specified-compute-code">User-specified <code>compute</code> code<a class="headerlink" href="#user-specified-compute-code" title="Permanent link">&para;</a></h4>
+<p>The <code>compute</code> method includes space for you to insert your own analysis code:</p>
+<pre><code class="python">########################################################################
+############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+self.myResult += 1
+
+
+
+
+############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+########################################################################
+
+</code></pre>
+
+<p>You can use this area to write customized analysis code that will be executed on each volume. In the simple example above, each time a new volume arrives, the <code>compute</code> method will increment the <code>self.myResult</code> variable (created in the <code>__init__</code> method) by 1.</p>
+<h4 id="storing-results">Storing results<a class="headerlink" href="#storing-results" title="Permanent link">&para;</a></h4>
+<p>The <code>compute</code> method must return a python dictionary containing the analysis result (or results) for the current volume. </p>
+<pre><code class="python">return {'result': self.myResult}
+</code></pre>
+
+<p>That said, you are free to customize the contents of this dictionary as needed to fit your experimental needs. For instance, if you are calculating the mean signal in multiple ROIs (and storing those value in variables named <code>roi1_meanSignal</code>, <code>roi2_meanSignal</code>, and <code>roi3_meanSignal</code>) your dictionary could look something like this:</p>
+<pre><code class="python">{'roi1_mean': roi1_meanSignal,
+'roi2_mean`: roi2_meanSignal,
+'roi3_mean`: roi3_meanSignal}
+</code></pre>
+
+<p><strong>Pyneal</strong> automatically tacks on the current <code>volIdx</code> as an entry to the dictionary later on, so no need to include that information here. </p>
                 
                   
                 
