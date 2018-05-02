@@ -2,10 +2,10 @@
 
 
 * [x] Pyneal - quick overview
-* [] Pyneal Scanner in-depth
-* [] Pyneal in-depth
-	* [] requesting results
+* [x] Pyneal Scanner in-depth
+* [x] Pyneal in-depth
+	* [x] requesting results
 * [] Tutorial
-* [] Custom Analyses
+* [x] Custom Analyses
 * [] Image Orientation
 
