@@ -26,12 +26,29 @@ import logger
 import numpy as np
 
 class CustomAnalysis:
-    def __init__(self, mask_img):
+    def __init__(self, maskFile, weightMask, numTimepts):
         """
-        Everything in the __init__ class will be executed BEFORE the scan begins
+        Everything in the __init__ method will be executed BEFORE the scan
+        begins. This is a place to run any necessary setup code.
+
+        The __init__ method provides you with the following inputs from the
+        setup GUI:
+            - maskFile: path to the mask specified in the GUI
+            - weightMask: True/False flag for if "weight mask?" was checked
+            - numTimepts: number of timepts in run, as specified in GUI
+
+        You can use or ignore these inputs as needed for your analysis.
         """
-        # local reference to MASK from Pyneal setup GUI
-        self.mask = mask_img
+        # Load masks and weights, and create an within-class reference to
+        # each for use in later methods.
+        mask_img = nib.load(maskFile)
+        if weightMask == True:
+            self.weights = mask_img.get_data().copy()
+
+        self.mask = mask_img.get_data() > 0  # 3D boolean array of mask voxels
+
+        # within-class reference to numTimepts for use in later methods
+        self.numTimepts = numTimepts
 
         # Add the directory that this script lives in to the path. This way it
         # is easy to load any additional files you want to put in the same
@@ -86,12 +103,29 @@ The `__init__` method is called as soon as you hit `submit` on the setup GUI. In
 Let's take a look at the code in more detail:
 
 ```python
-def __init__(self, mask_img):
-    """
-    Everything in the __init__ class will be executed BEFORE the scan begins
-    """
-    # local reference to MASK from Pyneal setup GUI
-    self.mask = mask_img
+def __init__(self, maskFile, weightMask, numTimepts):
+        """
+        Everything in the __init__ method will be executed BEFORE the scan
+        begins. This is a place to run any necessary setup code.
+
+        The __init__ method provides you with the following inputs from the
+        setup GUI:
+            - maskFile: path to the mask specified in the GUI
+            - weightMask: True/False flag for if "weight mask?" was checked
+            - numTimepts: number of timepts in run, as specified in GUI
+
+        You can use or ignore these inputs as needed for your analysis.
+        """
+        # Load masks and weights, and create an within-class reference to
+        # each for use in later methods.
+        mask_img = nib.load(maskFile)
+        if weightMask == True:
+            self.weights = mask_img.get_data().copy()
+
+        self.mask = mask_img.get_data() > 0  # 3D boolean array of mask voxels
+
+        # within-class reference to numTimepts for use in later methods
+        self.numTimepts = numTimepts
 
     # Add the directory that this script lives in to the path. This way it
     # is easy to load any additional files you want to put in the same
@@ -117,14 +151,27 @@ def __init__(self, mask_img):
 
 #### Preset variables, and creating new ones
 
-First, note that the mask data from the mask file specified in the GUI (`mask_img`, nibabel-like object) is passed into this class, in case you want to use the mask during your analysis. However, in order to use the `mask_img` in the `compute` method (or any other method), you have to create a local variable that is accessible within the class:
+First, note that certain settings from the setup GUI are passed into the custom analysis script. Namely:
+
+* `maskFile`: the path to the mask specified in the GUI
+* `weightMask`: a True/False boolean flag indicating whether the `weight mask?` option was checked or not.
+* `numTimepts`: the number of timepts in the run, as specified in the GUI. 
+
+At the top of the `__init__` method, you'll see some code that reads in each of those settings, and creates local variables for each:
 
 ```python
-# local reference to MASK from Pyneal setup GUI
-self.mask = mask_img
+# Load masks and weights, and create an within-class reference to
+# each for use in later methods.
+mask_img = nib.load(maskFile)
+if weightMask == True:
+    self.weights = mask_img.get_data().copy()
+self.mask = mask_img.get_data() > 0  # 3D boolean array of mask voxels
+
+# within-class reference to numTimepts for use in later methods
+self.numTimepts = numTimepts
 ```
 
-Now, you can reference the mask in any other method by referring to `self.mask`. In fact, the same thing is true for any variable you create in the `__init__` method; in order to access the variable in other method, you must prepend the variable name with `self.`
+This enables you to reference these variables in any other method by referring to `self.mask`, `self.weights`, and `self.numTimepts`. In fact, the same thing is true for any variable you create in the `__init__` method; in order to access the variable in other methods, you must prepend the variable name with `self.`
 
 The `__init__` method also contains a couple of other useful tidbits near the top. First, we add the directory that contains your custom analysis script to the path. This way, you can easily load any additional files that are exist in that same directory. 
 
@@ -135,6 +182,7 @@ The `__init__` method also contains a couple of other useful tidbits near the to
 self.customAnalysisDir = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(self.customAnalysisDir)
 ```
+
 #### Adding log messages
 It also creates a reference to the logger, which is the tool that adds new messages to the `pynealLog.log` output file. You can use this reference anywhere in your script to add new log messages, which will be automatically timestamped and included in the output file. You can even control the type of log message
 

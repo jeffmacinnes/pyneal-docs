@@ -645,12 +645,29 @@ import logger
 import numpy as np
 
 class CustomAnalysis:
-    def __init__(self, mask_img):
+    def __init__(self, maskFile, weightMask, numTimepts):
         &quot;&quot;&quot;
-        Everything in the __init__ class will be executed BEFORE the scan begins
+        Everything in the __init__ method will be executed BEFORE the scan
+        begins. This is a place to run any necessary setup code.
+
+        The __init__ method provides you with the following inputs from the
+        setup GUI:
+            - maskFile: path to the mask specified in the GUI
+            - weightMask: True/False flag for if &quot;weight mask?&quot; was checked
+            - numTimepts: number of timepts in run, as specified in GUI
+
+        You can use or ignore these inputs as needed for your analysis.
         &quot;&quot;&quot;
-        # local reference to MASK from Pyneal setup GUI
-        self.mask = mask_img
+        # Load masks and weights, and create an within-class reference to
+        # each for use in later methods.
+        mask_img = nib.load(maskFile)
+        if weightMask == True:
+            self.weights = mask_img.get_data().copy()
+
+        self.mask = mask_img.get_data() &gt; 0  # 3D boolean array of mask voxels
+
+        # within-class reference to numTimepts for use in later methods
+        self.numTimepts = numTimepts
 
         # Add the directory that this script lives in to the path. This way it
         # is easy to load any additional files you want to put in the same
@@ -700,12 +717,29 @@ class CustomAnalysis:
 <h3 id="__init__-initialize"><code>__init__</code> (initialize)<a class="headerlink" href="#__init__-initialize" title="Permanent link">&para;</a></h3>
 <p>The <code>__init__</code> method is called as soon as you hit <code>submit</code> on the setup GUI. In other words, the code in this method runs <em>before</em> the scan begins. Thus, the <code>__init__</code> method is where you will specify any set up code that needs to be initialized before the scan begins (e.g. loading multiple mask files).</p>
 <p>Let's take a look at the code in more detail:</p>
-<pre><code class="python">def __init__(self, mask_img):
-    &quot;&quot;&quot;
-    Everything in the __init__ class will be executed BEFORE the scan begins
-    &quot;&quot;&quot;
-    # local reference to MASK from Pyneal setup GUI
-    self.mask = mask_img
+<pre><code class="python">def __init__(self, maskFile, weightMask, numTimepts):
+        &quot;&quot;&quot;
+        Everything in the __init__ method will be executed BEFORE the scan
+        begins. This is a place to run any necessary setup code.
+
+        The __init__ method provides you with the following inputs from the
+        setup GUI:
+            - maskFile: path to the mask specified in the GUI
+            - weightMask: True/False flag for if &quot;weight mask?&quot; was checked
+            - numTimepts: number of timepts in run, as specified in GUI
+
+        You can use or ignore these inputs as needed for your analysis.
+        &quot;&quot;&quot;
+        # Load masks and weights, and create an within-class reference to
+        # each for use in later methods.
+        mask_img = nib.load(maskFile)
+        if weightMask == True:
+            self.weights = mask_img.get_data().copy()
+
+        self.mask = mask_img.get_data() &gt; 0  # 3D boolean array of mask voxels
+
+        # within-class reference to numTimepts for use in later methods
+        self.numTimepts = numTimepts
 
     # Add the directory that this script lives in to the path. This way it
     # is easy to load any additional files you want to put in the same
@@ -730,12 +764,25 @@ class CustomAnalysis:
 </code></pre>
 
 <h4 id="preset-variables-and-creating-new-ones">Preset variables, and creating new ones<a class="headerlink" href="#preset-variables-and-creating-new-ones" title="Permanent link">&para;</a></h4>
-<p>First, note that the mask data from the mask file specified in the GUI (<code>mask_img</code>, nibabel-like object) is passed into this class, in case you want to use the mask during your analysis. However, in order to use the <code>mask_img</code> in the <code>compute</code> method (or any other method), you have to create a local variable that is accessible within the class:</p>
-<pre><code class="python"># local reference to MASK from Pyneal setup GUI
-self.mask = mask_img
+<p>First, note that certain settings from the setup GUI are passed into the custom analysis script. Namely:</p>
+<ul>
+<li><code>maskFile</code>: the path to the mask specified in the GUI</li>
+<li><code>weightMask</code>: a True/False boolean flag indicating whether the <code>weight mask?</code> option was checked or not.</li>
+<li><code>numTimepts</code>: the number of timepts in the run, as specified in the GUI. </li>
+</ul>
+<p>At the top of the <code>__init__</code> method, you'll see some code that reads in each of those settings, and creates local variables for each:</p>
+<pre><code class="python"># Load masks and weights, and create an within-class reference to
+# each for use in later methods.
+mask_img = nib.load(maskFile)
+if weightMask == True:
+    self.weights = mask_img.get_data().copy()
+self.mask = mask_img.get_data() &gt; 0  # 3D boolean array of mask voxels
+
+# within-class reference to numTimepts for use in later methods
+self.numTimepts = numTimepts
 </code></pre>
 
-<p>Now, you can reference the mask in any other method by referring to <code>self.mask</code>. In fact, the same thing is true for any variable you create in the <code>__init__</code> method; in order to access the variable in other method, you must prepend the variable name with <code>self.</code></p>
+<p>This enables you to reference these variables in any other method by referring to <code>self.mask</code>, <code>self.weights</code>, and <code>self.numTimepts</code>. In fact, the same thing is true for any variable you create in the <code>__init__</code> method; in order to access the variable in other methods, you must prepend the variable name with <code>self.</code></p>
 <p>The <code>__init__</code> method also contains a couple of other useful tidbits near the top. First, we add the directory that contains your custom analysis script to the path. This way, you can easily load any additional files that are exist in that same directory. </p>
 <pre><code class="python"># Add the directory that this script lives in to the path. This way it
 # is easy to load any additional files you want to put in the same
