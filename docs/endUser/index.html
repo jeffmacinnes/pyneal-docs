@@ -321,6 +321,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#example-responses" title="Example Responses" class="md-nav__link">
+    Example Responses
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyneal-built-in-analysis-options" title="Pyneal Built-in Analysis Options" class="md-nav__link">
+    Pyneal Built-in Analysis Options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-custom-analyses" title="Using Custom Analyses" class="md-nav__link">
+    Using Custom Analyses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
     </ul>
@@ -487,6 +514,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#example-responses" title="Example Responses" class="md-nav__link">
+    Example Responses
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pyneal-built-in-analysis-options" title="Pyneal Built-in Analysis Options" class="md-nav__link">
+    Pyneal Built-in Analysis Options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-custom-analyses" title="Using Custom Analyses" class="md-nav__link">
+    Using Custom Analyses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
     </ul>
@@ -561,6 +615,40 @@ clientSocket.send(request.encode())
     connection.sendall(formattedMsg)
     self.logger.debug('Sent result: {}'.format(formattedMsg))
 </code></pre>
+
+<h2 id="example-responses">Example Responses<a class="headerlink" href="#example-responses" title="Permanent link">&para;</a></h2>
+<p>Here are some example of what the JSON responses might look like using different analysis options. </p>
+<ul>
+<li>
+<p><strong>Results were not found</strong>: The <strong>End User</strong> requested a volume that has not arrived or been analyzed yet:</p>
+<p><code>{'foundResults': False}</code></p>
+</li>
+</ul>
+<h3 id="pyneal-built-in-analysis-options">Pyneal Built-in Analysis Options<a class="headerlink" href="#pyneal-built-in-analysis-options" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Average</strong> (from GUI): compute the average signal within the specified mask:</p>
+<p><code>{'foundResults': True, 'average':2432}</code></p>
+</li>
+<li>
+<p><strong>Weighted Average</strong> (from GUI): compute the weighted average within the specified mask, using mask voxels values as weights ("Weighted Mask?" is checked in GUI):</p>
+<p><code>{'foundResults': True, 'weightedAverage':2432}</code></p>
+</li>
+<li>
+<p><strong>Median</strong> (from GUI): compute the median signal within the specified mask:</p>
+<p><code>{'foundResults': True, 'median':2432}</code></p>
+</li>
+<li>
+<p><strong>Weighted Median</strong> (from GUI): compute the weighted median within the specified mask, using mask voxel values as weights ("Weighted Mask?" is checked in GUI):</p>
+<p><code>{'foundResults': True, 'weightedMedian':2432}</code></p>
+</li>
+</ul>
+<h3 id="using-custom-analyses">Using Custom Analyses<a class="headerlink" href="#using-custom-analyses" title="Permanent link">&para;</a></h3>
+<p>The JSON responses from custom analyses will vary based on your custom analysis script. At a minimum, all responses will contain the <code>'foundResults'</code> entry. </p>
+<p>For instance, if you have a custom analysis script that is computing the mean activation separately in 3 ROIs, the response message may look like:</p>
+<ul>
+<li><code>{'foundResults': True, "roi1_average": 2149.81, "roi2_average": 2519.11, "roi3_average": 2543.61}</code></li>
+</ul>
                 
                   
                 

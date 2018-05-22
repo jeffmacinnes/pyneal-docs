@@ -69,3 +69,38 @@ def sendResults(self, connection, results):
     connection.sendall(formattedMsg)
     self.logger.debug('Sent result: {}'.format(formattedMsg))
 ```
+
+## Example Responses
+
+Here are some example of what the JSON responses might look like using different analysis options. 
+
+* **Results were not found**: The **End User** requested a volume that has not arrived or been analyzed yet:
+
+	`{'foundResults': False}`
+	
+### Pyneal Built-in Analysis Options
+
+* **Average** (from GUI): compute the average signal within the specified mask:
+
+	`{'foundResults': True, 'average':2432}`
+
+* **Weighted Average** (from GUI): compute the weighted average within the specified mask, using mask voxels values as weights ("Weighted Mask?" is checked in GUI):
+
+	`{'foundResults': True, 'weightedAverage':2432}`
+	
+* **Median** (from GUI): compute the median signal within the specified mask:
+
+	`{'foundResults': True, 'median':2432}`
+
+* **Weighted Median** (from GUI): compute the weighted median within the specified mask, using mask voxel values as weights ("Weighted Mask?" is checked in GUI):
+
+	`{'foundResults': True, 'weightedMedian':2432}`
+	
+
+### Using Custom Analyses
+
+The JSON responses from custom analyses will vary based on your custom analysis script. At a minimum, all responses will contain the `'foundResults'` entry. 
+
+For instance, if you have a custom analysis script that is computing the mean activation separately in 3 ROIs, the response message may look like:
+
+* `{'foundResults': True, "roi1_average": 2149.81, "roi2_average": 2519.11, "roi3_average": 2543.61}`
