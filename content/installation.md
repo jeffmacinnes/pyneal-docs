@@ -1,6 +1,6 @@
 # Installation
 
-**Pyneal is built and tested using `Python 3.6`**
+**Pyneal is built and tested using `Python 3.6` in MacOS 10.13.4**
 
 Download Python from [**https://www.python.org/downloads/**](https://www.python.org/downloads/) or via a distribution like [**Anaconda**](https://www.anaconda.com/download)
 
@@ -60,18 +60,41 @@ You can attempt to install all required libraries at once by navigating into the
 If that fails for any reason, you can install manually one at a time:
 
 >pip install numpy==1.13.1  
+>pip install scipy==1.13.1  
 >pip install nibabel==2.1.0  
 >pip install nipy==0.4.1  
 >pip install pyzmq==16.0.2  
 >pip install pyyaml==3.12  
->pip install kivy==1.10.dev0  
 >pip install flask==0.12.2  
 >pip install flask_socketio==2.9.2  
 >pip install eventlet==0.21.0  
 
 These versions reflect the primary environment in which **Pyneal** is tested. It is likely that other versions maintain compatibility, but use at your own risk.
 
+In addition, each **Pyneal** session is setup with the help of a GUI, based on the [Kivy](https://kivy.org/docs/installation/installation-osx.html) package. In order to get this to work, you need to install certain Kivy libraries.
+
+First, make sure you have the latest version of Xcode command line tools installed:
+
+>xcode-select --install 
+
+Next, installed the libraries for Kivy: 
+
+#### [Option 1] Using Homebrew
+
+>brew install pkg-config sdl2 sdl2_image sdl2_ttf sdl2_mixer gstreamer
+
+#### [Option 2] Using MacPorts
+
+>port install libsdl2 libsdl2_image libsdl2_ttf libsdl2_mixer
+
+Now, install development version of kivy:
+
+>pip install Cython==0.26.1  
+>pip install https://github.com/kivy/kivy/archive/master.zip
+
 Some users have reported problems installing the development version of kivy (under Pyneal dependencies). For assistance with this step, and other issues, see [**Troubleshooting**](/troubleshooting.md)
+
+
 
 ## Additional Tools
 

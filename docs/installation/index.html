@@ -267,6 +267,26 @@
     dependencies
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-using-homebrew" title="[Option 1] Using Homebrew" class="md-nav__link">
+    [Option 1] Using Homebrew
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-using-macports" title="[Option 2] Using MacPorts" class="md-nav__link">
+    [Option 2] Using MacPorts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -559,6 +579,26 @@
     dependencies
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-using-homebrew" title="[Option 1] Using Homebrew" class="md-nav__link">
+    [Option 1] Using Homebrew
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-using-macports" title="[Option 2] Using MacPorts" class="md-nav__link">
+    [Option 2] Using MacPorts
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -589,7 +629,7 @@
                 
                 
                 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
-<p><strong>Pyneal is built and tested using <code>Python 3.6</code></strong></p>
+<p><strong>Pyneal is built and tested using <code>Python 3.6</code> in MacOS 10.13.4</strong></p>
 <p>Download Python from <a href="https://www.python.org/downloads/"><strong>https://www.python.org/downloads/</strong></a> or via a distribution like <a href="https://www.anaconda.com/download"><strong>Anaconda</strong></a></p>
 <p>Pyneal requires additional libraries beyond the standard library. Instructions below use <code>pip</code> to install these libraries. Verify that you have <code>pip</code> installed:</p>
 <blockquote>
@@ -630,16 +670,35 @@ pip install pyyaml==3.12</p>
 <p>If that fails for any reason, you can install manually one at a time:</p>
 <blockquote>
 <p>pip install numpy==1.13.1<br />
+pip install scipy==1.13.1<br />
 pip install nibabel==2.1.0<br />
 pip install nipy==0.4.1<br />
 pip install pyzmq==16.0.2<br />
 pip install pyyaml==3.12<br />
-pip install kivy==1.10.dev0<br />
 pip install flask==0.12.2<br />
 pip install flask_socketio==2.9.2<br />
 pip install eventlet==0.21.0  </p>
 </blockquote>
 <p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
+<p>In addition, each <strong>Pyneal</strong> session is setup with the help of a GUI, based on the <a href="https://kivy.org/docs/installation/installation-osx.html">Kivy</a> package. In order to get this to work, you need to install certain Kivy libraries.</p>
+<p>First, make sure you have the latest version of Xcode command line tools installed:</p>
+<blockquote>
+<p>xcode-select --install </p>
+</blockquote>
+<p>Next, installed the libraries for Kivy: </p>
+<h4 id="option-1-using-homebrew">[Option 1] Using Homebrew<a class="headerlink" href="#option-1-using-homebrew" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>brew install pkg-config sdl2 sdl2_image sdl2_ttf sdl2_mixer gstreamer</p>
+</blockquote>
+<h4 id="option-2-using-macports">[Option 2] Using MacPorts<a class="headerlink" href="#option-2-using-macports" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>port install libsdl2 libsdl2_image libsdl2_ttf libsdl2_mixer</p>
+</blockquote>
+<p>Now, install development version of kivy:</p>
+<blockquote>
+<p>pip install Cython==0.26.1<br />
+pip install https://github.com/kivy/kivy/archive/master.zip</p>
+</blockquote>
 <p>Some users have reported problems installing the development version of kivy (under Pyneal dependencies). For assistance with this step, and other issues, see <a href="../troubleshooting/"><strong>Troubleshooting</strong></a></p>
 <h2 id="additional-tools">Additional Tools<a class="headerlink" href="#additional-tools" title="Permanent link">&para;</a></h2>
 <p><strong>Pyneal</strong> itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool <a href="../createMask"><strong>createMask</strong></a> can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.</p>
