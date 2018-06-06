@@ -21,30 +21,45 @@ Or, you can simply copy the text here:
 import sys
 import os
 from os.path import join
-import logger
+import logging
 
 import numpy as np
+import nibabel as nib
+
 
 class CustomAnalysis:
+    """ Custom Analysis Module
+
+    This class contains all of the methods needed for setting up and executing
+    customized analyses in Pyneal during a real-time scan
+
+    """
     def __init__(self, maskFile, weightMask, numTimepts):
-        """
-        Everything in the __init__ method will be executed BEFORE the scan
+        """ Initialize the class
+
+        Everything in the `__init__` method will be executed BEFORE the scan
         begins. This is a place to run any necessary setup code.
 
-        The __init__ method provides you with the following inputs from the
-        setup GUI:
-            - maskFile: path to the mask specified in the GUI
-            - weightMask: True/False flag for if "weight mask?" was checked
-            - numTimepts: number of timepts in run, as specified in GUI
+        The `__init__` method provides a number of inputs from the setup GUI
+        that can be used to help set up a customized analyses. You are free to
+        use or ignore these inputs as needed.
 
-        You can use or ignore these inputs as needed for your analysis.
+        Parameters
+        ----------
+        maskFile : string
+            full path to the mask file specified in the Pyneal setup GUI
+        weightMask : boolean
+            flag indicating whether the "weight mask?" option in setup GUI was
+            checked.
+        numTimepts : int
+            number of timepts in the run, as specified in the setup GUI
+
         """
         # Load masks and weights, and create an within-class reference to
         # each for use in later methods.
         mask_img = nib.load(maskFile)
-        if weightMask == True:
+        if weightMask is True:
             self.weights = mask_img.get_data().copy()
-
         self.mask = mask_img.get_data() > 0  # 3D boolean array of mask voxels
 
         # within-class reference to numTimepts for use in later methods
@@ -67,25 +82,37 @@ class CustomAnalysis:
         self.myResult = 1
 
 
-
         ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
         ########################################################################
 
-
-
     def compute(self, volume, volIdx):
-        """
-        Code that will be executed on EACH new 3D volume that arrives DURING the
-        real-time scan. Results must be returned in a dictionary. No restrictions
-        on dict key names or values, but note that the volume index will get added
-        automatically by Pyneal before the result gets placed on the results
-        server, so no need to specify that here
+        """ Compute method
+
+        This method will be executed on EACH new 3D volume that arrives
+        DURING the real-time scan. Results must be returned in a dictionary. No
+        restrictions on dict key names or values, but note that the volume
+        index will get added automatically by Pyneal before the result gets
+        placed on the results server, so no need to specify that here
+
+        Parameters
+        ----------
+        volume : nibabel-like image
+            nibabel-like image containing a 3D array of voxel data, a (4,4)
+            affine matrix mapping the volume to RAS+ space, and image metadata
+        volIdx : int
+            0-based index indicating where, in time (4th dimension), the volume
+            belongs
+
+        Returns
+        -------
+        dict
+            dictionary containing key:value pair(s) for the results for the
+            current volume
+
         """
         ########################################################################
         ############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
         self.myResult += 1
-
-
 
 
         ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
@@ -104,28 +131,35 @@ Let's take a look at the code in more detail:
 
 ```python
 def __init__(self, maskFile, weightMask, numTimepts):
-        """
-        Everything in the __init__ method will be executed BEFORE the scan
-        begins. This is a place to run any necessary setup code.
+    """ Initialize the class
 
-        The __init__ method provides you with the following inputs from the
-        setup GUI:
-            - maskFile: path to the mask specified in the GUI
-            - weightMask: True/False flag for if "weight mask?" was checked
-            - numTimepts: number of timepts in run, as specified in GUI
+    Everything in the `__init__` method will be executed BEFORE the scan
+    begins. This is a place to run any necessary setup code.
 
-        You can use or ignore these inputs as needed for your analysis.
-        """
-        # Load masks and weights, and create an within-class reference to
-        # each for use in later methods.
-        mask_img = nib.load(maskFile)
-        if weightMask == True:
-            self.weights = mask_img.get_data().copy()
+    The `__init__` method provides a number of inputs from the setup GUI
+    that can be used to help set up a customized analyses. You are free to
+    use or ignore these inputs as needed.
 
-        self.mask = mask_img.get_data() > 0  # 3D boolean array of mask voxels
+    Parameters
+    ----------
+    maskFile : string
+        full path to the mask file specified in the Pyneal setup GUI
+    weightMask : boolean
+        flag indicating whether the "weight mask?" option in setup GUI was
+        checked.
+    numTimepts : int
+        number of timepts in the run, as specified in the setup GUI
 
-        # within-class reference to numTimepts for use in later methods
-        self.numTimepts = numTimepts
+    """
+    # Load masks and weights, and create an within-class reference to
+    # each for use in later methods.
+    mask_img = nib.load(maskFile)
+    if weightMask is True:
+        self.weights = mask_img.get_data().copy()
+    self.mask = mask_img.get_data() > 0  # 3D boolean array of mask voxels
+
+    # within-class reference to numTimepts for use in later methods
+    self.numTimepts = numTimepts
 
     # Add the directory that this script lives in to the path. This way it
     # is easy to load any additional files you want to put in the same
@@ -142,7 +176,6 @@ def __init__(self, maskFile, weightMask, numTimepts):
     ########################################################################
     ############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
     self.myResult = 1
-
 
 
     ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
@@ -220,24 +253,39 @@ The `compute` method is what actually gets called during a scan. In fact, it get
 
 ```python
 def compute(self, volume, volIdx):
-    """
-    Code that will be executed on EACH new 3D volume that arrives DURING the
-    real-time scan. Results must be returned in a dictionary. No restrictions
-    on dict key names or values, but note that the volume index will get added
-    automatically by Pyneal before the result gets placed on the results
-    server, so no need to specify that here
-    """
-    ########################################################################
-    ############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
-    self.myResult += 1
-
-
-
-
-    ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
-    ########################################################################
-
-    return {'result': self.myResult}
+	""" Compute method
+	
+	This method will be executed on EACH new 3D volume that arrives
+	DURING the real-time scan. Results must be returned in a dictionary. No
+	restrictions on dict key names or values, but note that the volume
+	index will get added automatically by Pyneal before the result gets
+	placed on the results server, so no need to specify that here
+	
+	Parameters
+	----------
+	volume : nibabel-like image
+	    nibabel-like image containing a 3D array of voxel data, a (4,4)
+	    affine matrix mapping the volume to RAS+ space, and image metadata
+	volIdx : int
+	    0-based index indicating where, in time (4th dimension), the volume
+	    belongs
+	
+	Returns
+	-------
+	dict
+	    dictionary containing key:value pair(s) for the results for the
+	    current volume
+	
+	"""
+	########################################################################
+	############# vvv INSERT USER-SPECIFIED CODE BELOW vvv #################
+	self.myResult += 1
+	
+	
+	############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
+	########################################################################
+	
+	return {'result': self.myResult}
 ```
 
 Note that the `compute` method passes in references to the current `volume` (3D numpy array, [x,y,z]), as well as the `volIdx`, an integer representing the current volume index (in 4th dimension; 0-based index). 

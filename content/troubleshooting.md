@@ -4,11 +4,32 @@
 
 ### problems installing kivy
 
-Some users have reported difficulty installing the `kivy` dependency for **Pyneal**. Kivy is used to create the Pyneal Setup and createMask GUIs, and has its own set of dependencies. If these dependencies don't exist (or they do, but are incompatible versions), using `pip` to install Kivy can fail. 
+If you have followed the instructions under [**Installation**: Pyneal](/installation.md#pyneal) but are still having trouble getting Kivy to work, there are a couple of other options you may want to try. 
 
-Please see the [**detailed Kivy installation instructions**](https://kivy.org/docs/installation/installation-osx.html#using-homebrew-with-pip) for help. 
+First off, check out [**detailed Kivy installation instructions**](https://kivy.org/docs/installation/installation-osx.html#using-homebrew-with-pip) to see if there are any tips. 
 
-Make sure to specify the development version of kivy in the 2nd step under **Using Homebrew with pip**: `pip install https://github.com/kivy/kivy/archive/master.zip`
+Second, you can try to manually compile Kivy following these steps
+
+* clone the Kivy repo from github:
+
+> git clone https://github.com/kivy/kivy
+
+* Navigate into the cloned `kivy` directory and set environmental variables:
+
+> cd kivy  
+> export USE_SDL2=1  
+> export USE_GSTREAMER=1  
+
+In order for this to work, make sure you have installed the SDL2 and GSTREAMER libraries for Kivy listed under [**Kivy Libraries**](/installation.md#[Option-1]-Using-Homebrew)
+
+* run `make` to compile the package
+
+> make
+
+If this proceeded without error, test by running **Pyneal** to see if the GUI appears:
+
+> python pyneal.py  
+
 
 ## Pyneal Scanner
 

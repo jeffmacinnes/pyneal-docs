@@ -641,9 +641,34 @@
                 <h1 id="troubleshooting">troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <h3 id="problems-installing-kivy">problems installing kivy<a class="headerlink" href="#problems-installing-kivy" title="Permanent link">&para;</a></h3>
-<p>Some users have reported difficulty installing the <code>kivy</code> dependency for <strong>Pyneal</strong>. Kivy is used to create the Pyneal Setup and createMask GUIs, and has its own set of dependencies. If these dependencies don't exist (or they do, but are incompatible versions), using <code>pip</code> to install Kivy can fail. </p>
-<p>Please see the <a href="https://kivy.org/docs/installation/installation-osx.html#using-homebrew-with-pip"><strong>detailed Kivy installation instructions</strong></a> for help. </p>
-<p>Make sure to specify the development version of kivy in the 2nd step under <strong>Using Homebrew with pip</strong>: <code>pip install https://github.com/kivy/kivy/archive/master.zip</code></p>
+<p>If you have followed the instructions under <a href="../installation/#pyneal"><strong>Installation</strong>: Pyneal</a> but are still having trouble getting Kivy to work, there are a couple of other options you may want to try. </p>
+<p>First off, check out <a href="https://kivy.org/docs/installation/installation-osx.html#using-homebrew-with-pip"><strong>detailed Kivy installation instructions</strong></a> to see if there are any tips. </p>
+<p>Second, you can try to manually compile Kivy following these steps</p>
+<ul>
+<li>clone the Kivy repo from github:</li>
+</ul>
+<blockquote>
+<p>git clone https://github.com/kivy/kivy</p>
+</blockquote>
+<ul>
+<li>Navigate into the cloned <code>kivy</code> directory and set environmental variables:</li>
+</ul>
+<blockquote>
+<p>cd kivy<br />
+export USE_SDL2=1<br />
+export USE_GSTREAMER=1  </p>
+</blockquote>
+<p>In order for this to work, make sure you have installed the SDL2 and GSTREAMER libraries for Kivy listed under <a href="../installation/#[Option-1]-Using-Homebrew"><strong>Kivy Libraries</strong></a></p>
+<ul>
+<li>run <code>make</code> to compile the package</li>
+</ul>
+<blockquote>
+<p>make</p>
+</blockquote>
+<p>If this proceeded without error, test by running <strong>Pyneal</strong> to see if the GUI appears:</p>
+<blockquote>
+<p>python pyneal.py  </p>
+</blockquote>
 <h2 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h2>
 <h3 id="pyneal-scanner-issue-1">Pyneal scanner issue 1<a class="headerlink" href="#pyneal-scanner-issue-1" title="Permanent link">&para;</a></h3>
 <h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>

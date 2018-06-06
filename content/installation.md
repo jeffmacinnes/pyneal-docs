@@ -92,7 +92,7 @@ Now, install development version of kivy:
 >pip install Cython==0.26.1  
 >pip install https://github.com/kivy/kivy/archive/master.zip
 
-Some users have reported problems installing the development version of kivy (under Pyneal dependencies). For assistance with this step, and other issues, see [**Troubleshooting**](/troubleshooting.md)
+Some users have reported problems installing the development version of kivy . For assistance with this step, and other issues, see [**Troubleshooting**: Installing Kivy](/troubleshooting.md#problems-installing-kivy)
 
 
 
