@@ -536,20 +536,37 @@
 <p>It currently supports data formats used across 3 major MRI manufacturers: <strong>GE</strong>, <strong>Siemens</strong>, <strong>Philips</strong>.</p>
 <p>In addition to allowing users to compute basic, ROI-based analyses during a scan, <strong>Pyneal</strong> also provides a simple framework for designing and writing customized analyses that can be computed across the whole brain volume at each timepoint.</p>
 <h2 id="designstructure">Design/Structure<a class="headerlink" href="#designstructure" title="Permanent link">&para;</a></h2>
-<p>The software is broken into two separate components: <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. When first downloaded, <strong>Pyneal Scanner</strong> is contained in a separate directory within the <strong>Pyneal</strong> directory</p>
+<p><img alt="" src="./images/overview.png" /></p>
+<p>The software is broken into two main components: <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong>. Once downloaded, you'll find the directory structure shown below. Note that <strong>Pyneal Scanner</strong> is contained within it's own directory in the main <strong>Pyneal</strong> directory. </p>
+<p><em>Pyneal directory structure:</em></p>
+<pre><code>├── pyneal  
+│   ├── LICENSE.txt  
+│   ├── README.md  
+│   ├── pyneal.py  
+│   ├── pyneal_scanner/  
+│   ├── requirements.txt  
+│   ├── src/  
+│   └── utils/  
+</code></pre>
+
 <ul>
 <li>
-<p><strong>Pyneal Scanner</strong>: Accesses incoming data, modifies it to match a standardized format, and then sends the data out, one 3D volume at a time, to <strong>Pyneal</strong></p>
+<p><strong>Pyneal Scanner</strong>:  Accesses incoming data, modifies it to match a standardized format, and then sends the data out, one 3D volume at a time, to <strong>Pyneal</strong>.</p>
 </li>
 <li>
 <p><strong>Pyneal</strong>: Listens for incoming 3D volumes from <strong>Pyneal Scanner</strong>, runs whatever analyses
-you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to</p>
+you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to.</p>
 </li>
 </ul>
 <p>This design allows the software to easily accommodate the various directory structures and data formats that are found on different scanner models at different institutions around the world. (However, it also means that the steps to install, and setup <strong>Pyneal</strong> can vary from environment to environment):</p>
+<p><strong>For instruections on installing and setting up your environment, see:</strong></p>
 <ul>
 <li><a href="installation/"><strong>Installation guide</strong></a></li>
 <li><a href="setup/"><strong>Setup guide</strong></a></li>
+</ul>
+<p><strong>For instructions on simulating a scanner environment to test/debug, see</strong>:</p>
+<ul>
+<li><a href="simulations/"><strong>Simulations guide</strong></a></li>
 </ul>
 <h2 id="termsdefinitions">Terms/Definitions<a class="headerlink" href="#termsdefinitions" title="Permanent link">&para;</a></h2>
 <p>Throughout the documentation specific terms are used to describe the different components of the software, the underlying architecture, and the various processes involved. Despite sincere efforts to keep these terms intuitive, they're probably not in all cases. Please check the <a href="glossary/"><strong>glossary</strong></a> for any unfamiliar terms you come across. (You can also find it under <code>Reference</code> in the lefthand menu)</p>

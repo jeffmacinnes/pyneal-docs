@@ -4,6 +4,9 @@
 
 In order to help with the initial setup, as well as test any analysis scripts and network communications later on, **Pyneal** includes a suite of simulation tools that mimic various inputs and outputs along the data flow path.
 
+(To test your installation or analysis scripts using example data, download the [**Pyneal Tutorial Data**](https://github.com/jeffmacinnes/pyneal-tutorial), which contains sample data from GE, Philips, and Siemens environments)
+
+
 These tools allow you to simulate **Pyneal** (or **Pyneal Scanner**) in a modular fashion without having to run the entire pipeline. If you are troubleshooting issues, these tools are immensely helpful.  
 
 Here is a diagram highlighting the various simulation tools, and where they enter the data flow pipeline. 

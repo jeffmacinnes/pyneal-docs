@@ -24,18 +24,41 @@ In addition to allowing users to compute basic, ROI-based analyses during a scan
 
 ## Design/Structure
 
-The software is broken into two separate components: **Pyneal Scanner** and **Pyneal**. When first downloaded, **Pyneal Scanner** is contained in a separate directory within the **Pyneal** directory
+![](images/overview.png)
 
-* **Pyneal Scanner**: Accesses incoming data, modifies it to match a standardized format, and then sends the data out, one 3D volume at a time, to **Pyneal**
+The software is broken into two main components: **Pyneal Scanner** and **Pyneal**. Once downloaded, you'll find the directory structure shown below. Note that **Pyneal Scanner** is contained within it's own directory in the main **Pyneal** directory. 
+
+*Pyneal directory structure:*
+```  
+├── pyneal  
+│   ├── LICENSE.txt  
+│   ├── README.md  
+│   ├── pyneal.py  
+│   ├── pyneal_scanner/  
+│   ├── requirements.txt  
+│   ├── src/  
+│   └── utils/  
+```  
+
+
+* **Pyneal Scanner**:  Accesses incoming data, modifies it to match a standardized format, and then sends the data out, one 3D volume at a time, to **Pyneal**.
 
 * **Pyneal**: Listens for incoming 3D volumes from **Pyneal Scanner**, runs whatever analyses
-you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to
+you have specified, and hosts the results on a server, which other downstream components (e.g. an experimental task) can make requests to.
 
 This design allows the software to easily accommodate the various directory structures and data formats that are found on different scanner models at different institutions around the world. (However, it also means that the steps to install, and setup **Pyneal** can vary from environment to environment):
+
+**For instruections on installing and setting up your environment, see:**
 
 * [**Installation guide**](installation.md)
 * [**Setup guide**](setup.md)
 
+
+**For instructions on simulating a scanner environment to test/debug, see**:
+
+* [**Simulations guide**](simulations.md)
+
+ 
 
 ## Terms/Definitions
 
