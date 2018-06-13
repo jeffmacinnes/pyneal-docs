@@ -2,8 +2,33 @@
 
 ![](images/pynealScanner/pynealScanner.png)
 
-First step, make sure you've followed the instructions at [**setup: Pyneal Scanner**](setup.md#pyneal-scanner) to configure **Pyneal Scanner** to your environment. 
+First step, make sure you've followed the instructions at [**setup: Pyneal Scanner**](setup.md#pyneal-scanner) to configure **Pyneal Scanner** to your environment.
 
+## Directory structure
+
+The **Pyneal Scanner** directory has the following structure:
+
+```
+├── pyneal_scanner
+│   ├── README.md
+│   ├── data
+│   ├── getSeries.py
+│   ├── listSeries.py
+│   ├── pynealScanner.log
+│   ├── pynealScanner.py
+│   ├── requirements.txt
+│   ├── scannerConfig.yaml
+│   ├── simulation
+│   └── utils 
+```
+
+The root level of the directory contains basic commands for launching **Pyneal Scanner** (`pynealScanner.py`), and accessing information about the current scanning session (`getSeries.py`, `listSeries.py`). 
+
+**Subdirectories**:
+
+* **`simulation/`**: Tools for simulating inputs and outputs of **Pyneal Scanner**. See [**simulations: Pyneal Scanner Simulation Tools**](simulations/#pyneal-scanner-simulation-tools)
+
+* **`utils`**/: General and MRI manufacturer specific tools for settings up a scanning session, monitoring for incoming data during a scan, and processing/sending data to **Pyneal** throughout a scan. 
 
 ## Basic Usage 
 
