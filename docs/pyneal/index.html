@@ -300,6 +300,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#directory-structure" title="Directory Structure" class="md-nav__link">
+    Directory Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#basic-usage" title="Basic Usage" class="md-nav__link">
     Basic Usage
   </a>
@@ -670,6 +677,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#directory-structure" title="Directory Structure" class="md-nav__link">
+    Directory Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#basic-usage" title="Basic Usage" class="md-nav__link">
     Basic Usage
   </a>
@@ -891,6 +905,66 @@
                 <h1 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h1>
 <p><img alt="" src="../images/pyneal/pyneal.png" /></p>
 <p>First step, make sure you've followed the instructions at <a href="../setup/#pyneal"><strong>setup: Pyneal</strong></a> to configure <strong>Pyneal</strong> to your environment. </p>
+<h2 id="directory-structure">Directory Structure<a class="headerlink" href="#directory-structure" title="Permanent link">&para;</a></h2>
+<p>The <strong>Pyneal</strong> directory has the following structure:</p>
+<pre><code>├── pyneal
+│   ├── LICENSE.txt
+│   ├── README.md
+│   ├── pyneal.py
+│   ├── pyneal_scanner
+│   ├── requirements.txt
+│   ├── src
+│   └── utils
+</code></pre>
+
+<p>The root level of the directory contains basic commands for launching <strong>Pyneal</strong> (<code>pyneal.py</code>), as well as the <code>license</code> and <code>README</code> files. </p>
+<p><strong>Subdirectories</strong>:</p>
+<ul>
+<li>
+<p><strong><code>pyneal_scanner/</code></strong>: <strong>Pyneal Scanner</strong> directory; see <a href="../pynealScanner/"><strong>Overview: Pyneal Scanner</strong></a></p>
+</li>
+<li>
+<p><strong><code>src/</code></strong>: Source code for the GUIs and submodules that support <strong>Pyneal</strong>. </p>
+</li>
+<li>
+<p><strong><code>utils/</code></strong>: Additional utilities that you may find helpful in configuring <strong>Pyneal</strong> to your experiment. This directory is worth unpacking further: </p>
+</li>
+</ul>
+<pre><code>├── pyneal
+│   ...
+│   └── utils
+│       ├── MNI_templates
+│       ├── createMask.py
+│       ├── customAnalyses
+│       ├── masks
+│       ├── mkDummyMask.py
+│       └── simulation
+</code></pre>
+
+<p><strong>Mask Utilities:</strong></p>
+<ul>
+<li>
+<p><code>createMask.py</code> will launch the <strong>Create Mask</strong> tool, which will allow you to transform a MNI space mask down to the functional space of the current subject; see <a href="../createMask/"><strong>Create Mask</strong></a></p>
+</li>
+<li>
+<p><strong><code>MNI_templates/</code></strong>: reference MNI template volumes to use with <code>createMask.py</code></p>
+</li>
+<li>
+<p><strong><code>masks/</code></strong>: a sampling of MNI space anatomical masks that you can use with <code>createMask.py</code>. Note that it is also possible to supply your own MNI-space mask. </p>
+</li>
+<li>
+<p><code>mkDummyMask.py</code> will allow you to quickly create a dummy mask in 3D volume that is whatever dimensions you specify. This is useful for when you may need a mask in a given functional space to test <strong>Pyneal</strong> but aren't concerned with the results. The resulting mask will be a rectangle positioned in the center of the middle slice of a volume. You specify the overall volume dimensions. </p>
+</li>
+</ul>
+<p><strong>Misc Utilities:</strong></p>
+<ul>
+<li>
+<p><strong><code>customAnalyses/</code></strong>: A custom analysis template that facilitates designing your own customized analysis routines to carry out in a real-time scanning run; see <a href="../customAnalysis/"><strong>customAnalysis.md</strong></a></p>
+</li>
+<li>
+<p><strong><code>simulation/</code></strong>: Tools for simulating inputs and outputs of <strong>Pyneal</strong>; see <a href="../simulations.md/*pyneal-simulation-tools"><strong>simulations: Pyneal Simulation Tools</strong></a></p>
+</li>
+</ul>
 <h2 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
 <p>To launch <strong>Pyneal</strong> from the <strong>analysis computer</strong>, open a terminal and navigate to the <code>pyneal</code> directory. From there, type:</p>
 <blockquote>

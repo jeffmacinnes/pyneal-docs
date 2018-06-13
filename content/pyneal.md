@@ -4,6 +4,59 @@
 
 First step, make sure you've followed the instructions at [**setup: Pyneal**](setup.md#pyneal) to configure **Pyneal** to your environment. 
 
+## Directory Structure
+
+The **Pyneal** directory has the following structure:
+
+```
+├── pyneal
+│   ├── LICENSE.txt
+│   ├── README.md
+│   ├── pyneal.py
+│   ├── pyneal_scanner
+│   ├── requirements.txt
+│   ├── src
+│   └── utils
+```
+
+The root level of the directory contains basic commands for launching **Pyneal** (`pyneal.py`), as well as the `license` and `README` files. 
+
+**Subdirectories**:
+
+* **`pyneal_scanner/`**: **Pyneal Scanner** directory; see [**Overview: Pyneal Scanner**](pynealScanner.md)
+
+* **`src/`**: Source code for the GUIs and submodules that support **Pyneal**. 
+
+* **`utils/`**: Additional utilities that you may find helpful in configuring **Pyneal** to your experiment. This directory is worth unpacking further: 
+
+```
+├── pyneal
+│	...
+│   └── utils
+│       ├── MNI_templates
+│       ├── createMask.py
+│       ├── customAnalyses
+│       ├── masks
+│       ├── mkDummyMask.py
+│       └── simulation
+```
+
+**Mask Utilities:**
+
+* `createMask.py` will launch the **Create Mask** tool, which will allow you to transform a MNI space mask down to the functional space of the current subject; see [**Create Mask**](createMask.md)
+
+* **`MNI_templates/`**: reference MNI template volumes to use with `createMask.py`
+
+* **`masks/`**: a sampling of MNI space anatomical masks that you can use with `createMask.py`. Note that it is also possible to supply your own MNI-space mask. 
+
+* `mkDummyMask.py` will allow you to quickly create a dummy mask in 3D volume that is whatever dimensions you specify. This is useful for when you may need a mask in a given functional space to test **Pyneal** but aren't concerned with the results. The resulting mask will be a rectangle positioned in the center of the middle slice of a volume. You specify the overall volume dimensions. 
+
+**Misc Utilities:**
+
+* **`customAnalyses/`**: A custom analysis template that facilitates designing your own customized analysis routines to carry out in a real-time scanning run; see [**customAnalysis.md**](customAnalysis.md)
+
+* **`simulation/`**: Tools for simulating inputs and outputs of **Pyneal**; see [**simulations: Pyneal Simulation Tools**](simulations.md/*pyneal-simulation-tools)
+
 ## Basic Usage
 
 To launch **Pyneal** from the **analysis computer**, open a terminal and navigate to the `pyneal` directory. From there, type:

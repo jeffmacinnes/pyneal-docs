@@ -4,7 +4,7 @@
 
 First step, make sure you've followed the instructions at [**setup: Pyneal Scanner**](setup.md#pyneal-scanner) to configure **Pyneal Scanner** to your environment.
 
-## Directory structure
+## Directory Structure
 
 The **Pyneal Scanner** directory has the following structure:
 
@@ -26,9 +26,11 @@ The root level of the directory contains basic commands for launching **Pyneal S
 
 **Subdirectories**:
 
+* **`data/`**: Any data that **Pyneal Scanner** saves to disk during a scanning session. For instance, using `getSeries.py` to build a nifti-formatted image from the current session will result in that file being written to this directory. 
+
 * **`simulation/`**: Tools for simulating inputs and outputs of **Pyneal Scanner**. See [**simulations: Pyneal Scanner Simulation Tools**](simulations/#pyneal-scanner-simulation-tools)
 
-* **`utils`**/: General and MRI manufacturer specific tools for settings up a scanning session, monitoring for incoming data during a scan, and processing/sending data to **Pyneal** throughout a scan. 
+* **`utils/`**: General and MRI manufacturer specific tools for settings up a scanning session, monitoring for incoming data during a scan, and processing/sending data to **Pyneal** throughout a scan. 
 
 ## Basic Usage 
 

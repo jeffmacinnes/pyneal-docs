@@ -288,8 +288,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#directory-structure" title="Directory structure" class="md-nav__link">
-    Directory structure
+  <a href="#directory-structure" title="Directory Structure" class="md-nav__link">
+    Directory Structure
   </a>
   
 </li>
@@ -555,8 +555,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#directory-structure" title="Directory structure" class="md-nav__link">
-    Directory structure
+  <a href="#directory-structure" title="Directory Structure" class="md-nav__link">
+    Directory Structure
   </a>
   
 </li>
@@ -661,7 +661,7 @@
                 <h1 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h1>
 <p><img alt="" src="../images/pynealScanner/pynealScanner.png" /></p>
 <p>First step, make sure you've followed the instructions at <a href="../setup/#pyneal-scanner"><strong>setup: Pyneal Scanner</strong></a> to configure <strong>Pyneal Scanner</strong> to your environment.</p>
-<h2 id="directory-structure">Directory structure<a class="headerlink" href="#directory-structure" title="Permanent link">&para;</a></h2>
+<h2 id="directory-structure">Directory Structure<a class="headerlink" href="#directory-structure" title="Permanent link">&para;</a></h2>
 <p>The <strong>Pyneal Scanner</strong> directory has the following structure:</p>
 <pre><code>├── pyneal_scanner
 │   ├── README.md
@@ -680,10 +680,13 @@
 <p><strong>Subdirectories</strong>:</p>
 <ul>
 <li>
+<p><strong><code>data/</code></strong>: Any data that <strong>Pyneal Scanner</strong> saves to disk during a scanning session. For instance, using <code>getSeries.py</code> to build a nifti-formatted image from the current session will result in that file being written to this directory. </p>
+</li>
+<li>
 <p><strong><code>simulation/</code></strong>: Tools for simulating inputs and outputs of <strong>Pyneal Scanner</strong>. See <a href="../simulations/#pyneal-scanner-simulation-tools"><strong>simulations: Pyneal Scanner Simulation Tools</strong></a></p>
 </li>
 <li>
-<p><strong><code>utils</code></strong>/: General and MRI manufacturer specific tools for settings up a scanning session, monitoring for incoming data during a scan, and processing/sending data to <strong>Pyneal</strong> throughout a scan. </p>
+<p><strong><code>utils/</code></strong>: General and MRI manufacturer specific tools for settings up a scanning session, monitoring for incoming data during a scan, and processing/sending data to <strong>Pyneal</strong> throughout a scan. </p>
 </li>
 </ul>
 <h2 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h2>
