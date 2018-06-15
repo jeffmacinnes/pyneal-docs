@@ -562,7 +562,7 @@
         },
         {
             "location": "/imageOrientation/",
-            "text": "Image Orientation\n\u00b6\n\n\nThroughout the \nPyneal\n pipeline, from the \noutput\n stage of \nPyneal Scanner\n onward, we use the convention of orienting the images to \nRAS+\n. This means:\n\n\n\n\nThe \n1st\n axis (x) is oriented \nfrom\n \nleft\n \nto\n \nright\n\n\nThe \n2nd\n axis (y) is oriented \nfrom\n \nposterior\n \nto\n \nanterior\n\n\nThe \n3rd\n axis (z) is oriented \nfrom\n \ninferior\n \nto\n \nsuperior\n\n\n\n\nVisually, the \nRAS+\n coordinate system is arranged like: \n\n\n\n\nThere are a number of stages throughout the pipeline where this is important to keep in mind:\n\n\nOutput from Pyneal Scanner\n\u00b6\n\n\nPyneal Scanner\n is designed to accept a variety of inputs from various scanner manufactures and imaging environments. One of \nPyneal Scanner's\n important functions is to take the input data, in whatever form it appears, and convert it to a standardized format before passing each volume along to \nPyneal\n. \n\n\n\n\nPyneal\n expects each volume to arrive from \nPyneal Scanner\n in \nRAS+\n orientation. \n\n\nCreating masks for Pyneal\n\u00b6",
+            "text": "Image Orientation\n\u00b6\n\n\nThroughout the \nPyneal\n pipeline, from the \noutput\n stage of \nPyneal Scanner\n onward, we use the convention of orienting the images to \nRAS+\n. This means:\n\n\n\n\nThe \n1st\n axis (x) is oriented \nfrom\n \nleft\n \nto\n \nright\n\n\nThe \n2nd\n axis (y) is oriented \nfrom\n \nposterior\n \nto\n \nanterior\n\n\nThe \n3rd\n axis (z) is oriented \nfrom\n \ninferior\n \nto\n \nsuperior\n\n\n\n\nVisually, the \nRAS+\n coordinate system is arranged like: \n\n\n\n\nThere are a number of stages throughout the pipeline where this is important to keep in mind:\n\n\nBuilding nifti files offline with getSeries.py\n\u00b6\n\n\nWhen you use the \ngetSeries.py\n tool to build a nifti file from raw images from the scanner, the resulting image will be oriented to \nRAS+\n\n\nOutput from Pyneal Scanner\n\u00b6\n\n\nPyneal Scanner\n is designed to accept a variety of inputs from various scanner manufactures and imaging environments. One of \nPyneal Scanner's\n important functions is to take the input data, in whatever form it appears, and convert it to a standardized format before passing each volume along to \nPyneal\n. \n\n\n\n\nPyneal\n expects each volume to arrive from \nPyneal Scanner\n in \nRAS+\n orientation. \n\n\nCreating masks for Pyneal\n\u00b6\n\n\nSince \nPyneal\n receives images from \nPyneal Scanner\n that are oriented to \nRAS+\n, the mask that \nPyneal\n uses for analysis must also be oriented to \nRAS+\n. \n\n\n(In fact, not only does the mask have to be in \nRAS+\n, it also must match the dimensions of the incoming volumes. The easiest way to ensure this is the case is to use the \nCreate Mask\n tool, which uses an example functional series from the current scan to transform the mask to the correct dimensions and orientation)\n\n\nSaved output from Pyneal\n\u00b6\n\n\nAt the conclusion of a real-time run, \nPyneal\n will save the series data as a 4D nifti file in the specified output directory. This output file will be oriented to \nRAS+\n. \n\n\nSee also:\n\u00b6\n\n\nFor helpful guides on understanding image orientation, and using affine transformations, see:\n\n\n\n\nhttp://nipy.org/nibabel/dicom/dicom_orientation.html\n\n\nhttp://nipy.org/nibabel/coordinate_systems.html",
             "title": "Image Orientation"
         },
         {
@@ -571,14 +571,29 @@
             "title": "Image Orientation"
         },
         {
+            "location": "/imageOrientation/#building-nifti-files-offline-with-getseriespy",
+            "text": "When you use the  getSeries.py  tool to build a nifti file from raw images from the scanner, the resulting image will be oriented to  RAS+",
+            "title": "Building nifti files offline with getSeries.py"
+        },
+        {
             "location": "/imageOrientation/#output-from-pyneal-scanner",
             "text": "Pyneal Scanner  is designed to accept a variety of inputs from various scanner manufactures and imaging environments. One of  Pyneal Scanner's  important functions is to take the input data, in whatever form it appears, and convert it to a standardized format before passing each volume along to  Pyneal .    Pyneal  expects each volume to arrive from  Pyneal Scanner  in  RAS+  orientation.",
             "title": "Output from Pyneal Scanner"
         },
         {
             "location": "/imageOrientation/#creating-masks-for-pyneal",
-            "text": "",
+            "text": "Since  Pyneal  receives images from  Pyneal Scanner  that are oriented to  RAS+ , the mask that  Pyneal  uses for analysis must also be oriented to  RAS+ .   (In fact, not only does the mask have to be in  RAS+ , it also must match the dimensions of the incoming volumes. The easiest way to ensure this is the case is to use the  Create Mask  tool, which uses an example functional series from the current scan to transform the mask to the correct dimensions and orientation)",
             "title": "Creating masks for Pyneal"
+        },
+        {
+            "location": "/imageOrientation/#saved-output-from-pyneal",
+            "text": "At the conclusion of a real-time run,  Pyneal  will save the series data as a 4D nifti file in the specified output directory. This output file will be oriented to  RAS+ .",
+            "title": "Saved output from Pyneal"
+        },
+        {
+            "location": "/imageOrientation/#see-also",
+            "text": "For helpful guides on understanding image orientation, and using affine transformations, see:   http://nipy.org/nibabel/dicom/dicom_orientation.html  http://nipy.org/nibabel/coordinate_systems.html",
+            "title": "See also:"
         }
     ]
 }

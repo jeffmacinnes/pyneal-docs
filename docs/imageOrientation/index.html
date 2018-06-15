@@ -432,6 +432,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#building-nifti-files-offline-with-getseriespy" title="Building nifti files offline with getSeries.py" class="md-nav__link">
+    Building nifti files offline with getSeries.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#output-from-pyneal-scanner" title="Output from Pyneal Scanner" class="md-nav__link">
     Output from Pyneal Scanner
   </a>
@@ -441,6 +448,13 @@
         <li class="md-nav__item">
   <a href="#creating-masks-for-pyneal" title="Creating masks for Pyneal" class="md-nav__link">
     Creating masks for Pyneal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saved-output-from-pyneal" title="Saved output from Pyneal" class="md-nav__link">
+    Saved output from Pyneal
   </a>
   
 </li>
@@ -480,6 +494,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#building-nifti-files-offline-with-getseriespy" title="Building nifti files offline with getSeries.py" class="md-nav__link">
+    Building nifti files offline with getSeries.py
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#output-from-pyneal-scanner" title="Output from Pyneal Scanner" class="md-nav__link">
     Output from Pyneal Scanner
   </a>
@@ -489,6 +510,13 @@
         <li class="md-nav__item">
   <a href="#creating-masks-for-pyneal" title="Creating masks for Pyneal" class="md-nav__link">
     Creating masks for Pyneal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saved-output-from-pyneal" title="Saved output from Pyneal" class="md-nav__link">
+    Saved output from Pyneal
   </a>
   
 </li>
@@ -518,11 +546,23 @@
 <p>Visually, the <strong>RAS+</strong> coordinate system is arranged like: </p>
 <p><img alt="" src="../images/imageOrientation/RAS_orientation.png" /></p>
 <p>There are a number of stages throughout the pipeline where this is important to keep in mind:</p>
+<h2 id="building-nifti-files-offline-with-getseriespy">Building nifti files offline with getSeries.py<a class="headerlink" href="#building-nifti-files-offline-with-getseriespy" title="Permanent link">&para;</a></h2>
+<p>When you use the <a href="../pynealScanner/#getseries"><strong>getSeries.py</strong></a> tool to build a nifti file from raw images from the scanner, the resulting image will be oriented to <strong>RAS+</strong></p>
 <h2 id="output-from-pyneal-scanner">Output from Pyneal Scanner<a class="headerlink" href="#output-from-pyneal-scanner" title="Permanent link">&para;</a></h2>
 <p><strong>Pyneal Scanner</strong> is designed to accept a variety of inputs from various scanner manufactures and imaging environments. One of <strong>Pyneal Scanner's</strong> important functions is to take the input data, in whatever form it appears, and convert it to a standardized format before passing each volume along to <strong>Pyneal</strong>. </p>
 <p><img alt="" src="../images/pynealScanner/pynealScanner.png" /></p>
 <p><strong>Pyneal</strong> expects each volume to arrive from <strong>Pyneal Scanner</strong> in <strong>RAS+</strong> orientation. </p>
 <h2 id="creating-masks-for-pyneal">Creating masks for Pyneal<a class="headerlink" href="#creating-masks-for-pyneal" title="Permanent link">&para;</a></h2>
+<p>Since <strong>Pyneal</strong> receives images from <strong>Pyneal Scanner</strong> that are oriented to <strong>RAS+</strong>, the mask that <strong>Pyneal</strong> uses for analysis must also be oriented to <strong>RAS+</strong>. </p>
+<p>(In fact, not only does the mask have to be in <strong>RAS+</strong>, it also must match the dimensions of the incoming volumes. The easiest way to ensure this is the case is to use the <a href="../createMask/"><strong>Create Mask</strong></a> tool, which uses an example functional series from the current scan to transform the mask to the correct dimensions and orientation)</p>
+<h2 id="saved-output-from-pyneal">Saved output from Pyneal<a class="headerlink" href="#saved-output-from-pyneal" title="Permanent link">&para;</a></h2>
+<p>At the conclusion of a real-time run, <strong>Pyneal</strong> will save the series data as a 4D nifti file in the specified output directory. This output file will be oriented to <strong>RAS+</strong>. </p>
+<h1 id="see-also">See also:<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h1>
+<p>For helpful guides on understanding image orientation, and using affine transformations, see:</p>
+<ul>
+<li><a href="http://nipy.org/nibabel/dicom/dicom_orientation.html">http://nipy.org/nibabel/dicom/dicom_orientation.html</a></li>
+<li><a href="http://nipy.org/nibabel/coordinate_systems.html">http://nipy.org/nibabel/coordinate_systems.html</a></li>
+</ul>
                 
                   
                 
