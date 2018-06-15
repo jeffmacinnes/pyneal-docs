@@ -562,13 +562,23 @@
         },
         {
             "location": "/imageOrientation/",
-            "text": "Image Orientation\n\u00b6\n\n\nPyneal uses the RAS+ convention...",
+            "text": "Image Orientation\n\u00b6\n\n\nThroughout the \nPyneal\n pipeline, from the \noutput\n stage of \nPyneal Scanner\n onward, we use the convention of orienting the images to \nRAS+\n. This means:\n\n\n\n\nThe \n1st\n axis (x) is oriented \nfrom\n \nleft\n \nto\n \nright\n\n\nThe \n2nd\n axis (y) is oriented \nfrom\n \nposterior\n \nto\n \nanterior\n\n\nThe \n3rd\n axis (z) is oriented \nfrom\n \ninferior\n \nto\n \nsuperior\n\n\n\n\nVisually, the \nRAS+\n coordinate system is arranged like: \n\n\n\n\nThere are a number of stages throughout the pipeline where this is important to keep in mind:\n\n\nOutput from Pyneal Scanner\n\u00b6\n\n\nPyneal Scanner\n is designed to accept a variety of inputs from various scanner manufactures and imaging environments. One of \nPyneal Scanner's\n important functions is to take the input data, in whatever form it appears, and convert it to a standardized format before passing each volume along to \nPyneal\n. \n\n\n\n\nPyneal\n expects each volume to arrive from \nPyneal Scanner\n in \nRAS+\n orientation. \n\n\nCreating masks for Pyneal\n\u00b6",
             "title": "Image Orientation"
         },
         {
             "location": "/imageOrientation/#image-orientation",
-            "text": "Pyneal uses the RAS+ convention...",
+            "text": "Throughout the  Pyneal  pipeline, from the  output  stage of  Pyneal Scanner  onward, we use the convention of orienting the images to  RAS+ . This means:   The  1st  axis (x) is oriented  from   left   to   right  The  2nd  axis (y) is oriented  from   posterior   to   anterior  The  3rd  axis (z) is oriented  from   inferior   to   superior   Visually, the  RAS+  coordinate system is arranged like:    There are a number of stages throughout the pipeline where this is important to keep in mind:",
             "title": "Image Orientation"
+        },
+        {
+            "location": "/imageOrientation/#output-from-pyneal-scanner",
+            "text": "Pyneal Scanner  is designed to accept a variety of inputs from various scanner manufactures and imaging environments. One of  Pyneal Scanner's  important functions is to take the input data, in whatever form it appears, and convert it to a standardized format before passing each volume along to  Pyneal .    Pyneal  expects each volume to arrive from  Pyneal Scanner  in  RAS+  orientation.",
+            "title": "Output from Pyneal Scanner"
+        },
+        {
+            "location": "/imageOrientation/#creating-masks-for-pyneal",
+            "text": "",
+            "title": "Creating masks for Pyneal"
         }
     ]
 }

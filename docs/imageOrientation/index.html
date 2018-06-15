@@ -413,9 +413,43 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Image Orientation
+      </label>
+    
     <a href="./" title="Image Orientation" class="md-nav__link md-nav__link--active">
       Image Orientation
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#output-from-pyneal-scanner" title="Output from Pyneal Scanner" class="md-nav__link">
+    Output from Pyneal Scanner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-masks-for-pyneal" title="Creating masks for Pyneal" class="md-nav__link">
+    Creating masks for Pyneal
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -442,6 +476,27 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#output-from-pyneal-scanner" title="Output from Pyneal Scanner" class="md-nav__link">
+    Output from Pyneal Scanner
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-masks-for-pyneal" title="Creating masks for Pyneal" class="md-nav__link">
+    Creating masks for Pyneal
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -454,8 +509,20 @@
                 
                 
                 <h1 id="image-orientation">Image Orientation<a class="headerlink" href="#image-orientation" title="Permanent link">&para;</a></h1>
-<p>Pyneal uses the RAS+ convention...</p>
+<p>Throughout the <strong>Pyneal</strong> pipeline, from the <em>output</em> stage of <strong>Pyneal Scanner</strong> onward, we use the convention of orienting the images to <strong>RAS+</strong>. This means:</p>
+<ul>
+<li>The <strong>1st</strong> axis (x) is oriented <em>from</em> <strong>left</strong> <em>to</em> <strong>right</strong></li>
+<li>The <strong>2nd</strong> axis (y) is oriented <em>from</em> <strong>posterior</strong> <em>to</em> <strong>anterior</strong></li>
+<li>The <strong>3rd</strong> axis (z) is oriented <em>from</em> <strong>inferior</strong> <em>to</em> <strong>superior</strong></li>
+</ul>
+<p>Visually, the <strong>RAS+</strong> coordinate system is arranged like: </p>
 <p><img alt="" src="../images/imageOrientation/RAS_orientation.png" /></p>
+<p>There are a number of stages throughout the pipeline where this is important to keep in mind:</p>
+<h2 id="output-from-pyneal-scanner">Output from Pyneal Scanner<a class="headerlink" href="#output-from-pyneal-scanner" title="Permanent link">&para;</a></h2>
+<p><strong>Pyneal Scanner</strong> is designed to accept a variety of inputs from various scanner manufactures and imaging environments. One of <strong>Pyneal Scanner's</strong> important functions is to take the input data, in whatever form it appears, and convert it to a standardized format before passing each volume along to <strong>Pyneal</strong>. </p>
+<p><img alt="" src="../images/pynealScanner/pynealScanner.png" /></p>
+<p><strong>Pyneal</strong> expects each volume to arrive from <strong>Pyneal Scanner</strong> in <strong>RAS+</strong> orientation. </p>
+<h2 id="creating-masks-for-pyneal">Creating masks for Pyneal<a class="headerlink" href="#creating-masks-for-pyneal" title="Permanent link">&para;</a></h2>
                 
                   
                 
