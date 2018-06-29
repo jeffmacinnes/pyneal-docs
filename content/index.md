@@ -48,7 +48,7 @@ you have specified, and hosts the results on a server, which other downstream co
 
 This design allows the software to easily accommodate the various directory structures and data formats that are found on different scanner models at different institutions around the world. (However, it also means that the steps to install, and setup **Pyneal** can vary from environment to environment):
 
-**For instruections on installing and setting up your environment, see:**
+**For instructions on installing and setting up your environment, see:**
 
 * [**Installation guide**](installation.md)
 * [**Setup guide**](setup.md)
