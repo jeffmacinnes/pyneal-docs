@@ -85,7 +85,7 @@ class CustomAnalysis:
         ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
         ########################################################################
 
-    def compute(self, volume, volIdx):
+    def compute(self, vol, volIdx):
         """ Compute method
 
         This method will be executed on EACH new 3D volume that arrives
@@ -96,9 +96,8 @@ class CustomAnalysis:
 
         Parameters
         ----------
-        volume : nibabel-like image
-            nibabel-like image containing a 3D array of voxel data, a (4,4)
-            affine matrix mapping the volume to RAS+ space, and image metadata
+        vol : numpy-array
+            3D array of voxel data for the current volume
         volIdx : int
             0-based index indicating where, in time (4th dimension), the volume
             belongs
@@ -252,7 +251,7 @@ In order to illustrate, in the example above we're simply creating a new variabl
 The `compute` method is what actually gets called during a scan. In fact, it gets called each time a new 3D volume appears from the scanner. Here's the code in more detail:
 
 ```python
-def compute(self, volume, volIdx):
+def compute(self, vol, volIdx):
 	""" Compute method
 	
 	This method will be executed on EACH new 3D volume that arrives
@@ -263,9 +262,8 @@ def compute(self, volume, volIdx):
 	
 	Parameters
 	----------
-	volume : nibabel-like image
-	    nibabel-like image containing a 3D array of voxel data, a (4,4)
-	    affine matrix mapping the volume to RAS+ space, and image metadata
+    vol : numpy-array
+        3D array of voxel data for the current volume
 	volIdx : int
 	    0-based index indicating where, in time (4th dimension), the volume
 	    belongs

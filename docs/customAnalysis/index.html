@@ -704,7 +704,7 @@ class CustomAnalysis:
         ############# ^^^ END USER-SPECIFIED CODE ^^^ ##########################
         ########################################################################
 
-    def compute(self, volume, volIdx):
+    def compute(self, vol, volIdx):
         &quot;&quot;&quot; Compute method
 
         This method will be executed on EACH new 3D volume that arrives
@@ -715,9 +715,8 @@ class CustomAnalysis:
 
         Parameters
         ----------
-        volume : nibabel-like image
-            nibabel-like image containing a 3D array of voxel data, a (4,4)
-            affine matrix mapping the volume to RAS+ space, and image metadata
+        vol : numpy-array
+            3D array of voxel data for the current volume
         volIdx : int
             0-based index indicating where, in time (4th dimension), the volume
             belongs
@@ -852,7 +851,7 @@ self.myResult = 1
 <p>In order to illustrate, in the example above we're simply creating a new variable (<code>self.myResult</code>) and assigning it a value of <code>1</code>.</p>
 <h3 id="compute"><code>compute</code><a class="headerlink" href="#compute" title="Permanent link">&para;</a></h3>
 <p>The <code>compute</code> method is what actually gets called during a scan. In fact, it gets called each time a new 3D volume appears from the scanner. Here's the code in more detail:</p>
-<pre><code class="python">def compute(self, volume, volIdx):
+<pre><code class="python">def compute(self, vol, volIdx):
     &quot;&quot;&quot; Compute method
 
     This method will be executed on EACH new 3D volume that arrives
@@ -863,9 +862,8 @@ self.myResult = 1
 
     Parameters
     ----------
-    volume : nibabel-like image
-        nibabel-like image containing a 3D array of voxel data, a (4,4)
-        affine matrix mapping the volume to RAS+ space, and image metadata
+    vol : numpy-array
+        3D array of voxel data for the current volume
     volIdx : int
         0-based index indicating where, in time (4th dimension), the volume
         belongs
