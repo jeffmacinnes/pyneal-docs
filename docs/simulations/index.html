@@ -815,12 +815,13 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p><strong>Use Case:</strong> When you want to test an <strong>End User</strong> without having to actually run <strong>Pyneal</strong> (or anything else further upstream)</p>
 <p><img alt="" src="../images/simulation/pynealResults.png" /></p>
 <p><strong><em>location</em></strong>: <code>pyneal/utils/simulation/pynealResults_sim.py</code></p>
-<p><strong><em>usage</em></strong>: <code>python pynealResults_sim.py [--TR] [--sockethost] [--socketport]</code></p>
+<p><strong><em>usage</em></strong>: <code>python pynealResults_sim.py [--TR] [--sockethost] [--socketport] [--keepAlive]</code></p>
 <p><strong><em>input args</em></strong>:</p>
 <ul>
 <li>-t/--TR: set the TR in ms [default: 1000]</li>
 <li>-sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]</li>
 <li>-sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5556]</li>
+<li>--keepAlive: True/False flag for whether to keep the simulated server alive and listening even once all of the made up data is added to it (see below for more details). Useful for debugging/testing. [default: False]</li>
 </ul>
 <p>This tool will launch a server that listen in for requests for results from a remote <strong>End User</strong> (e.g. a task presentation machine). This tools behaves exactly the same way as the results server component of Pyneal, allowing you to test the <strong>End User</strong> behavior.</p>
 <p>In this case the results that are returned are from a made up dataset generated each time the tool is called. There are 500 volumes in the generated dataset, and each volume has an associated "Average" result that is a random value drawn from a normal distribution (mean: 2400, stdDev: 15). Results for each volume will be available on the simulated results server at a rate set by the TR. For instance, with a 1000ms TR, it will take 500s for all of the results to appear. </p>
@@ -833,10 +834,12 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p><strong>Use Case:</strong> When you want to test sending requests to <strong>Pyneal</strong> without having to actually run a real <strong>End User</strong> </p>
 <p><img alt="" src="../images/simulation/endUser.png" /></p>
 <p><strong><em>location</em></strong>: <code>pyneal/utils/simulation/endUser_sim.py</code></p>
-<p><strong><em>usage</em></strong>: <code>python pynealResults_sim.py [volIdx]</code></p>
+<p><strong><em>usage</em></strong>: <code>python pynealResults_sim.py [volIdx] [-sh/--socketHost] [-sp/--socketPort]</code></p>
 <p><strong><em>input args</em></strong>:</p>
 <ul>
 <li>volIdx: the index of the volume you'd like to request results from [default: 0000]. Note: volume indices are 0-based</li>
+<li>-sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]</li>
+<li>-sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5556]</li>
 </ul>
 <p>This tool will simulate and demo how an <strong>End User</strong> may request results from <strong>Pyneal</strong>
 during a real-time scan.</p>

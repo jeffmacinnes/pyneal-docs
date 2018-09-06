@@ -197,13 +197,14 @@ or use the tool to generate a dataset of random values
 
 ***location***: `pyneal/utils/simulation/pynealResults_sim.py`
 
-***usage***: `python pynealResults_sim.py [--TR] [--sockethost] [--socketport]`
+***usage***: `python pynealResults_sim.py [--TR] [--sockethost] [--socketport] [--keepAlive]`
 
 ***input args***:
 
 * -t/--TR: set the TR in ms [default: 1000]
 * -sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]
 * -sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5556]
+* --keepAlive: True/False flag for whether to keep the simulated server alive and listening even once all of the made up data is added to it (see below for more details). Useful for debugging/testing. [default: False]
 
 This tool will launch a server that listen in for requests for results from a remote **End User** (e.g. a task presentation machine). This tools behaves exactly the same way as the results server component of Pyneal, allowing you to test the **End User** behavior.
 
@@ -228,11 +229,13 @@ For more information on formatting requests and interpretting responses, see [**
 
 ***location***: `pyneal/utils/simulation/endUser_sim.py`
 
-***usage***: `python pynealResults_sim.py [volIdx]`
+***usage***: `python pynealResults_sim.py [volIdx] [-sh/--socketHost] [-sp/--socketPort]`
 
 ***input args***:
 
 * volIdx: the index of the volume you'd like to request results from [default: 0000]. Note: volume indices are 0-based
+* -sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]
+* -sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5556]
 
 This tool will simulate and demo how an **End User** may request results from **Pyneal**
 during a real-time scan.
