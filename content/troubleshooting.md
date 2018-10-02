@@ -2,34 +2,6 @@
 
 ## Installation
 
-### problems installing kivy
-
-If you have followed the instructions under [**Installation**: Pyneal](/installation.md#pyneal) but are still having trouble getting Kivy to work, there are a couple of other options you may want to try. 
-
-First off, check out [**detailed Kivy installation instructions**](https://kivy.org/docs/installation/installation-osx.html#using-homebrew-with-pip) to see if there are any tips. 
-
-Second, you can try to manually compile Kivy following these steps
-
-* clone the Kivy repo from github:
-
-> git clone https://github.com/kivy/kivy
-
-* Navigate into the cloned `kivy` directory and set environmental variables:
-
-> cd kivy  
-> export USE_SDL2=1  
-> export USE_GSTREAMER=1  
-
-In order for this to work, make sure you have installed the SDL2 and GSTREAMER libraries for Kivy listed under [**Kivy Libraries**](/installation.md#[Option-1]-Using-Homebrew)
-
-* run `make` to compile the package
-
-> make
-
-If this proceeded without error, test by running **Pyneal** to see if the GUI appears:
-
-> python pyneal.py  
-
 
 ## Pyneal Scanner
 

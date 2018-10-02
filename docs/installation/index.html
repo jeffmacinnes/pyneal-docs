@@ -267,26 +267,6 @@
     dependencies
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-1-using-homebrew" title="[Option 1] Using Homebrew" class="md-nav__link">
-    [Option 1] Using Homebrew
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-2-using-macports" title="[Option 2] Using MacPorts" class="md-nav__link">
-    [Option 2] Using MacPorts
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -579,26 +559,6 @@
     dependencies
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#option-1-using-homebrew" title="[Option 1] Using Homebrew" class="md-nav__link">
-    [Option 1] Using Homebrew
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#option-2-using-macports" title="[Option 2] Using MacPorts" class="md-nav__link">
-    [Option 2] Using MacPorts
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -652,11 +612,11 @@
 </blockquote>
 <p>If that fails for any reason, you can install manually one at a time:</p>
 <blockquote>
-<p>pip install numpy==1.13.1<br />
-pip install pydicom==1.0.2<br />
-pip install nibabel==2.1.0<br />
-pip install pyzmq==16.0.2<br />
-pip install pyyaml==3.12</p>
+<p>pip install numpy&gt;=1.13.1<br />
+pip install pydicom&gt;=1.0.2<br />
+pip install nibabel&gt;=2.1.0<br />
+pip install pyzmq&gt;=16.0.2<br />
+pip install pyyaml&gt;=3.12</p>
 </blockquote>
 <p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
 <h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>
@@ -669,37 +629,18 @@ pip install pyyaml==3.12</p>
 </blockquote>
 <p>If that fails for any reason, you can install manually one at a time:</p>
 <blockquote>
-<p>pip install numpy==1.13.1<br />
-pip install scipy==1.1.1<br />
-pip install nibabel==2.1.0<br />
-pip install nipy==0.4.1<br />
-pip install pyzmq==16.0.2<br />
-pip install pyyaml==3.12<br />
-pip install flask==0.12.2<br />
-pip install flask_socketio==2.9.2<br />
-pip install eventlet==0.21.0  </p>
+<p>pip install numpy&gt;=1.13.1<br />
+pip install scipy&gt;=1.1.1<br />
+pip install nibabel&gt;=2.1.0<br />
+pip install nipy&gt;=0.4.1<br />
+pip install pyzmq&gt;=16.0.2<br />
+pip install pyyaml&gt;=3.12<br />
+pip install wxPython&gt;=4.0.1<br />
+pip install flask&gt;=0.12.2<br />
+pip install flask_socketio&gt;=2.9.2<br />
+pip install eventlet&gt;=0.21.0  </p>
 </blockquote>
 <p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
-<p>In addition, each <strong>Pyneal</strong> session is setup with the help of a GUI, based on the <a href="https://kivy.org/docs/installation/installation-osx.html">Kivy</a> package. In order to get this to work, you need to install certain Kivy libraries.</p>
-<p>First, make sure you have the latest version of Xcode command line tools installed:</p>
-<blockquote>
-<p>xcode-select --install </p>
-</blockquote>
-<p>Next, installed the libraries for Kivy: </p>
-<h4 id="option-1-using-homebrew">[Option 1] Using Homebrew<a class="headerlink" href="#option-1-using-homebrew" title="Permanent link">&para;</a></h4>
-<blockquote>
-<p>brew install pkg-config sdl2 sdl2_image sdl2_ttf sdl2_mixer gstreamer</p>
-</blockquote>
-<h4 id="option-2-using-macports">[Option 2] Using MacPorts<a class="headerlink" href="#option-2-using-macports" title="Permanent link">&para;</a></h4>
-<blockquote>
-<p>port install libsdl2 libsdl2_image libsdl2_ttf libsdl2_mixer</p>
-</blockquote>
-<p>Now, install development version of kivy:</p>
-<blockquote>
-<p>pip install Cython==0.26.1<br />
-pip install https://github.com/kivy/kivy/archive/master.zip</p>
-</blockquote>
-<p>Some users have reported problems installing the development version of kivy . For assistance with this step, and other issues, see <a href="../troubleshooting/#problems-installing-kivy"><strong>Troubleshooting</strong>: Installing Kivy</a></p>
 <h2 id="additional-tools">Additional Tools<a class="headerlink" href="#additional-tools" title="Permanent link">&para;</a></h2>
 <p><strong>Pyneal</strong> itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool <a href="../createMask"><strong>createMask</strong></a> can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.</p>
 <p>In order to use these additional tools, make sure you have installed the following:</p>
