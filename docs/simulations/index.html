@@ -834,12 +834,12 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p><strong>Use Case:</strong> When you want to test sending requests to <strong>Pyneal</strong> without having to actually run a real <strong>End User</strong> </p>
 <p><img alt="" src="../images/simulation/endUser.png" /></p>
 <p><strong><em>location</em></strong>: <code>pyneal/utils/simulation/endUser_sim.py</code></p>
-<p><strong><em>usage</em></strong>: <code>python pynealResults_sim.py [volIdx] [-sh/--socketHost] [-sp/--socketPort]</code></p>
+<p><strong><em>usage</em></strong>: <code>python endUser_sim.py [-sh/--socketHost] [-sp/--socketPort] [volIdx]</code></p>
 <p><strong><em>input args</em></strong>:</p>
 <ul>
-<li>volIdx: the index of the volume you'd like to request results from [default: 0000]. Note: volume indices are 0-based</li>
-<li>-sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]</li>
+<li>-sh/--sockethost: IP address Pyneal host [default: '127.0.0.1']</li>
 <li>-sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5556]</li>
+<li>volIdx: the index of the volume you'd like to request results from [default: 0000]. Note: volume indices are 0-based</li>
 </ul>
 <p>This tool will simulate and demo how an <strong>End User</strong> may request results from <strong>Pyneal</strong>
 during a real-time scan.</p>

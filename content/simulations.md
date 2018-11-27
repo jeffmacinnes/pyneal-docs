@@ -229,13 +229,14 @@ For more information on formatting requests and interpretting responses, see [**
 
 ***location***: `pyneal/utils/simulation/endUser_sim.py`
 
-***usage***: `python pynealResults_sim.py [volIdx] [-sh/--socketHost] [-sp/--socketPort]`
+***usage***: `python endUser_sim.py [-sh/--socketHost] [-sp/--socketPort] [volIdx]`
 
 ***input args***:
 
-* volIdx: the index of the volume you'd like to request results from [default: 0000]. Note: volume indices are 0-based
-* -sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]
+
+* -sh/--sockethost: IP address Pyneal host [default: '127.0.0.1']
 * -sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5556]
+* volIdx: the index of the volume you'd like to request results from [default: 0000]. Note: volume indices are 0-based
 
 This tool will simulate and demo how an **End User** may request results from **Pyneal**
 during a real-time scan.
