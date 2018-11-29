@@ -258,6 +258,53 @@
     Pyneal
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-setup-gui" title="Using Setup GUI" class="md-nav__link">
+    Using Setup GUI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-settings-files" title="Custom Settings Files" class="md-nav__link">
+    Custom Settings Files
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#via-gui" title="via GUI:" class="md-nav__link">
+    via GUI:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-command-line" title="via command line:" class="md-nav__link">
+    via command line:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-pyneal-headless" title="Launching Pyneal "Headless"" class="md-nav__link">
+    Launching Pyneal "Headless"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -505,6 +552,53 @@
     Pyneal
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-setup-gui" title="Using Setup GUI" class="md-nav__link">
+    Using Setup GUI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-settings-files" title="Custom Settings Files" class="md-nav__link">
+    Custom Settings Files
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#via-gui" title="via GUI:" class="md-nav__link">
+    via GUI:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-command-line" title="via command line:" class="md-nav__link">
+    via command line:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-pyneal-headless" title="Launching Pyneal "Headless"" class="md-nav__link">
+    Launching Pyneal "Headless"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -598,11 +692,12 @@ pynealSocketPort: '9999'
 </ul>
 <h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>
 <p>Launch <strong>Pyneal</strong> from the command line by navigating in to the <code>pyneal</code> directory and running <code>pyneal.py</code></p>
+<h3 id="using-setup-gui">Using Setup GUI<a class="headerlink" href="#using-setup-gui" title="Permanent link">&para;</a></h3>
+<p>The typical way to configure <strong>Pyneal</strong> for the current session is by using the setup GUI. When you launch <code>pyneal.py</code> a GUI will appear, allowing you to configure <strong>Pyneal</strong> to the current experiment</p>
 <blockquote>
 <p>cd pyneal <br />
 python pyneal.py</p>
 </blockquote>
-<p>The <strong>Pyneal</strong> configuration is set via GUI. When you launch <code>pyneal.py</code> a GUI will appear, allowing you to configure <strong>Pyneal</strong> to the current experiment</p>
 <p><img alt="" src="../images/pynealSetupGUI.png" /></p>
 <ul>
 <li>
@@ -668,8 +763,26 @@ dashboardClientPort: 5558
 <li><strong>dashboardPort</strong>: Port number over which to launch the dashboard webserver (<strong>NOTE:</strong> this key does not appear in the setup GUI)</li>
 <li><strong>dashboardClientPort</strong>: Port number that browsers can use to connect to the dashboard (<strong>NOTE:</strong> this key does not appear in the setup GUI)</li>
 </ul>
+<h3 id="custom-settings-files">Custom Settings Files<a class="headerlink" href="#custom-settings-files" title="Permanent link">&para;</a></h3>
+<p>You can supply your own custom setting file with the configurate keys described above in one of two ways:</p>
+<h4 id="via-gui">via GUI:<a class="headerlink" href="#via-gui" title="Permanent link">&para;</a></h4>
 <p>At the top of the setup GUI you have the option to load a custom settings file. A custom settings should be a <code>.yaml</code> file with values for one or more of the configuration keys above. By loading a custom settings file, the GUI will be populated with whichever configure keys are included; any non-included keys will get their values from the <code>setupConfig.yaml</code> file as normal.</p>
-<p>The option allows users to create settings files on a per-project basis, and easily configure <strong>Pyneal</strong> to match the project demands.  </p>
+<p>The option allows users to create settings files on a per-project basis, and easily configure <strong>Pyneal</strong> to match the project demands. </p>
+<h4 id="via-command-line">via command line:<a class="headerlink" href="#via-command-line" title="Permanent link">&para;</a></h4>
+<p>Alternatively, you can supply the path to this file at the command line when you launch <strong>Pyneal</strong></p>
+<blockquote>
+<p>python pyneal.py --settingsFile /Path/to/custom/settingsFile.yaml</p>
+</blockquote>
+<p><em>or</em></p>
+<blockquote>
+<p>python pyneal.py -s /Path/to/custom/settingsFile.yaml</p>
+</blockquote>
+<h3 id="launching-pyneal-headless">Launching Pyneal "Headless"<a class="headerlink" href="#launching-pyneal-headless" title="Permanent link">&para;</a></h3>
+<p>If for whatever reason you wish to launch <strong>Pyneal</strong> without opening the setup GUI, you can run in "headless" mode</p>
+<blockquote>
+<p>python pyneal.py --noGUI</p>
+</blockquote>
+<p>In this case, <strong>Pyneal</strong> will read the <code>setupConfig.yaml</code> file that was saved locally after the last time you ran Pyneal, and use those settings. Altnernatively, you can also supply the path to a different settings file using the steps described <a href="./#via-command-line"><strong>above</strong></a></p>
                 
                   
                 

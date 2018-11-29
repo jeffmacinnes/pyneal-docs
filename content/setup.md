@@ -89,13 +89,13 @@ pynealSocketPort: '9999'
 
 Launch **Pyneal** from the command line by navigating in to the `pyneal` directory and running `pyneal.py`
 
+### Using Setup GUI
 
+The typical way to configure **Pyneal** for the current session is by using the setup GUI. When you launch `pyneal.py` a GUI will appear, allowing you to configure **Pyneal** to the current experiment
 
 > cd pyneal   
 > python pyneal.py
 
-
-The **Pyneal** configuration is set via GUI. When you launch `pyneal.py` a GUI will appear, allowing you to configure **Pyneal** to the current experiment
 
 ![](images/pynealSetupGUI.png)
 
@@ -151,7 +151,30 @@ dashboardClientPort: 5558
 *  **dashboardPort**: Port number over which to launch the dashboard webserver (**NOTE:** this key does not appear in the setup GUI)
 *  **dashboardClientPort**: Port number that browsers can use to connect to the dashboard (**NOTE:** this key does not appear in the setup GUI)
 
+### Custom Settings Files
+You can supply your own custom setting file with the configurate keys described above in one of two ways:
+
+#### via GUI: 
 At the top of the setup GUI you have the option to load a custom settings file. A custom settings should be a `.yaml` file with values for one or more of the configuration keys above. By loading a custom settings file, the GUI will be populated with whichever configure keys are included; any non-included keys will get their values from the `setupConfig.yaml` file as normal.
 
-The option allows users to create settings files on a per-project basis, and easily configure **Pyneal** to match the project demands.  
+The option allows users to create settings files on a per-project basis, and easily configure **Pyneal** to match the project demands. 
+
+#### via command line:
+Alternatively, you can supply the path to this file at the command line when you launch **Pyneal**
+
+> python pyneal.py --settingsFile /Path/to/custom/settingsFile.yaml
+
+*or*
+
+> python pyneal.py -s /Path/to/custom/settingsFile.yaml
+
+
+
+### Launching Pyneal "Headless"
+
+If for whatever reason you wish to launch **Pyneal** without opening the setup GUI, you can run in "headless" mode
+
+> python pyneal.py --noGUI
+
+In this case, **Pyneal** will read the `setupConfig.yaml` file that was saved locally after the last time you ran Pyneal, and use those settings. Altnernatively, you can also supply the path to a different settings file using the steps described [**above**](setup.md#via-command-line)
 

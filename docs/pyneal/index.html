@@ -970,7 +970,19 @@
 <blockquote>
 <p>python pyneal.py</p>
 </blockquote>
-<p>This will launch a GUI that will allow you to set up <strong>Pyneal</strong> for a particular real-time scan. Once you hit submit, a dashboard will appear (if selected in the GUI) that allows you to monitor the progress of your scan. Additional log messages will appear in the terminal throughout the scan. </p>
+<pre><code>usage: pyneal.py [-h] [--noGUI] [-s SETTINGSFILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --noGUI               run in headless mode, no setup GUI. (requires a valid
+                        settings file, either supplied here with -s option, or
+                        in {pyneal root}/src/GUIs/pynealSetup.yaml)
+  -s SETTINGSFILE, --settingsFile SETTINGSFILE
+                        specify the path to a custom settings file
+</code></pre>
+
+<p>This will launch a GUI that will allow you to set up <strong>Pyneal</strong> for a particular real-time scan. In most cases, this is how you'll want to configure <strong>Pyneal</strong> for the current session. However, as shown above, you also have the option to supply your own custom configuration file, or run in headless mode without showing the setup GUI. </p>
+<p>After you launch <strong>Pyneal</strong>, a dashboard will appear (if specified during configuration) that allows you to monitor the progress of your scan. Additional log messages will appear in the terminal throughout the scan. </p>
 <p>See below for a more detailed description of how to <a href="./#preparing-for-a-real-time-scan"><strong>prepare for a real-time scan</strong></a>, what's going on <a href="./#running-a-real-time-scan"><strong>during a real-time scan</strong></a>, and what type of data is available <a href="./#after-a-real-time-scan"><strong>after a real-time scan</strong></a> </p>
 <h2 id="preparing-for-a-real-time-scan">Preparing for a real-time scan<a class="headerlink" href="#preparing-for-a-real-time-scan" title="Permanent link">&para;</a></h2>
 <h3 id="network-settings">Network settings<a class="headerlink" href="#network-settings" title="Permanent link">&para;</a></h3>
@@ -997,7 +1009,19 @@
 <blockquote>
 <p>python pyneal.py</p>
 </blockquote>
-<p>The GUI will appear, allowing you to enter the appropriate settings for your environment/session:</p>
+<p>This will launch the setup GUI, allowing you to enter the appropriate settings for your environment/session. </p>
+<p>The GUI is discussed below, but note that you can also supply a premade configuration file and/or run <strong>Pyneal</strong> in headless mode without viewing the setup GUI by following the usage examples:</p>
+<pre><code>usage: pyneal.py [-h] [--noGUI] [-s SETTINGSFILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --noGUI               run in headless mode, no setup GUI. (requires a valid
+                        settings file, either supplied here with -s option, or
+                        in {pyneal root}/src/GUIs/pynealSetup.yaml)
+  -s SETTINGSFILE, --settingsFile SETTINGSFILE
+                        specify the path to a custom settings file
+</code></pre>
+
 <h3 id="set-up-gui">Set-up GUI<a class="headerlink" href="#set-up-gui" title="Permanent link">&para;</a></h3>
 <p><img alt="" src="../images/pynealSetupGUI.png" /></p>
 <p>Launching the GUI will load the settings from previous run. For running multiple scans in the same session, you may not need to change any settings after the first scan. </p>

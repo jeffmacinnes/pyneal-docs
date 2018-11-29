@@ -63,7 +63,21 @@ To launch **Pyneal** from the **analysis computer**, open a terminal and navigat
 
 > python pyneal.py
 
-This will launch a GUI that will allow you to set up **Pyneal** for a particular real-time scan. Once you hit submit, a dashboard will appear (if selected in the GUI) that allows you to monitor the progress of your scan. Additional log messages will appear in the terminal throughout the scan. 
+```
+usage: pyneal.py [-h] [--noGUI] [-s SETTINGSFILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --noGUI               run in headless mode, no setup GUI. (requires a valid
+                        settings file, either supplied here with -s option, or
+                        in {pyneal root}/src/GUIs/pynealSetup.yaml)
+  -s SETTINGSFILE, --settingsFile SETTINGSFILE
+                        specify the path to a custom settings file
+```
+
+This will launch a GUI that will allow you to set up **Pyneal** for a particular real-time scan. In most cases, this is how you'll want to configure **Pyneal** for the current session. However, as shown above, you also have the option to supply your own custom configuration file, or run in headless mode without showing the setup GUI. 
+
+After you launch **Pyneal**, a dashboard will appear (if specified during configuration) that allows you to monitor the progress of your scan. Additional log messages will appear in the terminal throughout the scan. 
 
 See below for a more detailed description of how to [**prepare for a real-time scan**](pyneal.md#preparing-for-a-real-time-scan), what's going on [**during a real-time scan**](pyneal.md#running-a-real-time-scan), and what type of data is available [**after a real-time scan**](pyneal.md#after-a-real-time-scan) 
 
@@ -102,7 +116,21 @@ To launch **Pyneal** from the **analysis computer**, open the command line and n
 
 > python pyneal.py
 
-The GUI will appear, allowing you to enter the appropriate settings for your environment/session:
+This will launch the setup GUI, allowing you to enter the appropriate settings for your environment/session. 
+
+The GUI is discussed below, but note that you can also supply a premade configuration file and/or run **Pyneal** in headless mode without viewing the setup GUI by following the usage examples:
+
+```
+usage: pyneal.py [-h] [--noGUI] [-s SETTINGSFILE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --noGUI               run in headless mode, no setup GUI. (requires a valid
+                        settings file, either supplied here with -s option, or
+                        in {pyneal root}/src/GUIs/pynealSetup.yaml)
+  -s SETTINGSFILE, --settingsFile SETTINGSFILE
+                        specify the path to a custom settings file
+```
 
 ### Set-up GUI
 
