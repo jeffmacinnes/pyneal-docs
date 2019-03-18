@@ -212,7 +212,7 @@ In this case the results that are returned are from a made up dataset generated 
 
 While this simulated results server is running, it will listen for requests from an **End User**. With each request that appears, it will check to see if the result from the requested volume has appeared yet. If it has, it will send back a message that looks something like:
 
-`{foundResults: True, Average: #####}`
+`{foundResults: True, average: #####}`
 
 If not, the response message will simply be:
 

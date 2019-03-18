@@ -394,6 +394,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#network-issues" title="Network Issues" class="md-nav__link">
+    Network Issues
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#address-already-in-use" title="Address already in use" class="md-nav__link">
+    Address already in use
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pyneal-scanner" title="Pyneal Scanner" class="md-nav__link">
     Pyneal Scanner
   </a>
@@ -538,6 +558,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#network-issues" title="Network Issues" class="md-nav__link">
+    Network Issues
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#address-already-in-use" title="Address already in use" class="md-nav__link">
+    Address already in use
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pyneal-scanner" title="Pyneal Scanner" class="md-nav__link">
     Pyneal Scanner
   </a>
@@ -614,6 +654,62 @@
                 
                 <h1 id="troubleshooting">troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<h2 id="network-issues">Network Issues<a class="headerlink" href="#network-issues" title="Permanent link">&para;</a></h2>
+<h3 id="address-already-in-use">Address already in use<a class="headerlink" href="#address-already-in-use" title="Permanent link">&para;</a></h3>
+<p>You go to launch Pyneal and in the terminal you see an error that reads something like </p>
+<blockquote>
+<p>zmq.error.ZMQError: Address already in use</p>
+</blockquote>
+<p><strong>Cause</strong>: Pyneal is trying to create a socket on a port that is already in use. This could occur if:  </p>
+<ul>
+<li>A) There is another application currently using the same port(s) that Pyneal is trying to use  </li>
+<li>B) Pyneal failed to properly close the port(s) the last time you used it</li>
+</ul>
+<p><strong>Diagnose</strong></p>
+<p>1) Confirm which ports Pyneal is trying to use. By default, Pyneal uses ports in the 5555-5558 range; To verify, check the settings that are printed to the terminal when you run Pyneal, in particular:</p>
+<pre><code>MainThread -  Setting: dashboardClientPort: 5558
+MainThread -  Setting: dashboardPort: 5557
+MainThread -  Setting: pynealScannerPort: 5555
+MainThread -  Setting: resultsServerPort: 5556
+</code></pre>
+
+<p>2) Next, check which processes are currently using those ports. In a terminal, type:</p>
+<blockquote>
+<p>lsof -i :5555-5558</p>
+</blockquote>
+<p>and you will be presented with a list Process IDs (PID column) currently using ports within that range:</p>
+<pre><code>COMMAND     PID USER   FD   TYPE            DEVICE SIZE/OFF NODE NAME
+Python    21115 jeff   14u  IPv4 0xb42eb5e0931fdff      0t0  TCP localhost:personal-agent (LISTEN)
+Python    21115 jeff   17u  IPv4 0xb42eb5dfde84dff      0t0  TCP *:freeciv (LISTEN)
+Python    21115 jeff   24u  IPv4 0xb42eb5e0a2ca47f      0t0  TCP localhost:52786-&gt;localhost:5557 (ESTABLISHED)
+Python    21115 jeff   25u  IPv4 0xb42eb5e0922647f      0t0  TCP localhost:52787-&gt;localhost:5557 (ESTABLISHED)
+Python    21115 jeff   26u  IPv4 0xb42eb5e315700ff      0t0  TCP localhost:52788-&gt;localhost:5557 (ESTABLISHED)
+Python    21115 jeff   30u  IPv4 0xb42eb5e095bf0ff      0t0  TCP localhost:52789-&gt;localhost:5557 (ESTABLISHED)
+</code></pre>
+
+<p>This output indicates that Python is currently running a process that is occupying port <code>5557</code>. Despite the multiple lines, note that there is just a single process ID (PID) represented. In this case, it appears as though Pyneal has failed to properly close the socket on port 5557 the last time you ran it (unless you happen to be running other unrelated Python processes simultaneously that also happen to be using those same port numbers as Pyneal). Alternatively, if you see a different application listed under <code>COMMAND</code>, it would indicate that there is another active process on your machine that is competing for ports with Pyneal.</p>
+<p><strong>Fixes</strong></p>
+<ul>
+<li>
+<p><strong>Option 1</strong>: Kill the competing process. Once you have identifed which process is occupying the port you are trying to use, you can kill it by typing:</p>
+<blockquote>
+<p>kill -9 PID</p>
+</blockquote>
+<p>Where <code>PID</code> is the process ID (PID) from the output above</p>
+</li>
+<li>
+<p><strong>Option 2</strong>: Make Pyneal use a differnt Port #. If you <strong>do not</strong> want to stop the competing process, you can have Pyneal use different port numbers by manually editing your config file: </p>
+<ol>
+<li>Open your custom config file (or use the default one at <code>pyneal/src/GUIs/pynealSetup/setupConfig.yaml</code>)</li>
+<li>change the port number entries to use new ports (note: port numbers can range from <code>0-65535</code> but numbers <code>0-1023</code> are typically reserved for priveledged system processes)</li>
+</ol>
+<p><code>...
+dashboardClientPort: 7000
+dashboardPort: 7001
+pynealScannerPort: 7002
+resultsServerPort: 7003</code></p>
+</li>
+</ul>
 <h2 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h2>
 <h3 id="pyneal-scanner-issue-1">Pyneal scanner issue 1<a class="headerlink" href="#pyneal-scanner-issue-1" title="Permanent link">&para;</a></h3>
 <h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>

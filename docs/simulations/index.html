@@ -826,7 +826,7 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p>This tool will launch a server that listen in for requests for results from a remote <strong>End User</strong> (e.g. a task presentation machine). This tools behaves exactly the same way as the results server component of Pyneal, allowing you to test the <strong>End User</strong> behavior.</p>
 <p>In this case the results that are returned are from a made up dataset generated each time the tool is called. There are 500 volumes in the generated dataset, and each volume has an associated "Average" result that is a random value drawn from a normal distribution (mean: 2400, stdDev: 15). Results for each volume will be available on the simulated results server at a rate set by the TR. For instance, with a 1000ms TR, it will take 500s for all of the results to appear. </p>
 <p>While this simulated results server is running, it will listen for requests from an <strong>End User</strong>. With each request that appears, it will check to see if the result from the requested volume has appeared yet. If it has, it will send back a message that looks something like:</p>
-<p><code>{foundResults: True, Average: #####}</code></p>
+<p><code>{foundResults: True, average: #####}</code></p>
 <p>If not, the response message will simply be:</p>
 <p><code>{foundResults: False}</code></p>
 <p>For more information on formatting requests and interpretting responses, see <a href="../endUser/#sending-requests"><strong>requesting results</strong></a>)</p>
