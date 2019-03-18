@@ -54,13 +54,13 @@ This output indicates that Python is currently running a process that is occupyi
 	1. Open your custom config file (or use the default one at `pyneal/src/GUIs/pynealSetup/setupConfig.yaml`)
 	2. change the port number entries to use new ports (note: port numbers can range from `0-65535` but numbers `0-1023` are typically reserved for priveledged system processes)
 	
-	```
-	...
-	dashboardClientPort: 7000
-	dashboardPort: 7001
-	pynealScannerPort: 7002
-	resultsServerPort: 7003
-	```
+```
+...
+dashboardClientPort: 7000  
+dashboardPort: 7001  
+pynealScannerPort: 7002  
+resultsServerPort: 7003  
+```
 	
 
 
