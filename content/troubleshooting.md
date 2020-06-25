@@ -66,11 +66,9 @@ resultsServerPort: 7003
 
 ## Pyneal Scanner
 
-### Pyneal scanner issue 1
 
 ## Pyneal
 
-### Pyneal issue 1
 
 ## Creating Masks
 

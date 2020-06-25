@@ -58,7 +58,9 @@ This design allows the software to easily accommodate the various directory stru
 
 * [**Simulations guide**](simulations.md)
 
- 
+**For step-by-step tutorials on testing/using Pyneal, see**:
+
+* [**Pyneal Tutorials**](https://github.com/jeffmacinnes/pyneal-tutorial)
 
 ## Terms/Definitions
 

@@ -36,11 +36,13 @@ You can attempt to install all required libraries at once by navigating into the
 
 If that fails for any reason, you can install manually one at a time:
 
->pip install numpy>=1.13.1  
+>pip install numpy==1.17  
 >pip install pydicom>=1.0.2  
 >pip install nibabel>=2.1.0  
 >pip install pyzmq>=16.0.2  
 >pip install pyyaml>=3.12
+
+***Note***: *Pyneal relies on Scipy, which currently has Numpy dependencies that were deprecated in version `1.18`. A Numpy/Scipy fix is forthcoming; in the meantime, Pyneal and Pyneal Scanner have their dependencies tagged to Scipy version `1.1` and Numpy version `1.17` explicity.*
 
 These versions reflect the primary environment in which **Pyneal** is tested. It is likely that other versions maintain compatibility, but use at your own risk.
 
@@ -59,8 +61,8 @@ You can attempt to install all required libraries at once by navigating into the
 
 If that fails for any reason, you can install manually one at a time:
 
->pip install numpy>=1.13.1  
->pip install scipy>=1.1.1  
+>pip install numpy==1.17  
+>pip install scipy==1.1.0  
 >pip install nibabel>=2.1.0  
 >pip install nipy>=0.4.1  
 >pip install pyzmq>=16.0.2  
@@ -70,9 +72,28 @@ If that fails for any reason, you can install manually one at a time:
 >pip install flask_socketio>=2.9.2  
 >pip install eventlet>=0.21.0  
 
+***Note***: *Pyneal relies on Scipy, which currently has Numpy dependencies that were deprecated in version `1.18`. A Numpy/Scipy fix is forthcoming; in the meantime, Pyneal and Pyneal Scanner have their dependencies tagged to Scipy version `1.1` and Numpy version `1.17` explicity.*
+
 These versions reflect the primary environment in which **Pyneal** is tested. It is likely that other versions maintain compatibility, but use at your own risk.
 
+### Anaconda installation
+If you are running Python via Anacona installation, you may need to run the following additional commands during installation and setup. 
 
+##### Prior to install
+Create new `conda` environment:
+
+```
+conda create --name pynealEnv
+conda activate pynealEnv
+conda install pip
+```
+
+##### Launching Pyneal
+Launch GUI with `pythonw` command
+
+```
+sudo pythonw pyneal.py
+```
 
 ## Additional Tools
 

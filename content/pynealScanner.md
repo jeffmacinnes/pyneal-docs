@@ -91,7 +91,7 @@ Depending on which type of scanner you are using, the directory structure for wh
 		* `[sessionDir]`: directories that can change from session to session, named like `p###/e###` where the specific `#` values are unknown in advance.
 		* `[seriesDir]`: series specific directory named like `s###` where the specific `#` values are unknown in advance. Each new scan during a given exam session will be assigned a unique `s###` dir.
 
-		To figure out the `sessionDir` and `seriesDir` for the current scan session, see the [**listSeries**](pynealScanner.md#listSeries) command below.
+		To figure out the `sessionDir` and `seriesDir` for the current scan session, see the [**listSeries**](pynealScanner.md#listseries) command below.
 
 
 ### Philips

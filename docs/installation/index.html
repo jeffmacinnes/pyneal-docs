@@ -269,6 +269,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#anaconda-installation" title="Anaconda installation" class="md-nav__link">
+    Anaconda installation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prior-to-install" title="Prior to install" class="md-nav__link">
+    Prior to install
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-pyneal" title="Launching Pyneal" class="md-nav__link">
+    Launching Pyneal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -561,6 +588,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#anaconda-installation" title="Anaconda installation" class="md-nav__link">
+    Anaconda installation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prior-to-install" title="Prior to install" class="md-nav__link">
+    Prior to install
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-pyneal" title="Launching Pyneal" class="md-nav__link">
+    Launching Pyneal
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -612,12 +666,13 @@
 </blockquote>
 <p>If that fails for any reason, you can install manually one at a time:</p>
 <blockquote>
-<p>pip install numpy&gt;=1.13.1<br />
+<p>pip install numpy==1.17<br />
 pip install pydicom&gt;=1.0.2<br />
 pip install nibabel&gt;=2.1.0<br />
 pip install pyzmq&gt;=16.0.2<br />
 pip install pyyaml&gt;=3.12</p>
 </blockquote>
+<p><strong><em>Note</em></strong>: <em>Pyneal relies on Scipy, which currently has Numpy dependencies that were deprecated in version <code>1.18</code>. A Numpy/Scipy fix is forthcoming; in the meantime, Pyneal and Pyneal Scanner have their dependencies tagged to Scipy version <code>1.1</code> and Numpy version <code>1.17</code> explicity.</em></p>
 <p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
 <h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>
 <p>The <code>pyneal</code> directory needs to be on the <strong>analysis computer</strong>.</p>
@@ -629,8 +684,8 @@ pip install pyyaml&gt;=3.12</p>
 </blockquote>
 <p>If that fails for any reason, you can install manually one at a time:</p>
 <blockquote>
-<p>pip install numpy&gt;=1.13.1<br />
-pip install scipy&gt;=1.1.1<br />
+<p>pip install numpy==1.17<br />
+pip install scipy==1.1.0<br />
 pip install nibabel&gt;=2.1.0<br />
 pip install nipy&gt;=0.4.1<br />
 pip install pyzmq&gt;=16.0.2<br />
@@ -640,7 +695,22 @@ pip install flask&gt;=0.12.2<br />
 pip install flask_socketio&gt;=2.9.2<br />
 pip install eventlet&gt;=0.21.0  </p>
 </blockquote>
+<p><strong><em>Note</em></strong>: <em>Pyneal relies on Scipy, which currently has Numpy dependencies that were deprecated in version <code>1.18</code>. A Numpy/Scipy fix is forthcoming; in the meantime, Pyneal and Pyneal Scanner have their dependencies tagged to Scipy version <code>1.1</code> and Numpy version <code>1.17</code> explicity.</em></p>
 <p>These versions reflect the primary environment in which <strong>Pyneal</strong> is tested. It is likely that other versions maintain compatibility, but use at your own risk.</p>
+<h3 id="anaconda-installation">Anaconda installation<a class="headerlink" href="#anaconda-installation" title="Permanent link">&para;</a></h3>
+<p>If you are running Python via Anacona installation, you may need to run the following additional commands during installation and setup. </p>
+<h5 id="prior-to-install">Prior to install<a class="headerlink" href="#prior-to-install" title="Permanent link">&para;</a></h5>
+<p>Create new <code>conda</code> environment:</p>
+<pre><code>conda create --name pynealEnv
+conda activate pynealEnv
+conda install pip
+</code></pre>
+
+<h5 id="launching-pyneal">Launching Pyneal<a class="headerlink" href="#launching-pyneal" title="Permanent link">&para;</a></h5>
+<p>Launch GUI with <code>pythonw</code> command</p>
+<pre><code>sudo pythonw pyneal.py
+</code></pre>
+
 <h2 id="additional-tools">Additional Tools<a class="headerlink" href="#additional-tools" title="Permanent link">&para;</a></h2>
 <p><strong>Pyneal</strong> itself does not require any additional libaries beyond what is listed above. However, there are various tools included that you may find useful during a real-time scan session. For instance, the tool <a href="../createMask"><strong>createMask</strong></a> can be used to transform a standard space ROI mask to the subject's functional space, which can then be used as a mask for analysis during a real-time scan.</p>
 <p>In order to use these additional tools, make sure you have installed the following:</p>
