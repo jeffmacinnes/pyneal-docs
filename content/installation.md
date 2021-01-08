@@ -42,16 +42,15 @@ If that fails for any reason, you can install manually one at a time:
 >pip install pyzmq>=16.0.2  
 >pip install pyyaml>=3.12
 
-***Note***: *Pyneal relies on Scipy, which currently has Numpy dependencies that were deprecated in version `1.18`. A Numpy/Scipy fix is forthcoming; in the meantime, Pyneal and Pyneal Scanner have their dependencies tagged to Scipy version `1.1` and Numpy version `1.17` explicity.*
-
 These versions reflect the primary environment in which **Pyneal** is tested. It is likely that other versions maintain compatibility, but use at your own risk.
-
 
 ## Pyneal
 
 The `pyneal` directory needs to be on the **analysis computer**.
 
 ### dependencies
+
+***Note***: *Pyneal relies on Nipy, which currently has compatibility issues with deprecated functions in Numpy and Scipy. Currently, the requirements files install older versions of Numpy and Scipy. If you are still experiencing errors, build the developer version of Nipy from source: [github](https://github.com/nipy/nipy)*
 
 The **analysis computer** requires additional `python` libraries in order to run **Pyneal**.
 
@@ -72,7 +71,6 @@ If that fails for any reason, you can install manually one at a time:
 >pip install flask_socketio>=2.9.2  
 >pip install eventlet>=0.21.0  
 
-***Note***: *Pyneal relies on Scipy, which currently has Numpy dependencies that were deprecated in version `1.18`. A Numpy/Scipy fix is forthcoming; in the meantime, Pyneal and Pyneal Scanner have their dependencies tagged to Scipy version `1.1` and Numpy version `1.17` explicity.*
 
 These versions reflect the primary environment in which **Pyneal** is tested. It is likely that other versions maintain compatibility, but use at your own risk.
 

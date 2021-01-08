@@ -6,7 +6,7 @@ For a more in-depth discussion of the main components, see [**Pyneal Scanner (de
 ## Data flow
 This schematic gives a very broad overview of the path that data follows throughout a real-time scan with **Pyneal**
 
-![](images/dataflow/dataflow.png)
+![](images/dataflow/dataFlow.png)
 
 * Once the scan begins, raw images are collected by **Pyneal Scanner**, and then converted and reoriented to a standardized format (see [**image orientation**](/imageOrientation.md) for more info). 
 * **Pyneal Scanner** exports converted 3D volumes to **Pyneal**.
@@ -49,7 +49,7 @@ For a more detailed look at how **Pyneal Scanner** works, see [**Pyneal Scanner 
 
 
 ## Pyneal
-![](images/overview/pyneal.png)
+![](images/pyneal/pyneal.png)
 
 First step, make sure you've followed the instructions at [**setup: Pyneal**](setup.md#pyneal) to configure **Pyneal** to your environment. 
 
@@ -92,7 +92,7 @@ You should also see a message indicating that **Pyneal** is waiting to connect t
 
 In addition to the command line output, you can monitor the status of the scan from the web-based dashboard. 
 
-![](images/overview/dashboardAnnotated.png)
+![](images/pynealDashboard.png)
 
 The dashboard will launch automatically, but if you happen to close the window you can relaunch it at any time during the scan by opening a webbrowser and entering the URL `127.0.0.1:<dashboardClientPort>`, where `<dashboardClientPort>` can be found from series configuration settings that are printed to the command line. For example, using the settings from above, the URL would be: `127.0.0.1:5558`
 
@@ -116,7 +116,7 @@ For a more detailed look at how **Pyneal** works, see [**Pyneal (detailed)**](py
 
 ## End User
 
-![](images/overview/endUser.png)
+![](images/endUser/endUser.png)
 
 We refer to *any* component that requests results from **Pyneal** during a scan as an **End User**. For instance, a potential **End User** could be task presentation software that periodically makes requests for analysis results in order to update a neurofeedback display for the participant. 
 

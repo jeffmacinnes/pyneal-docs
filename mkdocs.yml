@@ -33,8 +33,6 @@ pages:
 # Specify the path to a custom theme. NOTE: 'name' has to be an already installed theme
 theme:
     name: material
-    logo:
-        icon: home
 
 
 extra_css:
@@ -43,8 +41,8 @@ extra_css:
 
 extra:
   social:
-    - type: 'github'
-      link: 'https://github.com/jeffmacinnes/pyneal'
+     - icon: fontawesome/brands/github-alt
+       link: https://github.com/jeffmacinnes/pyneal
 
 
 markdown_extensions:
