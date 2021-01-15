@@ -50,7 +50,7 @@ The `pyneal` directory needs to be on the **analysis computer**.
 
 ### dependencies
 
-***Note***: *Pyneal relies on Nipy, which currently has compatibility issues with deprecated functions in Numpy and Scipy. Currently, the requirements files install older versions of Numpy and Scipy. If you are still experiencing errors, build the developer version of Nipy from source: [github](https://github.com/nipy/nipy)*
+***Note***: *Pyneal relies on Nipy, which currently has compatibility issues with deprecated functions in Numpy and Scipy. Currently, the requirements files install older versions of Numpy and Scipy. If you are still experiencing errors, build the developer version of Nipy from source: [github](http://nipy.org/nipy/users/installation.html#building-from-latest-source-code). Version 0.5.0.dev has been tested and works*
 
 The **analysis computer** requires additional `python` libraries in order to run **Pyneal**.
 
