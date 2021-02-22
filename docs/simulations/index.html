@@ -711,10 +711,10 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>In order to help with the initial setup, as well as test any analysis scripts and network communications later on, <strong>Pyneal</strong> includes a suite of simulation tools that mimic various inputs and outputs along the data flow path.</p>
 <p>(To test your installation or analysis scripts using example data, download the <a href="https://github.com/jeffmacinnes/pyneal-tutorial"><strong>Pyneal Tutorial Data</strong></a>, which contains sample data from GE, Philips, and Siemens environments)</p>
-<p>These tools allow you to simulate <strong>Pyneal</strong> (or <strong>Pyneal Scanner</strong>) in a modular fashion without having to run the entire pipeline. If you are troubleshooting issues, these tools are immensely helpful.  </p>
-<p>Here is a diagram highlighting the various simulation tools, and where they enter the data flow pipeline. </p>
+<p>These tools allow you to simulate <strong>Pyneal</strong> (or <strong>Pyneal Scanner</strong>) in a modular fashion without having to run the entire pipeline. If you are troubleshooting issues, these tools are immensely helpful.</p>
+<p>Here is a diagram highlighting the various simulation tools, and where they enter the data flow pipeline.</p>
 <p><img alt="" src="../images/simulation/simulationSchematic.png" /></p>
-<p>During an actual real-time scan, data will flow through this diagram from left to right along the blue arrows. </p>
+<p>During an actual real-time scan, data will flow through this diagram from left to right along the blue arrows.</p>
 <p>Simulation tools are indicated using dashed or dotted vertical lines.</p>
 <ul>
 <li>
@@ -724,7 +724,7 @@
 <p>A dotted line indicates a simulation tool that <strong>receives output</strong>. In other words, these tools allow you to simulate the <em>next</em> stage of the pipeline</p>
 </li>
 </ul>
-<p>Both <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong> have their own set of simulation tools. </p>
+<p>Both <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong> have their own set of simulation tools.</p>
 <ul>
 <li>
 <p><strong>Pyneal Scanner</strong> simulation tools can be found in <code>pyneal/pyneal_scanner/simulation</code> and are shown in light blue <em>below</em> the real data pipeline in the schematic. See below for more details</p>
@@ -736,38 +736,38 @@
 <h2 id="pyneal-scanner-simulation-tools">Pyneal Scanner Simulation Tools<a class="headerlink" href="#pyneal-scanner-simulation-tools" title="Permanent link">&para;</a></h2>
 <p>The <strong>Pyneal Scanner</strong> simulation tools can be found in <code>pyneal/pyneal_scanner/simulation</code></p>
 <ul>
-<li><strong>Scanner Simulators</strong>: Set of simulation scripts to mimic the behavior of real scanners with real data. </li>
+<li><strong>Scanner Simulators</strong>: Set of simulation scripts to mimic the behavior of real scanners with real data.</li>
 <li><strong>pynealReceiver_sim.py</strong>: simulates the behavior of <strong>Pyneal</strong> (i.e. accepts incoming 3D volumes from <strong>Pyneal Scanner</strong>)</li>
 </ul>
 <h3 id="scanner-simulators">Scanner Simulators<a class="headerlink" href="#scanner-simulators" title="Permanent link">&para;</a></h3>
 <p><strong>Use Case:</strong> Testing <strong>Pyneal Scanner</strong> (and <em>anything else</em> downstream) with real data.</p>
 <p><img alt="" src="../images/simulation/scannerSimulators.png" /></p>
-<p>This will simulate the appearance of raw data coming off of the scanner. This works by pointing the simulator to a folder containing real scanner data. The simulator will copy the real data to a new directory in a way that mimics the behavior of a real scan, allowing you to test <strong>Pyneal Scanner</strong> and anything else downstream. </p>
+<p>This will simulate the appearance of raw data coming off of the scanner. This works by pointing the simulator to a folder containing real scanner data. The simulator will copy the real data to a new directory in a way that mimics the behavior of a real scan, allowing you to test <strong>Pyneal Scanner</strong> and anything else downstream.</p>
 <p>The format of the raw data will vary according to different scanner environments/manufacturers. Accordingly, there are multiple scripts that will simulate different scanner formats:</p>
 <h4 id="ge">GE<a class="headerlink" href="#ge" title="Permanent link">&para;</a></h4>
 <p><strong><em>location</em></strong>: <code>pyneal/pyneal_scanner/simulation/scannerSimulators/GE_sim.py</code></p>
 <p><strong><em>usage</em></strong>: <code>python GE_sim.py inputDir [--outputDir] [--TR]</code></p>
-<p><strong><em>input args</em></strong>:  </p>
+<p><strong><em>input args</em></strong>:</p>
 <ul>
-<li>inputDir: path to directory containing raw slice dicom images. </li>
+<li>inputDir: path to directory containing raw slice dicom images.</li>
 <li>-o outputDir: path to directory where slices will be copied to [default: create new directory named <code>s9999</code> in the parent directory of the inputDir]</li>
 <li>-t/--TR TR: set the TR in ms [default: 1000]</li>
 </ul>
-<p>In order to run this script, you must have a local directory that contains raw slice dicom files from an actual scan. If you want to fully mimic the data directory structure of GE scanners, you can create a local directory path that follows the pattern <code>[baseDir]/p##/e##/s##</code> where the slice images are stored in a directory named like <code>s###</code>, which is nested two levels deep (<code>p###/e###</code>) from the <code>[basedir]</code>. </p>
-<p>This script will copy all of the slices from the inputDir and copy them to the outputDir at a rate that is set by the TR. </p>
-<p>After the script has completed, the outputDir will be deleted. </p>
+<p>In order to run this script, you must have a local directory that contains raw slice dicom files from an actual scan. If you want to mimic the data directory structure of GE scanners, you can create a local directory named <code>e111</code>. Within that directory, create another directory named like <code>s1234</code>, and place the raw slice images in it. This <code>s1234</code> directory will by the <code>inputDir</code> used by this script.</p>
+<p>This script will copy all of the slices from the inputDir and copy them to the outputDir at a rate that is set by the TR.</p>
+<p>After the script has completed, the outputDir will be deleted.</p>
 <h4 id="philips">Philips<a class="headerlink" href="#philips" title="Permanent link">&para;</a></h4>
 <p><strong><em>location</em></strong>: <code>pyneal/pyneal_scanner/simulation/scannerSimulators/Philips_sim.py</code></p>
 <p><strong><em>usage</em></strong>: <code>python Philips_sim.py inputDir [--outputDir] [--TR]</code></p>
 <p><strong><em>input args</em></strong>:</p>
 <ul>
-<li>inputDir: path to directory containing raw slice dicom images. </li>
+<li>inputDir: path to directory containing raw slice dicom images.</li>
 <li>-o outputDir: path to directory where slices will be copied to [default: create new directory named <code>9999</code> in the parent directory of the inputDir]</li>
 <li>-t/--TR TR: set the TR in ms [default: 1000]</li>
 </ul>
 <p>Philips scanners use XTC (eXTernal Control) to output reconstructed volumes to a directory during a scan. The files are written to a designated directory (e.g. XTC_Output), and within that directory, every series is assigned a new directory named sequentially starting with '0000'. For instance, volumes from the 3rd series will be stored like '.../XTC_Output/0002/'. This script will simulate the creation of a new series directory, and copy in PAR/REC files.</p>
 <p>You must specify a local path to the inputDir. That is, the directory that already
-contains a set of reconstructed PAR/REC files for a series (referred to below as <code>seriesDir</code>). </p>
+contains a set of reconstructed PAR/REC files for a series (referred to below as <code>seriesDir</code>).</p>
 <p>[OPTIONAL]: You can specify the full path to an output directory where the PAR/REC files
 will be copied to. If you don't specify an output directory, this tool will default
 to creating a new <code>seriesDir</code>, named '9999' saved in the parent directory of the <code>seriesDir</code>.</p>
@@ -785,7 +785,7 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p><strong><em>usage</em></strong>: <code>python Siemens_sim.py inputDir seriesNum [--newSeriesNum] [--TR]</code></p>
 <p><strong><em>input args</em></strong>:</p>
 <ul>
-<li>inputDir: path to directory containing raw slice dicom images. </li>
+<li>inputDir: path to directory containing raw slice dicom images.</li>
 <li>seriesNum: series number of data that you want to simulate</li>
 <li>-n/--newSeriesNum: seriesNumber to assign to the new "simulated" data</li>
 <li>-t/--TR: set the TR in ms [default: 1000]</li>
@@ -805,7 +805,7 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <h3 id="pynealreceiver_simpy">pynealReceiver_sim.py<a class="headerlink" href="#pynealreceiver_simpy" title="Permanent link">&para;</a></h3>
 <p><strong>Use Case:</strong> When you want to test <strong>Pyneal Scanner</strong> without having to actually run <strong>Pyneal</strong></p>
 <p><img alt="" src="../images/simulation/pynealReceiver.png" /></p>
-<p>This simulator will mimic the part of <strong>Pyneal</strong> that accepts incoming 3D volumes from <strong>Pyneal Scanner</strong>. This allows you to quickly test sending output with <strong>Pyneal Scanner</strong>, without having to fully run <strong>Pyneal</strong> (which entails a lot of extra overhead). You can (and should) run <code>pynealReceiver_sim.py</code> from the <strong>Scanner Computer</strong>. </p>
+<p>This simulator will mimic the part of <strong>Pyneal</strong> that accepts incoming 3D volumes from <strong>Pyneal Scanner</strong>. This allows you to quickly test sending output with <strong>Pyneal Scanner</strong>, without having to fully run <strong>Pyneal</strong> (which entails a lot of extra overhead). You can (and should) run <code>pynealReceiver_sim.py</code> from the <strong>Scanner Computer</strong>.</p>
 <p><strong><em>location</em></strong>: <code>pyneal/pyneal_scanner/simulation/pynealReceiver_sim.py</code></p>
 <p><strong><em>usage</em></strong>: <code>python pynealReceiver_sim.py [--port] [--nVols]</code></p>
 <p><strong><em>input args</em></strong>:</p>
@@ -814,11 +814,11 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <li>-n/--nVols: number of 3D volumes to expect from <strong>Pyneal Scanner</strong> [default: 60]</li>
 </ul>
 <p>Make sure <strong>Pyneal Scanner</strong> is configured to use the same port number for <code>pynealSocketPort</code> (see <a href="/setup.md#pyneal-scanner"><strong>Pyneal Scanner Setup</strong></a>)</p>
-<p>After the scan is complete and all of the data has arrived, this will save the received 4D volume as a nifti image at  <code>pyneal/pyneal_scanner/simulation/receivedImg.nii.gz</code></p>
+<p>After the scan is complete and all of the data has arrived, this will save the received 4D volume as a nifti image at <code>pyneal/pyneal_scanner/simulation/receivedImg.nii.gz</code></p>
 <h2 id="pyneal-simulation-tools">Pyneal Simulation Tools<a class="headerlink" href="#pyneal-simulation-tools" title="Permanent link">&para;</a></h2>
 <p>The <strong>Pyneal</strong> simulation tools can be found in <code>pyneal/utils/simulation</code></p>
 <ul>
-<li><strong>pynealScanner_sim.py</strong>: simulate the behavior of <strong>Pyneal Scanner</strong> (i.e. sends 3D vols to Pyneal) </li>
+<li><strong>pynealScanner_sim.py</strong>: simulate the behavior of <strong>Pyneal Scanner</strong> (i.e. sends 3D vols to Pyneal)</li>
 <li><strong>pynealResults_sim.py</strong>: simulate the results server of <strong>Pyneal</strong> (i.e. launches a server that stores fake results that can receive and respond to messages from the <strong>End User</strong>)</li>
 <li><strong>endUser_sim.py</strong>: simulate the behavior of an <strong>End User</strong> (i.e. sends request to <strong>Pyneal</strong> for results from a specific volume, then waits for response)</li>
 </ul>
@@ -830,8 +830,8 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <p><strong><em>input args</em></strong>:</p>
 <ul>
 <li>-f/--filePath: path to 4D nifti image that you want to use as the "scan" data</li>
-<li>-r/--random: flag to generate random data instead of using a pre-existing nifti image </li>
-<li>-d/--dims: desired dimensions of randomly generated dataset [default: 64 64 18 60] </li>
+<li>-r/--random: flag to generate random data instead of using a pre-existing nifti image</li>
+<li>-d/--dims: desired dimensions of randomly generated dataset [default: 64 64 18 60]</li>
 <li>-t/--TR: set the TR in ms [default: 1000]</li>
 <li>-sh/--sockethost: IP address Pyneal host [default: 127.0.0.1]</li>
 <li>-sp/--socketport: port number to send 3D volumes over to Pyneal [default: 5555]</li>
@@ -843,7 +843,7 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 </blockquote>
 <p>or use the tool to generate a dataset of random values</p>
 <blockquote>
-<p>python pynealScanner_sim.py --random --dims 64 64 32 100 </p>
+<p>python pynealScanner_sim.py --random --dims 64 64 32 100</p>
 </blockquote>
 <p>[OPTIONAL]: You can specify the TR at which 3D vols are sent to <strong>Pyneal</strong>. Default is 1000ms.</p>
 <blockquote>
@@ -863,14 +863,14 @@ to creating a new <code>seriesDir</code>, named '9999' saved in the parent direc
 <li>--keepAlive: True/False flag for whether to keep the simulated server alive and listening even once all of the made up data is added to it (see below for more details). Useful for debugging/testing. [default: False]</li>
 </ul>
 <p>This tool will launch a server that listen in for requests for results from a remote <strong>End User</strong> (e.g. a task presentation machine). This tools behaves exactly the same way as the results server component of Pyneal, allowing you to test the <strong>End User</strong> behavior.</p>
-<p>In this case the results that are returned are from a made up dataset generated each time the tool is called. There are 500 volumes in the generated dataset, and each volume has an associated "Average" result that is a random value drawn from a normal distribution (mean: 2400, stdDev: 15). Results for each volume will be available on the simulated results server at a rate set by the TR. For instance, with a 1000ms TR, it will take 500s for all of the results to appear. </p>
+<p>In this case the results that are returned are from a made up dataset generated each time the tool is called. There are 500 volumes in the generated dataset, and each volume has an associated "Average" result that is a random value drawn from a normal distribution (mean: 2400, stdDev: 15). Results for each volume will be available on the simulated results server at a rate set by the TR. For instance, with a 1000ms TR, it will take 500s for all of the results to appear.</p>
 <p>While this simulated results server is running, it will listen for requests from an <strong>End User</strong>. With each request that appears, it will check to see if the result from the requested volume has appeared yet. If it has, it will send back a message that looks something like:</p>
 <p><code>{foundResults: True, average: #####}</code></p>
 <p>If not, the response message will simply be:</p>
 <p><code>{foundResults: False}</code></p>
 <p>For more information on formatting requests and interpretting responses, see <a href="../endUser/#sending-requests"><strong>requesting results</strong></a>)</p>
 <h3 id="enduser_simpy">endUser_sim.py<a class="headerlink" href="#enduser_simpy" title="Permanent link">&para;</a></h3>
-<p><strong>Use Case:</strong> When you want to test sending requests to <strong>Pyneal</strong> without having to actually run a real <strong>End User</strong> </p>
+<p><strong>Use Case:</strong> When you want to test sending requests to <strong>Pyneal</strong> without having to actually run a real <strong>End User</strong></p>
 <p><img alt="" src="../images/simulation/endUser.png" /></p>
 <p><strong><em>location</em></strong>: <code>pyneal/utils/simulation/endUser_sim.py</code></p>
 <p><strong><em>usage</em></strong>: <code>python endUser_sim.py [-sh/--socketHost] [-sp/--socketPort] [volIdx]</code></p>

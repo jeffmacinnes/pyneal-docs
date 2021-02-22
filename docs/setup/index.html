@@ -660,21 +660,21 @@
 <p>After you have finished setting up <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong> using the instructions below, you can verify your install using various <a href="../simulations/"><strong>simulation tools</strong></a>. These tools are helpful in troubleshooting any issues you may run into during install/setup.</p>
 <p><img alt="" src="../images/overview.png" /></p>
 <h2 id="setting-up-your-network">Setting up your network<a class="headerlink" href="#setting-up-your-network" title="Permanent link">&para;</a></h2>
-<p><strong>Pyneal</strong> communicates with other components in the pipeline, like <strong>Pyneal Scanner</strong> and any <strong>End User</strong>, via TCP/IP sockets. These are network communication portals very similar to how a web browser communicates with websites hosted on remote servers. </p>
-<p>For this type of commnunication, it's useful to think of one end as the <em>server</em>, listening for and responding to requests from remote <em>clients</em>. Clients connect to the server by specifying the server's IP address and a specific port number. </p>
+<p><strong>Pyneal</strong> communicates with other components in the pipeline, like <strong>Pyneal Scanner</strong> and any <strong>End User</strong>, via TCP/IP sockets. These are network communication portals very similar to how a web browser communicates with websites hosted on remote servers.</p>
+<p>For this type of commnunication, it's useful to think of one end as the <em>server</em>, listening for and responding to requests from remote <em>clients</em>. Clients connect to the server by specifying the server's IP address and a specific port number.</p>
 <p>In our case, <strong>Pyneal</strong> (running on the <strong>analysis computer</strong>) is always playing the role of the <em>server</em>. The IP address you use for <strong>Pyneal</strong> will depend on how the rest of your environment is set up:</p>
 <ul>
 <li>
 <p>If all components are running on the same machine, you can use the generic loopback IP address <code>127.0.0.1</code>. Put another way, you can use this address if and only if <strong>Pyneal Scanner</strong> and <strong>Pyneal</strong> and any <strong>End User</strong> that requests data are all running from the same physical machine. This might be the case, for instance, if you are testing/debugging certain steps of your analysis (see <a href="../simulations/"><strong>simulation tools</strong></a>)</p>
 </li>
 <li>
-<p>In all other cases, you have to figure out the IP address assigned to the <strong>analysis computer</strong> running <strong>Pyneal</strong>. </p>
+<p>In all other cases, you have to figure out the IP address assigned to the <strong>analysis computer</strong> running <strong>Pyneal</strong>.</p>
 </li>
 </ul>
-<p><strong>Pyneal</strong> will use one available port number for communication with <strong>Pyneal Scanner</strong>, and an additional port number dedicated for communication with remote end users or devices. You can manually specify the port number to use when setting up <strong>Pyneal</strong> </p>
-<p>If you don't know which port numbers to use, check with a network administrator, or simply try choosing ones in the range of 1024-49151. If you happen to choose a port number that is unavailable, <strong>Pyneal</strong> will return an error message. In that event, try a different number. </p>
+<p><strong>Pyneal</strong> will use one available port number for communication with <strong>Pyneal Scanner</strong>, and an additional port number dedicated for communication with remote end users or devices. You can manually specify the port number to use when setting up <strong>Pyneal</strong></p>
+<p>If you don't know which port numbers to use, check with a network administrator, or simply try choosing ones in the range of 1024-49151. If you happen to choose a port number that is unavailable, <strong>Pyneal</strong> will return an error message. In that event, try a different number.</p>
 <h2 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h2>
-<p>When you download <strong>Pyneal</strong> everything is contained in the root <code>pyneal</code> directory. </p>
+<p>When you download <strong>Pyneal</strong> everything is contained in the root <code>pyneal</code> directory.</p>
 <p>From the <code>pyneal</code> directory, copy the <code>pyneal_scanner</code> directory to a new location on the <strong>scanner computer</strong>.</p>
 <p>On the <strong>scanner computer</strong>, launch <strong>Pyneal Scanner</strong> from the command line by navigating to the <code>pyneal_scanner</code> directory and running <code>pynealScanner.py</code></p>
 <blockquote>
@@ -684,48 +684,45 @@ python pynealScanner.py</p>
 <p><strong>Pyneal Scanner</strong> uses a set of configuration parameters that you can modify to fit your environment. These are stored in file named <code>scannerConfig.yaml</code> in the <code>pyneal_scanner</code> directory.</p>
 <p>If you're running <strong>Pyneal Scanner</strong> for the first time, this file won't exist yet. You can either create this file manually, or wait until <code>pynealScanner.py</code> prompts you to fill in any missing configuration values from the command line. Any values you enter from the command line will be saved in a new <code>scannerConfig.yaml</code> file.</p>
 <p>The <code>scannerConfig.yaml</code> file allows you to customize <strong>Pyneal Scanner</strong> to your scanning environment. The file contains just a few parameters stored as <em>key:value</em> pairs:</p>
-<pre><code class="language-yaml">scannerBaseDir: /path/to/new/scans
+<pre><code class="language-yaml">scannerSessionDir: /path/to/new/scans
 scannerMake: GE
 pynealSocketHost: 127.0.0.1
-pynealSocketPort: '9999'
+pynealSocketPort: &quot;9999&quot;
 </code></pre>
 <p><strong>Configuration Keys</strong>:</p>
 <ul>
 <li>
-<p><strong>scannerBaseDir</strong>: The <em>fixed</em> portion of the directory path to where new reconstructed images will be appear during a scan. That is, the part that remains constant from scan to scan. Knowing what to set this value to can differ according to different scanner manufacturers:</p>
-<ul>
+<p><strong>scannerSessionDir</strong>: The <em>fixed</em> portion of the directory path to where new reconstructed images will be appear during a scan. That is, the part that remains constant from scan to scan. Knowing what to set this value to can differ according to different scanner manufacturers:</p>
+</li>
 <li>
-<p><strong>GE</strong>: During a scan, new slices dicom files are written to a directory on the scanner console. The path to that directory can be broken apart like <code>[scannerBaseDir]/[sessionDir]/[seriesDir]</code>, where</p>
+<p><strong>GE</strong>: During a scan, new slices dicom files are written to a directory on the scanner console. The path to that directory can be broken apart like <code>[sessionDir]/[seriesDir]</code>, where</p>
 <ul>
-<li><strong>[scannerBaseDir]</strong>: path that remains constant across all scans</li>
-<li><strong>[sessionDir]</strong>: directories that can change from session to session, named like <code>p###/e###</code> where the specific <code>#</code> values are unknown in advance.</li>
+<li><strong>[sessionDir]</strong>: directories that can change from session to session (on GE systems, the path may end with directories named like <code>p###/e###</code> where the specific <code>#</code> values are unknown in advance).</li>
 <li><strong>[seriesDir]</strong>: series specific directory named like <code>s###</code> where the specific <code>#</code> values are unknown in advance. Each new scan during a given exam session will be assigned a unique <code>s###</code> dir.</li>
 </ul>
-<p>You only need to specify the path to the <code>scannerBaseDir</code> in the <code>scannerConfig.yaml</code> file; <strong>Pyneal Scanner</strong> will automaticaly find the most recently modified session and series directories and monitor for new series directories to appear. When you run <code>pynealScanner.py</code> you will see a printout in the terminal window about the names, sizes, and modification dates of all series directories in the session directory.</p>
+<p>You only need to specify the path to the <code>scannerSessionDir</code> in the <code>scannerConfig.yaml</code> file; <strong>Pyneal Scanner</strong> will automaticaly find the most recently modified session and series directories and monitor for new series directories to appear. When you run <code>pynealScanner.py</code> you will see a printout in the terminal window about the names, sizes, and modification dates of all series directories in the session directory.</p>
 </li>
 <li>
-<p><strong>Siemens</strong>: Siemens scanners can export reconstructed dicom images to a remote directory. The dicom images are mosaic files, one per volume, in which all slices from the volume are arranged in a 2D grid (or, mosaic, if you will). Siemens will export all files from all series during your session to the same directory, which we'll refer to as the <code>scannerBaseDir</code>. Each mosaic file follows a naming pattern that indicates the series number and volume number of the data contained within. The full path to a given mosaic file will look like <code>[scannerBaseDir]/[session#]_[series#]_[volume#].dcm</code>, where</p>
+<p><strong>Siemens</strong>: Siemens scanners can export reconstructed dicom images to a remote directory. The dicom images are mosaic files, one per volume, in which all slices from the volume are arranged in a 2D grid (or, mosaic, if you will). Siemens will export all files from all series during your session to the same directory, which we'll refer to as the <code>scannerSessionDir</code>. Each mosaic file follows a naming pattern that indicates the series number and volume number of the data contained within. The full path to a given mosaic file will look like <code>[scannerSessionDir]/[session#]_[series#]_[volume#].dcm</code>, where</p>
 <ul>
-<li><strong>[scannerBaseDir]</strong>: path to remote directory that will receive all files throughout the session.  </li>
+<li><strong>[scannerSessionDir]</strong>: path to remote directory that will receive all files throughout the session.</li>
 <li><strong>[session#]</strong>: 3 characters representing the current session number, <em>e.g. session 1: <code>001</code></em></li>
 <li><strong>[series#]</strong>: 6 characters representing the current series number, <em>e.g. series 5: <code>000005</code></em></li>
-<li><strong>[volume#]</strong>: 6 characters represenitng the current volume number, <em>e.g. volume 4: <code>000004</code></em> </li>
+<li><strong>[volume#]</strong>: 6 characters represenitng the current volume number, <em>e.g. volume 4: <code>000004</code></em></li>
 </ul>
 </li>
 <li>
-<p><strong>Philips</strong>: Philips scanners have the option to export reconstructed PAR/REC files to a remote directory. The path to that directory can be broken apart like <code>[scannerBaseDir]/[seriesDir]</code>, where</p>
+<p><strong>Philips</strong>: Philips scanners have the option to export reconstructed PAR/REC files to a remote directory. The path to that directory can be broken apart like <code>[scannerSessionDir]/[seriesDir]</code>, where</p>
 <ul>
-<li><strong>[scannerBaseDir]</strong>: path to remote directory that remains constant across all scans</li>
+<li><strong>[scannerSessionDir]</strong>: path to remote directory that remains constant across all scans</li>
 <li><strong>[seriesDir]</strong>: series specific directory named like <code>####</code></li>
 </ul>
 </li>
 </ul>
-<p>You only need to specify the path to the <code>scannerBaseDir</code> in the <code>scannerConfig.yaml</code> file; <strong>Pyneal Scanner</strong> will monitor for new series directories and/or files to appear.  </p>
-</li>
-<li>
-<p><strong>scannerMake</strong>: Scanner Manufacturer, must be one of <code>GE</code>, <code>Siemens</code>, or <code>Philips</code> (case sensitive)</p>
-</li>
-<li><strong>pynealSocketHost</strong>: I.P. address of the <strong>analysis computer</strong> running <strong>Pyneal</strong>. If the analysis and scanner computers are the same, you can use <code>127.0.0.1</code>, otherwise you must specify an I.P. for the analysis computer that is accessible to remote computers. </li>
+<p>You only need to specify the path to the <code>scannerSessionDir</code> in the <code>scannerConfig.yaml</code> file; <strong>Pyneal Scanner</strong> will monitor for new series directories and/or files to appear.</p>
+<ul>
+<li><strong>scannerMake</strong>: Scanner Manufacturer, must be one of <code>GE</code>, <code>Siemens</code>, or <code>Philips</code> (case sensitive)</li>
+<li><strong>pynealSocketHost</strong>: I.P. address of the <strong>analysis computer</strong> running <strong>Pyneal</strong>. If the analysis and scanner computers are the same, you can use <code>127.0.0.1</code>, otherwise you must specify an I.P. for the analysis computer that is accessible to remote computers.</li>
 <li><strong>pynealSocketPort</strong>: The port number over which <strong>Pyneal</strong> is listening for incoming data.</li>
 </ul>
 <h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>
@@ -733,45 +730,49 @@ pynealSocketPort: '9999'
 <h3 id="using-setup-gui">Using Setup GUI<a class="headerlink" href="#using-setup-gui" title="Permanent link">&para;</a></h3>
 <p>The typical way to configure <strong>Pyneal</strong> for the current session is by using the setup GUI. When you launch <code>pyneal.py</code> a GUI will appear, allowing you to configure <strong>Pyneal</strong> to the current experiment</p>
 <blockquote>
-<p>cd pyneal <br />
+<p>cd pyneal<br />
 python pyneal.py</p>
 </blockquote>
 <p><img alt="" src="../images/pynealSetupGUI.png" /></p>
 <ul>
 <li>
 <p><strong>Communication</strong>:</p>
-<ul>
-<li><strong>Pyneal Host IP</strong>: The IP address of the machine running <strong>Pyneal</strong> (i.e. the <strong>analysis machine</strong>). This is the IP address that <strong>Pyneal Scanner</strong> will try to connect to, as well as any end user that is making requests for results. Make sure, therefore, that this is an IP address that is accessible to any remote machine that needs it. If you are doing everything locally from the same machine (e.g. testing, running simulations, etc), you can set this to the local host, or loopback address, at <code>127.0.0.1</code>. However, in all other situations, you'll probably want this to be the unique IP address assigned to the network card in the <strong>analysis machine</strong>. </li>
+</li>
+<li>
+<p><strong>Pyneal Host IP</strong>: The IP address of the machine running <strong>Pyneal</strong> (i.e. the <strong>analysis machine</strong>). This is the IP address that <strong>Pyneal Scanner</strong> will try to connect to, as well as any end user that is making requests for results. Make sure, therefore, that this is an IP address that is accessible to any remote machine that needs it. If you are doing everything locally from the same machine (e.g. testing, running simulations, etc), you can set this to the local host, or loopback address, at <code>127.0.0.1</code>. However, in all other situations, you'll probably want this to be the unique IP address assigned to the network card in the <strong>analysis machine</strong>.</p>
+</li>
 <li><strong>Pyneal-Scanner Port</strong>: The port number over which <strong>Pyneal</strong> will be listening for incoming data from <strong>Pyneal Scanner</strong>. Note that this number should match the port number specified in the <strong>pynealSocketPort</strong> configuration field of the <strong>Pyneal Scanner</strong> set up.</li>
-<li><strong>Results Server Port</strong>: The port number that <strong>Pyneal</strong> will use to set up the <strong>Results Server</strong>. Remote machines that wish to retrieve real-time analysis output during a scan can send requests over this port number. See <a href="../endUser/#sending-requests"><strong>Requesting Results</strong></a></li>
-</ul>
+<li>
+<p><strong>Results Server Port</strong>: The port number that <strong>Pyneal</strong> will use to set up the <strong>Results Server</strong>. Remote machines that wish to retrieve real-time analysis output during a scan can send requests over this port number. See <a href="../endUser/#sending-requests"><strong>Requesting Results</strong></a></p>
 </li>
 <li>
 <p><strong>Mask</strong>: Path to mask file (Nifti - .nii/.nii.gz) to be used during real-time analysis. Each incoming 3D volume will be masked to remove non-relevant voxels. The mask <em>must</em> match the dimensions and orientation of incoming functional data (see <a href="/createMask.md"><strong>Creating Masks</strong></a> for Real-time Analysis). The mask will limit which voxels get passed on to the analysis stage. So, for example:</p>
-<ul>
-<li>To calculate the <strong>Average</strong> ROI activation at every timepoint, choose a mask file that represents the target ROI.</li>
-<li>If <strong>Weighted Mask?</strong> is checked, the voxel values will be used as weights during the analysis.   </li>
-<li>For a <strong>Custom</strong> analysis that uses the entire brain volume, choose a mask file that represents a whole brain mask (see <a href="/createMask.md"><strong>Creating Masks</strong></a> for Real-time Analysis).</li>
-</ul>
+</li>
+<li>
+<p>To calculate the <strong>Average</strong> ROI activation at every timepoint, choose a mask file that represents the target ROI.</p>
+</li>
+<li>If <strong>Weighted Mask?</strong> is checked, the voxel values will be used as weights during the analysis.</li>
+<li>
+<p>For a <strong>Custom</strong> analysis that uses the entire brain volume, choose a mask file that represents a whole brain mask (see <a href="/createMask.md"><strong>Creating Masks</strong></a> for Real-time Analysis).</p>
 </li>
 <li>
 <p><strong>Preprocessing</strong>: Set the number of timepoints for the current scan</p>
 </li>
 <li>
 <p><strong>Analysis</strong>: Real-time analysis options. The analysis you select will be computed at every timepoint throughout the scan.</p>
-<ul>
-<li><strong>Average</strong>: Compute the average activation at each timepoint across all voxels within the mask</li>
+</li>
+<li>
+<p><strong>Average</strong>: Compute the average activation at each timepoint across all voxels within the mask</p>
+</li>
 <li><strong>Median</strong>: Compute the median activation at each timepoint across all voxels within the mask</li>
-<li><strong>Custom</strong>: Choose a custom analysis script. This script will be executed at each new timepoint (see <a href="../customAnalysis/"><strong>Custom Analysis Scripts</strong></a>)</li>
-</ul>
+<li>
+<p><strong>Custom</strong>: Choose a custom analysis script. This script will be executed at each new timepoint (see <a href="../customAnalysis/"><strong>Custom Analysis Scripts</strong></a>)</p>
 </li>
 <li>
 <p><strong>Output</strong>:</p>
-<ul>
-<li>Choose an output directory to store logs and results from the current session. The output from each new series will be stored as a subdirectory in this directory, named sequentially like 'pyneal_001'.  </li>
-<li><strong>Launch Dashboard</strong>: Check this box to launch an interactive dashboard that will allow you to monitor the status of the scan once it begins.</li>
-</ul>
 </li>
+<li>Choose an output directory to store logs and results from the current session. The output from each new series will be stored as a subdirectory in this directory, named sequentially like 'pyneal_001'.</li>
+<li><strong>Launch Dashboard</strong>: Check this box to launch an interactive dashboard that will allow you to monitor the status of the scan once it begins.</li>
 </ul>
 <p>Behind the scenes, all of the relevant <strong>Pyneal</strong> configuration settings are stored as <em>key:value</em> pairs in a file stored at <code>pyneal/src/setupConfig.yaml</code>. (In fact, the GUI simply reads this file at launch to get the previous configuration options, and then overwrites this file with the current GUI options whenever you click <strong>submit</strong>).</p>
 <pre><code class="language-yaml">pynealHost: 127.0.0.1
@@ -788,7 +789,7 @@ dashboardClientPort: 5558
 </code></pre>
 <p><strong>Configuration Keys</strong>:</p>
 <ul>
-<li><strong>pynealHost</strong>:  The IP address of the machine running <strong>Pyneal</strong> (i.e. the <strong>analysis machine</strong>). This is the IP address that <strong>Pyneal Scanner</strong> will try to connect to, as well as any end user that is making requests for results.</li>
+<li><strong>pynealHost</strong>: The IP address of the machine running <strong>Pyneal</strong> (i.e. the <strong>analysis machine</strong>). This is the IP address that <strong>Pyneal Scanner</strong> will try to connect to, as well as any end user that is making requests for results.</li>
 <li><strong>pynealScannerPort</strong>: Port number over which <strong>Pyneal</strong> will be listening for incoming data</li>
 <li><strong>resultsServerPort</strong>: Port number that <strong>Pyneal</strong> will use to set up the <strong>Results Server</strong></li>
 <li><strong>maskFile</strong>: Path to mask file (Nifti - .nii/.nii.gz) to be used during real-time analysis</li>
@@ -804,7 +805,7 @@ dashboardClientPort: 5558
 <p>You can supply your own custom setting file with the configurate keys described above in one of two ways:</p>
 <h4 id="via-gui">via GUI:<a class="headerlink" href="#via-gui" title="Permanent link">&para;</a></h4>
 <p>At the top of the setup GUI you have the option to load a custom settings file. A custom settings should be a <code>.yaml</code> file with values for one or more of the configuration keys above. By loading a custom settings file, the GUI will be populated with whichever configure keys are included; any non-included keys will get their values from the <code>setupConfig.yaml</code> file as normal.</p>
-<p>The option allows users to create settings files on a per-project basis, and easily configure <strong>Pyneal</strong> to match the project demands. </p>
+<p>The option allows users to create settings files on a per-project basis, and easily configure <strong>Pyneal</strong> to match the project demands.</p>
 <h4 id="via-command-line">via command line:<a class="headerlink" href="#via-command-line" title="Permanent link">&para;</a></h4>
 <p>Alternatively, you can supply the path to this file at the command line when you launch <strong>Pyneal</strong></p>
 <blockquote>

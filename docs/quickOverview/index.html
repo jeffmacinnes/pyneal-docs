@@ -515,50 +515,48 @@
                 
                 
                 <h1 id="quick-overview">Quick Overview<a class="headerlink" href="#quick-overview" title="Permanent link">&para;</a></h1>
-<p>This section will provide a quick overview of running a scan with Pyneal. The aim is to  familiarize you with the interface and commands you would use during a scan session, without getting lost in the details about what is happening underneath the hood. </p>
+<p>This section will provide a quick overview of running a scan with Pyneal. The aim is to familiarize you with the interface and commands you would use during a scan session, without getting lost in the details about what is happening underneath the hood.</p>
 <p>For a more in-depth discussion of the main components, see <a href="/pynealScanner.md"><strong>Pyneal Scanner (detailed)</strong></a> and <a href="/pyneal.md"><strong>Pyneal (detailed)</strong></a>.</p>
 <h2 id="data-flow">Data flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h2>
 <p>This schematic gives a very broad overview of the path that data follows throughout a real-time scan with <strong>Pyneal</strong></p>
 <p><img alt="" src="../images/dataflow/dataFlow.png" /></p>
 <ul>
-<li>Once the scan begins, raw images are collected by <strong>Pyneal Scanner</strong>, and then converted and reoriented to a standardized format (see <a href="/imageOrientation.md"><strong>image orientation</strong></a> for more info). </li>
+<li>Once the scan begins, raw images are collected by <strong>Pyneal Scanner</strong>, and then converted and reoriented to a standardized format (see <a href="/imageOrientation.md"><strong>image orientation</strong></a> for more info).</li>
 <li><strong>Pyneal Scanner</strong> exports converted 3D volumes to <strong>Pyneal</strong>.</li>
-<li><strong>Pyneal</strong> receives 3D volumes, and concatenates them into a 4D volume over time throughout the scan. With every new 3D volume that arrives, <strong>Pyneal</strong> will <strong>preprocess</strong> the volume, and run any specified analyses. </li>
-<li>The analysis results for each volume are stored on a separate server, which listens for requests from remote end users or devices throughout the scan (see <a href="/pyneal.md#requesting-results"><strong>requesting results</strong></a> for more info). </li>
+<li><strong>Pyneal</strong> receives 3D volumes, and concatenates them into a 4D volume over time throughout the scan. With every new 3D volume that arrives, <strong>Pyneal</strong> will <strong>preprocess</strong> the volume, and run any specified analyses.</li>
+<li>The analysis results for each volume are stored on a separate server, which listens for requests from remote end users or devices throughout the scan (see <a href="/pyneal.md#requesting-results"><strong>requesting results</strong></a> for more info).</li>
 <li>Anytime a request is received, the server checks to see if that volume has been processed yet. If so, it returns the results; if not, it sends a message saying that volume has not been processed yet</li>
 </ul>
 <h2 id="pyneal-scanner">Pyneal Scanner<a class="headerlink" href="#pyneal-scanner" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../images/pynealScanner.png" /></p>
-<p>First step, make sure you've followed the instructions at <a href="../setup/#pyneal-scanner"><strong>setup: Pyneal Scanner</strong></a> to configure <strong>Pyneal Scanner</strong> to your environment. </p>
+<p>First step, make sure you've followed the instructions at <a href="../setup/#pyneal-scanner"><strong>setup: Pyneal Scanner</strong></a> to configure <strong>Pyneal Scanner</strong> to your environment.</p>
 <p>To launch <strong>Pyneal Scanner</strong> from the <strong>scanner computer</strong>, open the command line and navigate to the <code>pyneal_scanner</code> directory. From the <code>pyneal_scanner</code> directory, type:</p>
 <blockquote>
 <p>python pynealScanner.py</p>
 </blockquote>
-<p>If you have set up <strong>Pyneal Scanner</strong> correctly, you will see a print out of your settings, info about any existing series directories in the <code>scannerBaseDir</code> path, and a message that <strong>Pyneal Scanner</strong> is attempting to connect to <strong>Pyneal</strong> over the specified <code>pynealSocket</code>:</p>
+<p>If you have set up <strong>Pyneal Scanner</strong> correctly, you will see a print out of your settings, info about any existing series directories in the <code>scannerSessionDir</code> path, and a message that <strong>Pyneal Scanner</strong> is attempting to connect to <strong>Pyneal</strong> over the specified <code>pynealSocket</code>:</p>
 <blockquote>
 <p>===============<br />
 SCANNER SETTINGS:<br />
 pynealSocketHost: 127.0.0.1<br />
 pynealSocketPort: 5555<br />
-scannerBaseDir: /path/to/scanner/baseDir<br />
-scannerMake: GE  <br />
-============   <br />
-Session Dir:<br />
-/path/to/scanner/baseDir/p1/e666<br />
-Series Dirs:<br />
-      s1923    23.6 MB    5 min, 13 s ago<br />
-      s1925    26.2 MB    1 min, 10 s ago  <br />
-MainThread -  Connecting to pynealSocket...  </p>
+scannerSessionDir: /path/to/scanner/sessionDir<br />
+scannerMake: GE<br />
+============</p>
+<p>Series Dirs:<br />
+ s1923 23.6 MB 5 min, 13 s ago<br />
+ s1925 26.2 MB 1 min, 10 s ago<br />
+MainThread - Connecting to pynealSocket...</p>
 </blockquote>
 <p>Once you launch <strong>Pyneal</strong> on the <strong>analysis computer</strong>, you will see a confirmation that <strong>Pyneal Scanner</strong> has connected to <strong>Pyneal</strong>, and is now waiting for new data to arrive from the scanner:</p>
 <blockquote>
-<p>MainThread -  pynealSocket connected<br />
-MainThread -  Waiting for new seriesDir...</p>
+<p>MainThread - pynealSocket connected<br />
+MainThread - Waiting for new seriesDir...</p>
 </blockquote>
 <p>For a more detailed look at how <strong>Pyneal Scanner</strong> works, see <a href="../pynealScanner/"><strong>Pyneal Scanner (detailed)</strong></a></p>
 <h2 id="pyneal">Pyneal<a class="headerlink" href="#pyneal" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../images/pyneal/pyneal.png" /></p>
-<p>First step, make sure you've followed the instructions at <a href="../setup/#pyneal"><strong>setup: Pyneal</strong></a> to configure <strong>Pyneal</strong> to your environment. </p>
+<p>First step, make sure you've followed the instructions at <a href="../setup/#pyneal"><strong>setup: Pyneal</strong></a> to configure <strong>Pyneal</strong> to your environment.</p>
 <p>To launch <strong>Pyneal</strong> from the <strong>analysis computer</strong>, open the command line and navigate to the <code>pyneal</code> directory. From the <code>pyneal</code> directory, type:</p>
 <blockquote>
 <p>python pyneal.py</p>
@@ -567,33 +565,33 @@ MainThread -  Waiting for new seriesDir...</p>
 <p><img alt="" src="../images/pynealSetupGUI.png" /></p>
 <p>Once you hit submit, the command line will print a message showing you where log files for the current series will be stored, as well as all of the configuration settings for this series:</p>
 <blockquote>
-<p>Logs written to: /path/to/outputDir/pyneal_001/pynealLog.log    <br />
-MainThread -  Setting: analysisChoice: Average<br />
-MainThread -  Setting: dashboardClientPort: 5558<br />
-MainThread -  Setting: dashboardPort: 5557<br />
-MainThread -  Setting: launchDashboard: True <br />
-MainThread -  Setting: maskFile: /path/to/maskFile.nii.gz <br />
-MainThread -  Setting: maskIsWeighted: False<br />
-MainThread -  Setting: numTimepts: 60<br />
-MainThread -  Setting: outputPath: /path/to/outputDir  <br />
-MainThread -  Setting: pynealHost: 127.0.0.1<br />
-MainThread -  Setting: pynealScannerPort: 5555<br />
-MainThread -  Setting: resultsServerPort: 5556<br />
-MainThread -  Setting: seriesOutputDir: /path/to/outputDir/pyneal_001  </p>
+<p>Logs written to: /path/to/outputDir/pyneal_001/pynealLog.log<br />
+MainThread - Setting: analysisChoice: Average<br />
+MainThread - Setting: dashboardClientPort: 5558<br />
+MainThread - Setting: dashboardPort: 5557<br />
+MainThread - Setting: launchDashboard: True<br />
+MainThread - Setting: maskFile: /path/to/maskFile.nii.gz<br />
+MainThread - Setting: maskIsWeighted: False<br />
+MainThread - Setting: numTimepts: 60<br />
+MainThread - Setting: outputPath: /path/to/outputDir<br />
+MainThread - Setting: pynealHost: 127.0.0.1<br />
+MainThread - Setting: pynealScannerPort: 5555<br />
+MainThread - Setting: resultsServerPort: 5556<br />
+MainThread - Setting: seriesOutputDir: /path/to/outputDir/pyneal_001</p>
 </blockquote>
 <p>At the end of the message, you'll see a status indicator for the various subcomponents of <strong>Pyneal</strong>:</p>
 <blockquote>
 <hr />
-<p>MainThread -  ScanReceiver Server alive and listening....<br />
+<p>MainThread - ScanReceiver Server alive and listening....<br />
 Waiting for connection from pyneal_scanner<br />
-MainThread -  Results Server alive and listening....  </p>
+MainThread - Results Server alive and listening....</p>
 </blockquote>
-<p>If everything is working properly, it'll say that both the <code>ScanReceiver Server</code> and <code>Results Server</code> are alive and listening. (for more information about what these components are doing, see <a href="../pyneal/"><strong>Pyneal (detailed)</strong></a>. </p>
+<p>If everything is working properly, it'll say that both the <code>ScanReceiver Server</code> and <code>Results Server</code> are alive and listening. (for more information about what these components are doing, see <a href="../pyneal/"><strong>Pyneal (detailed)</strong></a>.</p>
 <p>You should also see a message indicating that <strong>Pyneal</strong> is waiting to connect to <strong>Pyneal Scanner</strong>. Once you launch <strong>Pyneal Scanner</strong>, this message will update to:</p>
 <blockquote>
-<p>Received message:  hello from pyneal_scanner  </p>
+<p>Received message: hello from pyneal_scanner</p>
 </blockquote>
-<p>In addition to the command line output, you can monitor the status of the scan from the web-based dashboard. </p>
+<p>In addition to the command line output, you can monitor the status of the scan from the web-based dashboard.</p>
 <p><img alt="" src="../images/pynealDashboard.png" /></p>
 <p>The dashboard will launch automatically, but if you happen to close the window you can relaunch it at any time during the scan by opening a webbrowser and entering the URL <code>127.0.0.1:&lt;dashboardClientPort&gt;</code>, where <code>&lt;dashboardClientPort&gt;</code> can be found from series configuration settings that are printed to the command line. For example, using the settings from above, the URL would be: <code>127.0.0.1:5558</code></p>
 <p>The dashboard contains:</p>
@@ -602,18 +600,18 @@ MainThread -  Results Server alive and listening....  </p>
 <li>head motion plot showing relative (to ref volume) and absolute displacement (in mm)</li>
 <li>scanner communication log showing volume indices as they arrive from the scanner</li>
 <li>processing time plot showing processing time per volume (in sec)</li>
-<li>request log showing incoming requests for results and each corresponding reply  </li>
+<li>request log showing incoming requests for results and each corresponding reply</li>
 </ul>
 <p>After the scan has completed, the <code>seriesOutputDir</code> will contain the folling output files:</p>
 <ul>
 <li><code>pynealLog.log</code> - detailed log messages from the current scan</li>
 <li><code>results.json</code> - JSON formatted file containg all of the analysis results from the current scan</li>
-<li><code>receivedFunc.nii.gz</code> - nifti formatted 4D file containing the series data itself, as received by <strong>Pyneal</strong>, from the current scan  </li>
+<li><code>receivedFunc.nii.gz</code> - nifti formatted 4D file containing the series data itself, as received by <strong>Pyneal</strong>, from the current scan</li>
 </ul>
 <p>For a more detailed look at how <strong>Pyneal</strong> works, see <a href="../pyneal/"><strong>Pyneal (detailed)</strong></a></p>
 <h2 id="end-user">End User<a class="headerlink" href="#end-user" title="Permanent link">&para;</a></h2>
 <p><img alt="" src="../images/endUser/endUser.png" /></p>
-<p>We refer to <em>any</em> component that requests results from <strong>Pyneal</strong> during a scan as an <strong>End User</strong>. For instance, a potential <strong>End User</strong> could be task presentation software that periodically makes requests for analysis results in order to update a neurofeedback display for the participant. </p>
+<p>We refer to <em>any</em> component that requests results from <strong>Pyneal</strong> during a scan as an <strong>End User</strong>. For instance, a potential <strong>End User</strong> could be task presentation software that periodically makes requests for analysis results in order to update a neurofeedback display for the participant.</p>
 <p>For more details about how to format requests and parse responses, see <a href="../pyneal/#formatting-requests"><strong>Requesting Results</strong></a></p>
                 
               
